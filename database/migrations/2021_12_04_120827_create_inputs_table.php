@@ -25,7 +25,7 @@ class CreateInputsTable extends Migration
             $table->integer('volume_capaian');
             $table->string('uraian');
             $table->string('nomor_dokumen');
-            $table->timestampTz('tanggal')->nullable();
+            $table->timestampTz('tanggal')->nullable()->default(null);;
             $table->integer('volume_jumlah');
             $table->integer('rvo');
             $table->integer('rvo_maksimal');
