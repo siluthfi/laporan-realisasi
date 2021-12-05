@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('nip');
             $table->string('nomor_telepon');
             $table->enum('gender', ['Pria', 'Perempuan']);
-            $table->enum('bidang' , ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK']);
+            $table->enum('bidang' , ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'admin']);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
