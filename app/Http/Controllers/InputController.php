@@ -38,20 +38,60 @@ class InputController extends Controller
         }
 
     // Common
-    // Detail
-    public function common_detail()
+        // Detail
+        public function common_detail()
+        {
+
+        }
+        // Create
+        public function common_create()
+        {
+
+        }
+        // Edit
+        public function common_edit()
+        {
+
+        }
+        // Delete
+        public function common_delete()
+        {
+
+        }
+
+    // Umum
+    public function umum_index()
+        {
+            return view('input.common.index_umum', [
+                'one_inputs' => OneInput::all(),
+            ]);
+        }
+    // PPA I
+    public function ppai_index()
     {
+        return view('input.common.index_ppai', [
+            'one_inputs' => OneInput::all(),
+        ]);
     }
-    // Create
-    public function common_create()
+    // PPA II
+    public function ppaii_index()
     {
+        return view('input.common.index_ppaii', [
+            'one_inputs' => OneInput::all(),
+        ]);
     }
-    // Edit
-    public function common_edit()
+    // SKKI
+    public function skki_index()
     {
+        return view('input.common.index_skki', [
+            'one_inputs' => OneInput::all(),
+        ]);
     }
-    // Delete
-    public function common_delete()
+    // PAPK
+    public function papk_index()
     {
+        return view('input.common.index_papk', [
+            'one_inputs' => OneInput::all(),
+        ]);
     }
 }
