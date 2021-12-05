@@ -8,13 +8,33 @@ use App\Http\Controllers\Controller;
 
 class InputController extends Controller
 {
-    // List
-    public function index()
-    {
-        return view('input.admin.index', [
-            'one_inputs' => OneInput::all(),
-        ]);
-    }
+    // Admin
+        // Index
+        public function admin_index()
+        {
+            return view('input.admin.index', [
+                'one_inputs' => OneInput::all(),
+            ]);
+        }
+        // Detail
+        public function admin_detail()
+        {
 
+        }
+        // Create
+        public function admin_create()
+        {
+
+        }
+        // Edit
+        public function admin_edit()
+        {
+
+        }
+        // Delete
+        public function admin_delete()
+        {
+
+        }
 
 }
