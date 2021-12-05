@@ -23,9 +23,9 @@ class CreateInputsTable extends Migration
             $table->integer('volume_target');
             $table->string('satuan');
             $table->integer('volume_capaian');
-            $table->string('uraian');
-            $table->string('nomor_dokumen');
-            $table->timestampTz('tanggal')->nullable()->default(null);;
+            $table->string('uraian')->nullable()->default(null);
+            $table->string('nomor_dokumen')->nullable()->default(null);
+            $table->timestampTz('tanggal')->nullable()->default(null);
             $table->integer('volume_jumlah');
             $table->integer('rvo');
             $table->integer('rvo_maksimal');
@@ -34,6 +34,7 @@ class CreateInputsTable extends Migration
             $table->bigInteger('pagu');
             $table->bigInteger('rp');
             $table->integer('capaian');
+            $table->bigInteger('sisa');
             $table->timestamps();
         });
     }
