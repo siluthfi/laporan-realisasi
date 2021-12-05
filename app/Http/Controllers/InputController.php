@@ -6,26 +6,26 @@ use Illuminate\Http\Request;
 
 class InputController extends Controller
 {
-    // List
-    public function index(){
-        return view('input.index');
-    }
 
     // Admin
+        // Index
+        public function admin_index(){
+            return view('input.index');
+        }
         // Detail
         public function admin_detail(){
 
         }
-        // Create
-        public function admin_create(){
+        // Store
+        public function admin_store(){
 
         }
         // Edit
         public function admin_edit(){
 
         }
-        // Delete
-        public function admin_delete(){
+        // Destroy
+        public function admin_destroy(){
 
         }
 
@@ -34,16 +34,42 @@ class InputController extends Controller
         public function common_detail(){
 
         }
-        // Create
-        public function common_create(){
+        // Store
+        public function common_store(){
 
         }
         // Edit
         public function common_edit(){
 
         }
-        // Delete
-        public function common_delete(){
+        // Destroy
+        public function common_destroy(){
+
+        }
+
+    // Umum
+        // Index
+        public function umum_index(){
+
+        }
+    // PPA I
+        // Index
+        public function PPAI_index(){
+
+        }
+    // PPA II
+        // Index
+        public function PPAII_index(){
+
+        }
+    // SKKI
+        // Index
+        public function SKKI_index(){
+
+        }
+    // PAPK
+        // Index
+        public function PAPK_index(){
 
         }
 }
