@@ -34,7 +34,6 @@ class CreateInputsTable extends Migration
             $table->bigInteger('pagu');
             $table->bigInteger('rp');
             $table->integer('capaian');
-            $table->bigInteger('sisa');
             $table->timestamps();
         });
     }

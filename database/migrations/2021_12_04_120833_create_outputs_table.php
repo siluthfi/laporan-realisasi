@@ -20,12 +20,8 @@ class CreateOutputsTable extends Migration
             $table->enum('bidang', ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK']);
             $table->bigInteger('anggaran_pagu');
             $table->bigInteger('anggaran_realisasi');
-            $table->bigInteger('anggaran_sisa');
-            $table->string('anggaran_yang_digunakan');
-            $table->integer('anggaran_persen');
             $table->integer('output_target');
             $table->integer('output_realisasi');
-            $table->integer('output_persen');
             $table->timestamps();
         });
     }
