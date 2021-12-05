@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\InputOne;
+use App\Models\OneInput;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class InputTwo extends Model
+class TwoInput extends Model
 {
     use HasFactory;
 
@@ -14,9 +14,9 @@ class InputTwo extends Model
         'id'
     ];
 
-    public function InputOne()
+    public function OneInput()
     {
-        return $this->belongsTo(InputOne::class);
+        return $this->belongsTo(OneInput::class);
     }
 
 }

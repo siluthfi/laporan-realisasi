@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <div class="row">
             <div class="col-lg-12">
@@ -29,10 +28,15 @@
                     <thead>
                         <tr class="text-center fw-bold">
                             <th style="width: 1%">No</th>
-                            <th style="width: 30%">Judul</th>
-                            <th>Penulis</th>
-                            <th>ISBN</th>
-                            <th class="sorting_none" style="width: 18%"></th>
+                            <th style="width: 3%">Digit</th>
+                            <th  style="width: 7%">KD KRO</th>
+                            <th  style="width: 7%">KD RO</th>
+                            <th  style="width: 7%">Bidang</th>
+                            <th>Nama Ro</th>
+                            <th>Capaian Ro</th>
+                            <th style="width: 7%">Target</th>
+                            <th style="width: 7%">Satuan</th>
+                            <th class="sorting_none" style="width: 10%"></th>
                         </tr>
                     </thead>
                     <tbody class="bg-light">

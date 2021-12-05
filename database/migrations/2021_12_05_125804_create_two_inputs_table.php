@@ -25,7 +25,7 @@ class CreateTwoInputsTable extends Migration
             $table->bigInteger('rp');
             $table->integer('capaian');
             $table->bigInteger('sisa');
-            $table->foreignId('one_input_id');
+            $table->foreignId('one_input_id')->references('id')->on('one_inputs')->onDelete('cascade');;
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });
