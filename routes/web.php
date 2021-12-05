@@ -20,7 +20,7 @@ use App\Http\Controllers\OutputController;
 Route::get('/login', [LoginController::class, 'index']);
 
 // Input
-Route::get('/input', [InputController::class, 'admin_index']);
+Route::get('/input', [InputController::class, 'index']);
 
 // Output
 Route::get('/output', [OutputController::class, 'index']);
