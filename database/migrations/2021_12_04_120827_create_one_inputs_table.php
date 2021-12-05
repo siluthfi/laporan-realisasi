@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOutputsTable extends Migration
+class CreateOneInputsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateOutputsTable extends Migration
      */
     public function up()
     {
-        Schema::create('outputs', function (Blueprint $table) {
+        Schema::create('one_inputs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('input_realisation_id');
+            $table->string('digit');
+            $table->string('kd_kro');
+            $table->string('kd_ro');
             $table->enum('bidang' , ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin']);
-            $table->bigInteger('anggaran_pagu');
-            $table->bigInteger('anggaran_realisasi');
-            $table->integer('output_target');
-            $table->integer('output_realisasi');
-            $table->foreignId('one_inputs_id');
+            $table->string('nama_ro');
+            $table->string('capaian_ro');
+            $table->integer('volume_target');
+            $table->string('satuan');
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
-            $table->timestampsTz();
+            $table->timestamps();
         });
     }
 
@@ -34,6 +35,6 @@ class CreateOutputsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('outputs');
+        Schema::dropIfExists('inputs');
     }
 }
