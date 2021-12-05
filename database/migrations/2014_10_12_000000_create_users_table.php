@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->softDeletesTz($column = 'deleted_at', $precision = 0);
             $table->string('nama');
             $table->string('username')->unique();
             $table->string('email');
@@ -25,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['Pria', 'Perempuan']);
             $table->enum('bidang' , ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin']);
             $table->string('password');
+            $table->softDeletesTz($column = 'deleted_at', $precision = 0);
             $table->rememberToken();
             $table->timestamps();
         });
