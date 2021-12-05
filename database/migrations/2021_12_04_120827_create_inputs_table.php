@@ -20,6 +20,8 @@ class CreateInputsTable extends Migration
             $table->string('kd_kro');
             $table->string('kd_ro');
             $table->enum('bidang' , ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK']);
+            $table->string('nama_ro');
+            $table->string('capaian_ro');
             $table->integer('volume_target');
             $table->string('satuan');
             $table->integer('volume_capaian');
