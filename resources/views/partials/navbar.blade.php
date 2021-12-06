@@ -1,7 +1,7 @@
 <div class="d-flex" id="wrapper">
     <!-- Sidebar Start-->
     <div class="text-white bg-green" id="sidebar-wrapper">
-        <div class="sidebar-heading fw-bold fs-4 " style="padding-bottom: 14px"> <img src="" alt=""
+        <div class="sidebar-heading border-bottom fw-bold fs-4 " style="padding-bottom: 14px"> <img src="" alt=""
                 class="img img-responsive" width="35" height="35">
             Laporan</div>
         <div class=" list-group">

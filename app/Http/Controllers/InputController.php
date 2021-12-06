@@ -18,8 +18,11 @@ class InputController extends Controller
     }
 
     // Detail
-    public function admin_detail()
+    public function admin_detail(OneInput $oneinput)
     {
+        return view('input.admin.detail', [
+            "item" => $oneinput
+        ]);
     }
     // Create
     public function admin_create()

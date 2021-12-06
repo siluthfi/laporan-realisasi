@@ -22,8 +22,10 @@ Route::get('/login', [LoginController::class, 'index']);
 // Input
 // Admin
 Route::get('/input/admin', [InputController::class, 'admin_index']);
+Route::get('/input/detail/{oneinput:id}', [InputController::class, 'admin_detail'])->name('admin.detail');
 Route::get('/input/admin/create', [InputController::class, 'admin_create'])->name('admin.create');
 Route::post('/input/admin/create', [InputController::class, 'admin_store'])->name('admin.store');
+
 
 
 // Common
