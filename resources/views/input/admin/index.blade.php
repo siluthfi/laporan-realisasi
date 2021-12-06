@@ -11,7 +11,7 @@
                         <div class="col-sm">
                             <a href="" class="text-white text-decoration-none">
                                 <button class="px-4 py-2 btn btn-outline-primary fw-bold "><a
-                                        href="{{ route('admin.new') }}"><i class="fas fa-plus "></i>
+                                        href="{{ route('admin.create') }}"><i class="fas fa-plus "></i>
                                         <div class="d-none d-sm-inline">New
                                     </a>
                                 </button>
@@ -40,11 +40,12 @@
                             <th style="width: 7%">Jumlah</th>
                             <th style="width: 7%">Satuan</th>
                             <th class="sorting_none" style="width: 10%"></th>
+                            
                         </tr>
                     </thead>
                     @foreach ($one_inputs as $input)
                         <tbody class="bg-light">
-                            <td></td>
+                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $input->digit }} </td>
                             <td class="text-center">{{ $input->kd_kro }} </td>
                             <td class="text-center">{{ $input->kd_ro }} </td>
@@ -55,7 +56,6 @@
                             <td class="">{{ $input->volume_jumlah }} </td>
                             <td class="text-center">{{ $input->satuan }} </td>
                             <td class="text-center"><a href="">Detail</a></td>
-
                         </tbody>
                     @endforeach
                 </table>

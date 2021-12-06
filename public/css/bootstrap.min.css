@@ -5234,7 +5234,7 @@ fieldset:disabled .btn {
 
 .list-group-item-action:active {
     color: #212529;
-    background-color: #e9ecef
+    background-color: #fff;
 }
 
 .list-group-item {
@@ -7940,6 +7940,10 @@ fieldset:disabled .btn {
 
 .text-reset {
     color: inherit!important
+}
+
+.bg-green {
+    background-color: #23717D!important
 }
 
 .bg-primary {
@@ -10672,3 +10676,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
         margin-left: -15rem;
     }
 }
+
+;
+;
+;
