@@ -20,7 +20,19 @@ use App\Http\Controllers\OutputController;
 Route::get('/login', [LoginController::class, 'index']);
 
 // Input
-Route::get('/input', [InputController::class, 'admin_index']);
+    // Admin
+    Route::get('/input/admin', [InputController::class, 'admin_index']);
+    // Common
+    // Umum
+    Route::get('/input/common', [InputController::class, 'umum_index']);
+    // PPAI
+    Route::get('/input/common', [InputController::class, 'ppai_index']);
+    // PPAII
+    Route::get('/input/common', [InputController::class, 'ppaii_index']);
+    // SKKI
+    Route::get('/input/common', [InputController::class, 'skki_index']);
+    // PAPK
+    Route::get('/input/common', [InputController::class, 'papk_index']);
 
 // Output
 Route::get('/output', [OutputController::class, 'index']);
