@@ -20,8 +20,11 @@ class InputController extends Controller
     }
 
     // Detail
-    public function admin_detail()
+    public function admin_detail(OneInput $oneinput)
     {
+        return view('input.admin.detail', [
+            "item" => $oneinput
+        ]);
     }
     // Create
     public function admin_create()
@@ -80,8 +83,11 @@ class InputController extends Controller
     {
     }
     // Delete
-    public function admin_delete()
+    public function admin_delete($id)
     {
+        $item = OneInput::find($id);
+        $item->delete();
+        return redirect('/input/admin/');
     }
 
 
