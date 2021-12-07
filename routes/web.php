@@ -27,16 +27,27 @@ Route::post('/input/admin/create', [InputController::class, 'admin_store'])->nam
 
 
 // Common
+// Index
+Route::get('/input/common', [InputController::class, 'common_index'])->name('common.index');
+// Details
+Route::get('/input/detail/{data}', [InputController::class, ''])->name('common.detail');
+// Store
+Route::post('input/common/store', [InputController::class, 'common_store'])->name('common.store');
+// Edit
+Route::post('/input/common/edit', [InputController::class, 'common_edit'])->name('common.edit');
+// Delete
+Route::delete('input/common/delete', [InputController::class, 'common_delete'])->name('common.delete');
+
 // Umum
-Route::get('/input/common', [InputController::class, 'umum_index']);
+Route::get('/input/umum', [InputController::class, 'umum_index']);
 // PPAI
-Route::get('/input/common', [InputController::class, 'ppai_index']);
+Route::get('/input/ppai', [InputController::class, 'ppai_index']);
 // PPAII
-Route::get('/input/common', [InputController::class, 'ppaii_index']);
+Route::get('/input/ppaii', [InputController::class, 'ppaii_index']);
 // SKKI
-Route::get('/input/common', [InputController::class, 'skki_index']);
+Route::get('/input/skkii', [InputController::class, 'skki_index']);
 // PAPK
-Route::get('/input/common', [InputController::class, 'papk_index']);
+Route::get('/input/papk', [InputController::class, 'papk_index']);
 
 // Output
 Route::get('/output', [OutputController::class, 'index']);

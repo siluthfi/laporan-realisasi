@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\OneInput;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class InputController extends Controller
 {
@@ -84,13 +86,24 @@ class InputController extends Controller
 
 
     // Common
+    // Index
+    public function commmon_index()
+    {
+        $bidang = Auth::user()->bidang;
+        return view('input.common.index_umum', [
+            'datas' => OneInput::where('bidang', '$bidang'),
+        ]);
+    }
     // Detail
     public function common_detail()
     {
+        $bidang = 'Umum';
+
     }
-    // Create
-    public function common_create()
+    // Store
+    public function common_store(Request $request)
     {
+
     }
     // Edit
     public function common_edit()
@@ -104,13 +117,19 @@ class InputController extends Controller
     // Umum
     public function umum_index()
     {
+        $bidang = 'Umum';
         return view('input.common.index_umum', [
-            'one_inputs' => OneInput::all(),
+            'datas' => OneInput::where('bidang', '$bidang'),
         ]);
     }
     // PPA I
     public function ppai_index()
     {
+        $bidang = 'PPA I';
+        $datas = DB::table('one_inputs')
+                    ->where('bidang', $bidang)
+                    ->get();
+
         return view('input.common.index_ppai', [
             'one_inputs' => OneInput::all(),
         ]);
@@ -118,6 +137,11 @@ class InputController extends Controller
     // PPA II
     public function ppaii_index()
     {
+        $bidang = 'PPA II';
+        $datas = DB::table('one_inputs')
+                    ->where('bidang', $bidang)
+                    ->get();
+
         return view('input.common.index_ppaii', [
             'one_inputs' => OneInput::all(),
         ]);
@@ -125,6 +149,11 @@ class InputController extends Controller
     // SKKI
     public function skki_index()
     {
+        $bidang = 'SKKI';
+        $datas = DB::table('one_inputs')
+                    ->where('bidang', $bidang)
+                    ->get();
+
         return view('input.common.index_skki', [
             'one_inputs' => OneInput::all(),
         ]);
@@ -132,6 +161,11 @@ class InputController extends Controller
     // PAPK
     public function papk_index()
     {
+        $bidang = 'PAPK';
+        $datas = DB::table('one_inputs')
+                    ->where('bidang', $bidang)
+                    ->get();
+
         return view('input.common.index_papk', [
             'one_inputs' => OneInput::all(),
         ]);

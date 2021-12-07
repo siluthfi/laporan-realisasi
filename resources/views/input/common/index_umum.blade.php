@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="p-4 mb-4 border rounded shadow-sm bg-light">
+    {{-- <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <div class="row">
             <div class="col-lg-12">
                 <div class="p-2 rounded bg-light">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="mt-4 mb-4 row">
         <div class="col-lg-12 ">
@@ -27,20 +27,33 @@
                 <table id="datatable" class="table table-bordered " style="width:100%">
                     <thead>
                         <tr class="text-center fw-bold">
-                            <th style="width: 1%">No</th>
-                            <th style="width: 3%">Digit</th>
-                            <th  style="width: 7%">KD KRO</th>
-                            <th  style="width: 7%">KD RO</th>
-                            <th  style="width: 7%">Bidang</th>
-                            <th>Nama Ro</th>
-                            <th>Capaian Ro</th>
-                            <th style="width: 7%">Target</th>
-                            <th style="width: 7%">Satuan</th>
-                            <th class="sorting_none" style="width: 10%"></th>
+                            <th style="width: 1%" class="align-middle">No</th>
+                            <th style="width: 3%" class="align-middle">Digit</th>
+                            <th  style="width: 7%" class="align-middle">KD KRO</th>
+                            <th  style="width: 7%" class="align-middle">KD RO</th>
+                            <th class="align-middle">Nama Ro</th>
+                            <th class="align-middle">Capaian Ro</th>
+                            <th style="width: 7%" class="align-middle">Target</th>
+                            <th style="width: 7%" class="align-middle">Satuan</th>
+                            <th style="width: 7%" class="align-middle">Jumlah Volume</th>
+                            <th class="sorting_none align-middle" style="width: 10%">Opsi</th>
                         </tr>
                     </thead>
                     <tbody class="bg-light">
+                        @foreach ($datas as $data)
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="/input/detail/{{ $data["id"] }}" class="btn btn-success"><i class='bi bi-eye'></i>Detail</a>
+                        </td>
+                        @endforeach
                     </tbody>
                 </table>
                 <!-- Tables End -->
