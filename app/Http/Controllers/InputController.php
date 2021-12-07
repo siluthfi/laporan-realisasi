@@ -81,8 +81,11 @@ class InputController extends Controller
     {
     }
     // Delete
-    public function admin_delete()
+    public function admin_delete($id)
     {
+        $item = OneInput::find($id);
+        $item->delete();
+        return redirect('/input/admin/');
     }
 
 
