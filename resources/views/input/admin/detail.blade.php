@@ -16,9 +16,11 @@
                 <div class="p-2 rounded bg-light">
                     <h2 class="mb-2">Detail Laporan</h2>
                     <div class="col-sm">
-                        <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i
-                                class="fas fa-edit"></i>
-                            <div class="d-none d-sm-inline"> Edit</div>
+                        <a href="{{ route('admin.edit', $item->id) }}" class="text-decoration-none">
+                            <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i
+                                    class="fas fa-edit"></i>
+                                <div class="d-none d-sm-inline"> Edit</div>
+                        </a>
                         </button>
                         <button type="button" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold" data-bs-toggle="modal"
                             data-bs-target="#deleteModal">
@@ -108,7 +110,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Target Volume Realisasi Output
@@ -119,23 +121,77 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Pagu</label>
                                     <div class="input-group">
                                         <input type="number" value="" placeholder="{{ $item->pagu }}"
-                                            class="form-control" name="pagu" disabled>
+                                            class="form-control" name="pagu" id="rupiah" disabled>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         RP</label>
                                     <div class="input-group">
-                                        <input type="number" value="" placeholder="RP" class="form-control"
-                                            name="{{ $item->rp }}" disabled>
+                                        <input type="number" value="" placeholder="{{ $item->rp }}"
+                                            class="form-control" name="{{ $item->rp }}" id="rupiah" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        Sisa</label>
+                                    <div class="input-group">
+                                        <input type="number" value="" placeholder="{{ $item->sisa }}"
+                                            class="form-control" name="{{ $item->sisa }}" id="rupiah" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        RVO</label>
+                                    <div class="input-group">
+                                        <input value="" placeholder="{{ $item->rvo * 100 }} %" class="form-control"
+                                            name="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        RVO Maksimal</label>
+                                    <div class="input-group">
+                                        <input value="" placeholder="{{ $item->rvo_maksimal }}" class="form-control"
+                                            name="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        Capaian Realisasi</label>
+                                    <div class="input-group">
+                                        <input value="" placeholder="{{ $item->capaian_realisasi }}"
+                                            class="form-control" name="capaian_ro" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        Capaian</label>
+                                    <div class="input-group">
+                                        <input value="" placeholder="{{ $item->capaian * 100 }} %" class="form-control"
+                                            name="capaian_ro" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -163,6 +219,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-lg-2">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
@@ -214,8 +271,108 @@
         </div>
         <!-- Form End -->
     </div>
+
+    <div class="mt-4 mb-4 row">
+        <div class="col-lg-12 ">
+            <div class="p-4 border rounded shadow-sm bg-light">
+                <table id="datatable" class="table table-bordered" style="width:100%">
+                    <thead>
+                        <tr class="text-center fw-bold">
+                            <th class="align-middle" style="width: 1%">No</th>
+                            <th class="align-middle" style="width: 30%">Uraian</th>
+                            <th class="align-middle" style="width: 16%">Nomor Dokumen</th>
+                            <th class="align-middle" style="width: 10%">Tanggal</th>
+                            <th class="align-middle" style="width: 1%">Volume Capaian</th>
+                        </tr>
+                    </thead>
+
+
+                    @foreach ($childs as $child)
+                        <tbody class="bg-light">
+                            <td class="text-center">{{ $loop->iteration }}</td>
+                            <td>{{ $child->uraian }}</td>
+                            <td class="text-center">{{ $child->nomor_dokumen }}</td>
+                            <td class="text-center">{{ \Carbon\Carbon::parse($child->tanggal)->format('d-m-Y') }}
+                            </td>
+                            <td class="text-center">{{ $child->volume_capaian }}</td>
+                        </tbody>
+
+                    @endforeach
+                </table>
+                <!-- Tables End -->
+            </div>
+        </div>
     </div>
     <!-- Content End -->
+
+    <script>
+        var rupiah = document.getElementById('rupiah');
+        rupiah.addEventListener('keyup', function(e) {
+            // tambahkan 'Rp.' pada saat form di ketik
+            // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+            rupiah.value = formatRupiah(this.value, 'Rp. ');
+        });
+        /* Fungsi formatRupiah */
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        }
+
+        var rupiah2 = document.getElementById('rupiah2');
+        rupiah2.addEventListener('keyup', function(e) {
+            // tambahkan 'Rp.' pada saat form di ketik
+            // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+            rupiah2.value = formatRupiah(this.value, 'Rp. ');
+        });
+        /* Fungsi formatRupiah */
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah2 = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah2 += separator + ribuan.join('.');
+            }
+            rupiah2 = split[1] != undefined ? rupiah2 + ',' + split[1] : rupiah2;
+            return prefix == undefined ? rupiah2 : (rupiah2 ? 'Rp. ' + rupiah2 : '');
+        }
+
+
+        var rupiah3 = document.getElementById('rupiah3');
+        rupiah3.addEventListener('keyup', function(e) {
+            // tambahkan 'Rp.' pada saat form di ketik
+            // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+            rupiah3.value = formatRupiah(this.value, 'Rp. ');
+        });
+        /* Fungsi formatRupiah */
+        function formatRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah3 = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            // tambahkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah3 += separator + ribuan.join('.');
+            }
+            rupiah3 = split[1] != undefined ? rupiah3 + ',' + split[1] : rupiah3;
+            return prefix == undefined ? rupiah3 : (rupiah3 ? 'Rp. ' + rupiah3 : '');
+        }
+    </script>
 
 
 
