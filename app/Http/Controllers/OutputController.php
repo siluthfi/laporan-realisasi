@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class OutputController extends Controller
 {
     public function index(){
-        return view('output.index');
+        return view('output.index', [
+            
+        ]);
     }
 }
