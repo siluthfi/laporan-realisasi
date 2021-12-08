@@ -6,6 +6,7 @@ use App\Models\OneInput;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\TwoInput;
 use Illuminate\Support\Facades\Auth;
 
 class InputController extends Controller
@@ -90,7 +91,6 @@ class InputController extends Controller
         return redirect('/input/admin/');
     }
 
-
     // Common
     // Index
     public function commmon_index()
@@ -101,15 +101,37 @@ class InputController extends Controller
         ]);
     }
     // Detail
-    public function common_detail()
+    public function common_detail(OneInput $oneinput)
     {
         $bidang = 'Umum';
-
+        $selects = OneInput::where('bidang', $bidang)->get();
+        // $selects = OneInput::all();
+        $datas2 = TwoInput::where('one_input_id', 1)->get();
+        return view('input.common.detail', [
+            'data' => $oneinput,
+            'selects' => $selects,
+            'datas2' => $datas2,
+        ]);
     }
     // Store
     public function common_store(Request $request)
     {
+        $input = new TwoInput();
+        $add = new OneInput();
+        // $bagian = Auth::user()->bidang;
+        $bidang = 'umum';
 
+        $input->uraian = $request->uraian;
+        $input->nomor_dokumen = $request->nodok;
+        $input->tanggal = $request->tanggal;
+        $input->one_input_id = $request->naro;
+        $input->save();
+
+        // $add->volume_jumlah = 0;
+        // $add->volume_jumlah += $request->volume_capaian;
+        // $add->update();
+
+        return redirect()->back()->with('status', 'Data berhasil dimasukkan!');
     }
     // Edit
     public function common_edit()
@@ -125,7 +147,7 @@ class InputController extends Controller
     {
         $bidang = 'Umum';
         return view('input.common.index_umum', [
-            'datas' => OneInput::where('bidang', '$bidang'),
+            'datas' => OneInput::where('bidang', $bidang)->get(),
         ]);
     }
     // PPA I

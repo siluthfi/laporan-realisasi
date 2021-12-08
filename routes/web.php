@@ -33,7 +33,7 @@ Route::delete('/input/admin/delete/{oneinput:id}', [InputController::class, 'adm
 // Index
 Route::get('/input/common', [InputController::class, 'common_index'])->name('common.index');
 // Details
-Route::get('/input/detail/{data}', [InputController::class, ''])->name('common.detail');
+Route::get('/input/detail/{oneinput:id}', [InputController::class, 'common_detail'])->name('common.detail');
 // Store
 Route::post('input/common/store', [InputController::class, 'common_store'])->name('common.store');
 // Edit
