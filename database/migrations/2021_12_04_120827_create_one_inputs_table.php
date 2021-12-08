@@ -24,13 +24,13 @@ class CreateOneInputsTable extends Migration
             $table->integer('volume_target');
             $table->string('satuan');
             $table->integer('volume_jumlah');
-            $table->integer('rvo');
-            $table->integer('rvo_maksimal');
+            $table->float('rvo');
+            $table->float('rvo_maksimal');
             $table->integer('volume_target_realisasi');
-            $table->integer('capaian_realisasi');
+            $table->float('capaian_realisasi');
             $table->bigInteger('pagu');
             $table->bigInteger('rp');
-            $table->integer('capaian');
+            $table->float('capaian');
             $table->bigInteger('sisa');
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
             $table->timestamps();

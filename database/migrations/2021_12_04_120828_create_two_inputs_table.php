@@ -20,7 +20,7 @@ class CreateTwoInputsTable extends Migration
             $table->string('nomor_dokumen')->nullable()->default(null);
             $table->timestampTz('tanggal')->nullable()->default(null);
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
-            $table->foreignId('one_input_id')->references('id')->on('one_inputs')->onDelete('cascade');
+            $table->foreignId('one_input_id')->onDelete('cascade');
             $table->timestampsTz();
         });
     }

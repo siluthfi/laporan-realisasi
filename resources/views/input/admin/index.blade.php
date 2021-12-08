@@ -34,9 +34,9 @@
                             <th style="width: 5%">Bidang</th>
                             <th>Nama Ro</th>
                             <th>Capaian Ro</th>
-                            <th style="width: 7%">Target</th>
-                            <th style="width: 7%">Jumlah</th>
-                            <th style="width: 7%">Satuan</th>
+                            <th style="width: 7%" >Target</th>
+                            <th style="width: 7%" >Jumlah</th>
+                            <th style="width: 7%" class="text-center">Satuan</th>
                             <th class="sorting_none" style="width: 10%"></th>
 
                         </tr>
@@ -50,10 +50,10 @@
                             <td class="text-center">{{ $input->bidang }} </td>
                             <td class="">{{ $input->nama_ro }} </td>
                             <td class="">{{ $input->capaian_ro }} </td>
-                            <td class="">{{ $input->volume_target }} </td>
-                            <td class="">{{ $input->volume_jumlah }} </td>
+                            <td class="text-center">{{ $input->volume_target }} </td>
+                            <td class="text-center">{{ $input->volume_jumlah }} </td>
                             <td class="text-center">{{ $input->satuan }} </td>
-                            <td class="text-center"><a href="{{ route('admin.detail', $input->id) }}">Detail</a></td>
+                            <td class="text-center"><a href="{{ route('admin.detail', $input->id) }}" class="btn-primary btn-sm text-decoration-none">Detail</a></td>
                         </tbody>
                     @endforeach
                 </table>
