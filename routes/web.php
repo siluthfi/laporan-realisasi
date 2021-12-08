@@ -20,7 +20,28 @@ use App\Http\Controllers\OutputController;
 Route::get('/login', [LoginController::class, 'index']);
 
 // Input
-Route::get('/input', [InputController::class, 'index']);
+// Admin
+Route::get('/input/admin', [InputController::class, 'admin_index'])->name('admin.index');
+Route::get('/input/admin/detail/{oneinput:id}', [InputController::class, 'admin_detail'])->name('admin.detail');
+Route::get('/input/admin/create', [InputController::class, 'admin_create'])->name('admin.create');
+Route::post('/input/admin/create', [InputController::class, 'admin_store'])->name('admin.store');
+Route::get('/input/admin/edit/{oneinput:id}', [InputController::class, 'admin_edit'])->name('admin.edit');
+Route::put('/input/admin/edit/{oneinput:id}', [InputController::class, 'admin_update'])->name('admin.update');
+Route::delete('/input/admin/delete/{oneinput:id}', [InputController::class, 'admin_delete'])->name('admin.delete');
+
+
+
+// Common
+// Umum
+Route::get('/input/common', [InputController::class, 'umum_index']);
+// PPAI
+Route::get('/input/common', [InputController::class, 'ppai_index']);
+// PPAII
+Route::get('/input/common', [InputController::class, 'ppaii_index']);
+// SKKI
+Route::get('/input/common', [InputController::class, 'skki_index']);
+// PAPK
+Route::get('/input/common', [InputController::class, 'papk_index']);
 
 // Output
 Route::get('/output', [OutputController::class, 'index']);
