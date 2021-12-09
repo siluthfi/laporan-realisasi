@@ -44,4 +44,4 @@ Route::get('/input/common', [InputController::class, 'skki_index']);
 Route::get('/input/common', [InputController::class, 'papk_index']);
 
 // Output
-Route::get('/output', [OutputController::class, 'index']);
+Route::get('/dashboard', [OutputController::class, 'index']);

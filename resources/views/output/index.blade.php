@@ -2,6 +2,8 @@
 
 @section('content')
 
+{{-- @dd($rpUMUM) --}}
+
 <div class="row mb-3">
     <div class="col-md">
         <h2 class="" style="text-align: center">ANGGARAN</h2>
@@ -11,12 +13,13 @@
 <div class="row mb-5">
     <div class="col-md-8">
         <div class="card bg-white shadow p-3">
-            <canvas id="chart4"></canvas>
+            <canvas id="chartBarAnggaran"></canvas>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card bg-white shadow p-3">
-            <canvas id="chartpie"></canvas>
+            <h4>Anggaran</h4>
+            <canvas id="chartPieAnggaran"></canvas>
         </div>
     </div>
 </div>
@@ -33,7 +36,7 @@
     </div>
     <div class="col-md-4">
         <div class="card bg-white shadow p-3">
-            <h2>Output</h2>
+            <h4>Output</h4>
             <canvas id="chartPieOutput"></canvas>
         </div>
     </div>
@@ -49,21 +52,21 @@
     datasets: [
                 {
                     label: 'REALISASI',      
-                    data: [4868829604, 35946220, 55485475, 28598876, 34634067],
+                    data: [{{ $rpUMUM }}, {{ $rpPPAI }}, {{ $rpPPAII }}, {{ $rpSKKI }}, {{ $rpPAPK }}],
                     backgroundColor: ['rgb(255, 99, 132)'],
                     stack: 'Stack 0',
                     yAxisID: 'percentage'
                 },
                 {   
                     label: 'PAGU',
-                    data: [5173265000, 68232000, 64192000, 30526000, 38749000],
+                    data: [{{ $paguUMUM }}, {{ $paguPPAI }}, {{ $paguPPAII }}, {{ $paguSKKI }}, {{ $paguPAPK }}],
                     backgroundColor: ['rgb(54, 162, 235)'],
                     stack: 'Stack 1',
                     yAxisID: 'percentage'
                 },
                 {
                     label: 'SISA',
-                    data: [304435396, 32285780, 8706525, 1927124, 4114933],
+                    data: [{{ $sisaUMUM }}, {{ $sisaPPAI }}, {{ $sisaPPAII }}, {{ $sisaSKKI }}, {{ $sisaPAPK }}],
                     backgroundColor: ['rgb(255, 205, 86)'],
                     stack: 'Stack 2',
                     yAxisID: 'currency'
@@ -115,18 +118,16 @@
         }
     };
 
-    const chart4 = new Chart(
-        document.getElementById('chart4'),
+    const chartBarAnggaran = new Chart(
+        document.getElementById('chartBarAnggaran'),
         configGroup
     )
 
-    
-    const datapoint = [300, 50, 100, 90 ,12];
-    const setuppie = {
+    const setupPieAnggaran = {
             labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
             datasets: [{
                 label: '%',
-                data: [94.1, 52.7, 86.4, 93.7, 89.4],
+                data: [{{ $percentageUMUM }}, {{ $percentagePPAI }}, {{ $percentagePPAII }}, {{ $percentageSKKI }}, {{ $percentagePAPK }}],
                 backgroundColor: [
                         '#f3a683',
                         '#f7d794',
@@ -138,9 +139,9 @@
             }]
         };
 
-    const configpie = {
+    const configPieAnggaran = {
         type: 'pie',
-        data: setuppie,
+        data: setupPieAnggaran,
         options: {
             plugins: {
                 tooltip: {
@@ -157,9 +158,9 @@
         plugins: [ChartDataLabels]
     };
 
-    const chartpie = new Chart(
-        document.querySelector('#chartpie'),
-        configpie
+    const chartPieAnggaran = new Chart(
+        document.querySelector('#chartPieAnggaran'),
+        configPieAnggaran
     )
 
     const dataBarOutput = {
@@ -167,14 +168,14 @@
     datasets: [
                 {
                     label: 'REALISASI',      
-                    data: [11.376, 18, 17, 18, 23],
+                    data: [{{ $rp2UMUM }}, {{ $rp2PPAI }}, {{ $rp2PPAII }}, {{ $rp2SKKI }}, {{ $rp2PAPK }}],
                     backgroundColor: ['rgb(255, 99, 132)'],
                     stack: 'Stack 0',
                     yAxisID: 'percentage'
                 },
                 {   
                     label: 'TARGET',
-                    data: [11.372, 17, 16, 18, 16],
+                    data: [{{ $targetUMUM }}, {{ $targetPPAI }}, {{ $targetPPAII }}, {{ $targetSKKI }}, {{ $targetPAPK }}],
                     backgroundColor: ['rgb(54, 162, 235)'],
                     stack: 'Stack 1',
                     yAxisID: 'percentage'
@@ -207,7 +208,7 @@
                     type: 'linear',
                     position: 'left',
                     min: 0,
-                    max: 50,
+                    max: 10000,
                     grid: {
                         display: false
                     }
@@ -216,7 +217,7 @@
                     type: 'linear',
                     position: 'right',
                     min: 0,
-                    max: 50,
+                    max: 10000,
                     grid: {
                         display: false
                     }
@@ -234,7 +235,7 @@
             labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
             datasets: [{
                 label: '%',
-                data: [100.04, 105.88, 106.25, 100.00, 143.75],
+                data: [{{ $percentageUMUM2 }}, {{ $percentagePPAI2 }}, {{ $percentagePPAII2 }}, {{ $percentageSKKI2 }}, {{ $percentagePAPK2 }}],
                 backgroundColor: [
                         '#f3a683',
                         '#f7d794',
@@ -267,7 +268,7 @@
 
     const chartPieOutput = new Chart(
         document.querySelector('#chartPieOutput'),
-        configpie
+        configPieOutput
     )
 
     </script>
