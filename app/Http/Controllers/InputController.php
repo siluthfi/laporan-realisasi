@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class InputController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     // Admin
     // Index
     public function admin_index()
@@ -43,20 +48,20 @@ class InputController extends Controller
     public function admin_store(Request $request)
     {
 
-        $pagu = (int)str_replace([',', '.' ,'Rp', ' '], '', $request->pagu);
-        $rp = (int)str_replace([',', '.' ,'Rp', ' '], '', $request->rp);
+        $pagu = (int)str_replace([',', '.', 'Rp', ' '], '', $request->pagu);
+        $rp = (int)str_replace([',', '.', 'Rp', ' '], '', $request->rp);
 
-        $rvo = ($request->volume_jumlah / $request->volume_target );
+        $rvo = ($request->volume_jumlah / $request->volume_target);
 
-        if($rvo >= 1.2){
+        if ($rvo >= 1.2) {
             $rvo_max = 1.2;
-        }else{
+        } else {
             $rvo_max = $rvo;
         }
 
-        $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi );
-        $capaian =  ( $rp / $pagu  );
-        $sisa =  ( $pagu - $rp  );
+        $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi);
+        $capaian =  ($rp / $pagu);
+        $sisa =  ($pagu - $rp);
 
         $input = new OneInput();
 
@@ -73,8 +78,8 @@ class InputController extends Controller
         $input->volume_target = $request->volume_target;
         $input->volume_jumlah = $request->volume_jumlah;
         $input->volume_target_realisasi = $request->volume_target_realisasi;
-        $input->pagu =$pagu;
-        $input->rp =$rp;
+        $input->pagu = $pagu;
+        $input->rp = $rp;
 
         // Otomatis
         $input->rvo = $rvo;
@@ -86,10 +91,9 @@ class InputController extends Controller
         $input->save();
 
         return redirect()->back()->with('status', 'Laporan admin berhasil ditambahkan');
-
-
     }
-    public function admin_edit($id){
+    public function admin_edit($id)
+    {
         $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
 
         return view('input.admin.edit', [
@@ -103,20 +107,20 @@ class InputController extends Controller
     {
         $input = OneInput::find($id);
 
-        $pagu = (int)str_replace([',', '.' ,'Rp', ' '], '', $request->pagu);
-        $rp = (int)str_replace([',', '.' ,'Rp', ' '], '', $request->rp);
+        $pagu = (int)str_replace([',', '.', 'Rp', ' '], '', $request->pagu);
+        $rp = (int)str_replace([',', '.', 'Rp', ' '], '', $request->rp);
 
-        $rvo = ($request->volume_jumlah / $request->volume_target );
+        $rvo = ($request->volume_jumlah / $request->volume_target);
 
-        if($rvo >= 1.2){
+        if ($rvo >= 1.2) {
             $rvo_max = 1.2;
-        }else{
+        } else {
             $rvo_max = $rvo;
         }
 
-        $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi );
-        $capaian =  ( $rp / $pagu  );
-        $sisa =  ( $pagu - $rp  );
+        $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi);
+        $capaian =  ($rp / $pagu);
+        $sisa =  ($pagu - $rp);
 
         // Manual
 
@@ -143,7 +147,6 @@ class InputController extends Controller
         $input->update();
 
         return redirect()->back()->with('status', 'Laporan admin berhasil diperbarui');
-
     }
 
     // Delete
@@ -199,8 +202,6 @@ class InputController extends Controller
     // Edit
     public function common_edit()
     {
-
-
     }
     // Delete
     public function common_delete()
@@ -220,8 +221,8 @@ class InputController extends Controller
     {
         $bidang = 'PPA I';
         $datas = DB::table('one_inputs')
-                    ->where('bidang', $bidang)
-                    ->get();
+            ->where('bidang', $bidang)
+            ->get();
 
         return view('input.common.index_ppai', [
             'one_inputs' => OneInput::all(),
@@ -232,8 +233,8 @@ class InputController extends Controller
     {
         $bidang = 'PPA II';
         $datas = DB::table('one_inputs')
-                    ->where('bidang', $bidang)
-                    ->get();
+            ->where('bidang', $bidang)
+            ->get();
 
         return view('input.common.index_ppaii', [
             'one_inputs' => OneInput::all(),
@@ -244,8 +245,8 @@ class InputController extends Controller
     {
         $bidang = 'SKKI';
         $datas = DB::table('one_inputs')
-                    ->where('bidang', $bidang)
-                    ->get();
+            ->where('bidang', $bidang)
+            ->get();
 
         return view('input.common.index_skki', [
             'one_inputs' => OneInput::all(),
@@ -256,8 +257,8 @@ class InputController extends Controller
     {
         $bidang = 'PAPK';
         $datas = DB::table('one_inputs')
-                    ->where('bidang', $bidang)
-                    ->get();
+            ->where('bidang', $bidang)
+            ->get();
 
         return view('input.common.index_papk', [
             'one_inputs' => OneInput::all(),

@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nama');
             $table->string('username')->unique();
             $table->string('email');
-            $table->string('user_profile');
+            $table->string('user_profile')->default('user.png');
             $table->string('nip');
             $table->string('nomor_telepon');
             $table->enum('gender', ['Pria', 'Perempuan']);
