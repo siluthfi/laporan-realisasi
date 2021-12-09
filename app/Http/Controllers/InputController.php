@@ -170,13 +170,15 @@ class InputController extends Controller
     public function common_detail(OneInput $oneinput)
     {
         $bidang = 'Umum';
-        $selects = OneInput::where('bidang', $bidang)->get();
+        $selects = OneInput::with('TwoInput')->where('bidang', $bidang)->get();
         // $selects = OneInput::all();
         $datas2 = TwoInput::where('one_input_id', 1)->get();
+        // $foreign['oneInput'] = $selects;
         return view('input.common.detail', [
             'data' => $oneinput,
             'selects' => $selects,
             'datas2' => $datas2,
+            // 'foreign' => $foreign,
         ]);
     }
     // Store
@@ -200,12 +202,26 @@ class InputController extends Controller
         return redirect()->back()->with('status', 'Data berhasil dimasukkan!');
     }
     // Edit
-    public function common_edit()
+    public function common_edit(Request $request, $id)
     {
+        $input = TwoInput::find($id);
+
+        $input->uraian = $request->uraian;
+        $input->nomor_dokumen = $request->nodok;
+        $input->tanggal = $request->tanggal;
+        $input->one_input_id = $request->naro;
+
+        $input->update();
+
+        return back()->withInput()->with('status', 'Dokumen berhasil diperbarui!');
     }
     // Delete
-    public function common_delete()
+    public function common_delete($id)
     {
+        $item = TwoInput::find($id);
+        $item->delete();
+
+        return back()->withInput();
     }
 
     // Umum

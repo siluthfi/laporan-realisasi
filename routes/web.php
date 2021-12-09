@@ -35,16 +35,11 @@ Route::delete('/input/admin/delete/{oneinput:id}', [InputController::class, 'adm
 
 
 // Common
-// Index
 Route::get('/input/common', [InputController::class, 'common_index'])->name('common.index');
-// Details
 Route::get('/input/detail/{oneinput:id}', [InputController::class, 'common_detail'])->name('common.detail');
-// Store
 Route::post('input/common/store', [InputController::class, 'common_store'])->name('common.store');
-// Edit
-Route::post('/input/common/edit', [InputController::class, 'common_edit'])->name('common.edit');
-// Delete
-Route::delete('input/common/delete', [InputController::class, 'common_delete'])->name('common.delete');
+Route::post('/input/common/edit{oneinput:id}', [InputController::class, 'common_edit'])->name('common.edit');
+Route::delete('input/common/delete{oneinput:id}', [InputController::class, 'common_delete'])->name('common.delete');
 
 // Umum
 Route::get('/input/umum', [InputController::class, 'umum_index']);

@@ -21,33 +21,6 @@
                                 Back</a>
                         </button>
                     </div>
-
-                    {{-- Modal --}}
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <i class="fas fa-exclamation-circle text-warning"></i> Apakah Anda Yakin Akan
-                                    Menghapus {{ $data->nama_ro }}
-                                </div>
-                                <div class="modal-footer">
-                                    <form action="{{ route('admin.delete', $data->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="px-3 py-1 btn btn-outline-outline-secondary"
-                                            data-bs-dismiss="modal">No</button>
-                                        <button type="submit" class="px-3 py-1 btn btn-outline-danger">Yes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -219,51 +192,91 @@
                         <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
                         <td class="text-center">{{ $data2->volume_capaian }}</td>
                         <td>
-                            <button type="button" class="btn btn-outline-success edit" data-bs-toggle="modal" data-bs-target="#editDokumen_{{ $data2->id }}" id="editbtn"><i class='fas fa-pencil-alt me-2'></i>Edit</button>
-                            <a href="" class="btn btn-outline-danger"><i class='fas fa-trash-alt me-2'></i>Hapus</a>
+                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#editDokumen_{{ $data2->id }}"><i class='fas fa-pencil-alt me-2'></i>Edit</button>
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#hapusDokumen_{{ $data2->id }}"><i class='fas fa-trash-alt me-2'></i>Hapus</button>
                         </td>
                     </tbody>
-                    <!-- Modal -->
-                    <div class="modal fade" id="editDokumen_{{ $data2->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                    <!-- Edit Modal - Start -->
+                    <div class="modal fade" id="editDokumen_{{ $data2->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Dokumen</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="{{ route('common.edit', $data2->id) }}" method="POST" id="editForm">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <label for="uraian" class="form-label">Uraian</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" id="uraian" name="uraian" placeholder="Masukkan Uraian" value="{{ $data2->uraian }}">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="nodok" class="form-label">Nomor Dokumen</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" id="nodok" name="nodok" placeholder="Masukkan Nomor Dokumen" value="{{ $data2->nomor_dokumen }}">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label for="tanggal" class="form-label">Tanggal</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan Tanggal" value="{{ \Carbon\Carbon::parse($data2->tanggal)->format('Y-m-d') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="naro" class="form-label">Nama RO</label>
+                                            <div class="input-group mb-3">
+                                                <select type="select" class="form-control" id="naro" name="naro" required>
+                                                    @foreach ($selects as $select)
+                                                    <option value="{{ $select->id }}">{{ $data2->oneInput->nama_ro }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Kembali</button>
+                                        <button type="submit" class="btn btn-outline-primary">Simpan</button>
+                                    </div>
+                                </form>
                             </div>
-                            <form action="{{ route('common.edit') }}" method="POST" id="editForm">
-                                @csrf
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <label for="uraian" class="form-label">Uraian</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" id="uraian" name="uraian" placeholder="Uraian" value="{{ $data2->uraian }}">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="nodok" class="form-label">Nomor Dokumen</label>
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" id="nodok" name="nodok" placeholder="Nomor Dokumen" value="{{ $data2->nomor_dokumen }}">
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <label for="tanggal" class="form-label">Tanggal</label>
-                                            <div class="input-group mb-3">
-                                                <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal" value="{{ \Carbon\Carbon::parse($data2->tanggal)->format('Y-m-d') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Kembali</button>
-                                    <button type="button" class="btn btn-outline-primary">Simpan</button>
-                                </div>
-                            </form>
-                        </div>
                         </div>
                     </div>
+                    <!-- Edit Modal - End-->
+
+                    <!-- Delete Modal - Start-->
+                    {{-- Modal --}}
+                    <div class="modal fade" id="hapusDokumen_{{ $data2->id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel"><i class="fas fa-exclamation-circle text-warning me-2"></i>Hapus Dokumen</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah anda yakin ingin menghapus {{ $data2->uraian }}?
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('common.delete', $data2->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="px-3 py-1 btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">Tidak</button>
+                                        <button type="submit" class="px-3 py-1 btn btn-outline-danger">Ya</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Delete Modal - End-->
                     @endforeach
+
                 </table>
         </div>
         <!-- Form 2 End -->
@@ -284,20 +297,20 @@
                     <div class="row">
                         <label for="uraian" class="form-label">Uraian</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="uraian" name="uraian" placeholder="Uraian" required>
+                            <input type="text" class="form-control" id="uraian" name="uraian" placeholder="Masukkan uraian" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="nodok" class="form-label">Nomor Dokumen</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" id="nodok" name="nodok" placeholder="Nomor Dokumen" required>
+                                <input type="text" class="form-control" id="nodok" name="nodok" placeholder="Masukkan nomor dokumen" required>
                             </div>
                         </div>
                         <div class="col">
                             <label for="tanggal" class="form-label">Tanggal</label>
                             <div class="input-group mb-3">
-                                <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Tanggal" required>
+                                <input type="date" class="form-control" id="tanggal" name="tanggal" placeholder="Masukkan tanggal" required>
                             </div>
                         </div>
                     </div>
