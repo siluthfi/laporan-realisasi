@@ -12,4 +12,9 @@ class OneInput extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function TwoInput()
+    {
+        return $this->hasMany(TwoInput::class, 'one_input_id');
+    }
 }

@@ -25,7 +25,7 @@ class TwoInput extends Model
 
     public function OneInput()
     {
-        return $this->belongsTo(OneInput::class);
+        return $this->belongsTo(OneInput::class, 'one_input_id');
     }
 
 }
