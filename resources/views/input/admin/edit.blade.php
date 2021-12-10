@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-lg-12 ">
                 <div class="p-2 mb-4 bg-light">
-                    <h2 class="mb-2">Tambahkan Laporan</h2>
+                    <h2 class="mb-2">Edit Laporan</h2>
                 </div>
                 <!-- Panel End -->
                 <!-- Form Start -->
@@ -99,7 +99,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-2">
+                                <div class="col-lg-1">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             ID</label>
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-2">
+                                <div class="col-lg-1">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             KD KRO</label>
@@ -120,7 +120,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-4">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             KD RO</label>
@@ -169,8 +169,8 @@
                             </div>
 
                             <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i
-                                    class="fas fa-plus"></i>
-                                <div class="d-none d-sm-inline"> Tambahkan</div>
+                                    class="fas fa-edit"></i>
+                                <div class="d-none d-sm-inline"> Update</div>
                             </button>
                             <button type="reset" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold" value="reset"><i
                                     class="fas fa-undo"></i>
@@ -179,7 +179,7 @@
                             <button type="button" class="px-4 py-2 mt-3 btn btn-outline-secondary fw-bold"><i
                                     class="fas fa-caret-square-left"></i>
                                 <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
-                                    href="">
+                                    href="{{ route('admin.detail', $item->id )}}">
                                     Back</a>
                             </button>
                     </div>
