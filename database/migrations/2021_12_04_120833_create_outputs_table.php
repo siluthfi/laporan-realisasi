@@ -15,15 +15,14 @@ class CreateOutputsTable extends Migration
     {
         Schema::create('outputs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('input_realisation_id');
-            $table->enum('bidang' , ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin']);
+            $table->softDeletesTz($column = 'deleted_at', $precision = 0);
+            $table->enum('bidang', ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK']);
             $table->bigInteger('anggaran_pagu');
             $table->bigInteger('anggaran_realisasi');
             $table->integer('output_target');
             $table->integer('output_realisasi');
-            $table->foreignId('one_inputs_id');
-            $table->softDeletesTz($column = 'deleted_at', $precision = 0);
-            $table->timestampsTz();
+            $table->foreignId('one_input_id')->references('id')->on('one_inputs')->onDelete('cascade');;
+            $table->timestamps();
         });
     }
 

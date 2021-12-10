@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateThreeInputsTable extends Migration
+class CreateTwoInputsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateThreeInputsTable extends Migration
      */
     public function up()
     {
-        Schema::create('three_inputs', function (Blueprint $table) {
+        Schema::create('two_inputs', function (Blueprint $table) {
             $table->id();
-            $table->integer('volume_capaian');
+            $table->integer('volume_capaian')->nullable();
             $table->string('uraian')->nullable()->default(null);
             $table->string('nomor_dokumen')->nullable()->default(null);
             $table->timestampTz('tanggal')->nullable()->default(null);
-            $table->foreignId('one_input_id');
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
+            $table->foreignId('one_input_id')->onDelete('cascade')->nullable();
             $table->timestampsTz();
         });
     }

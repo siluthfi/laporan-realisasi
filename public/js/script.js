@@ -36,3 +36,5 @@ endDate.addEventListener('change', (e) => {
     let endDateVal = e.target.value
     document.getElementById('endDateSelected').innerText = endDateVal
 })
+
+// Rupiah 

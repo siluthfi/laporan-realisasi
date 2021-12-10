@@ -38,7 +38,6 @@
     @include('partials.navbar')
 
     <div class="container-fluid">
-        @include('partials.breadcrumbs')
         @yield('content')
     </div>
 
