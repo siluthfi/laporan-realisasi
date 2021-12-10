@@ -29,14 +29,18 @@
                         <tr class="text-center fw-bold">
                             <th style="width: 1%" class="align-middle">No</th>
                             <th style="width: 3%" class="align-middle">Digit</th>
-                            <th style="width: 7%" class="align-middle">KD KRO</th>
-                            <th style="width: 7%" class="align-middle">KD RO</th>
+                            <th style="width: 3%" class="align-middle">KD KRO</th>
+                            <th style="width: 3%" class="align-middle">KD RO</th>
+                            @if($bidang == 'Admin')
+                            <th style="width: 5%" class="align-middle">Bidang</th>
+                            @else
+                            @endif
                             <th class="align-middle">Nama RO</th>
                             <th class="align-middle">Capaian RO</th>
                             <th style="width: 7%" class="align-middle">Target</th>
                             <th style="width: 7%" class="align-middle">Satuan</th>
                             <th style="width: 7%" class="align-middle">Jumlah Volume</th>
-                            <th class="sorting_none align-middle" style="width: 10%">Opsi</th>
+                            <th class="sorting_none align-middle" style="width: 5%">Opsi</th>
                         </tr>
                     </thead>
                     @foreach ($datas as $data)
@@ -45,13 +49,17 @@
                         <td class="text-center">{{ $data->digit }} </td>
                         <td class="text-center">{{ $data->kd_kro }} </td>
                         <td class="text-center">{{ $data->kd_ro }} </td>
+                        @if($bidang == 'Admin')
+                        <td class="text-center">{{ $data->bidang }} </td>
+                        @else
+                        @endif
                         <td class="">{{ $data->nama_ro }} </td>
                         <td class="">{{ $data->capaian_ro }} </td>
                         <td class="text-center">{{ $data->volume_target }} </td>
                         <td class="text-center">{{ $data->satuan }} </td>
                         <td class="text-center">{{ $data->volume_jumlah }} </td>
-                        <td>
-                            <a href="{{ route('common.detail', $data->id) }}" class="btn btn-success"><i class='bi bi-eye'></i>Detail</a>
+                        <td class="text-center">
+                            <a href="{{ route('detail', $data->id) }}" class="btn-primary btn-sm text-decoration-none"><i class='bi bi-eye'></i>Detail</a>
                         </td>
                     </tbody>
                     @endforeach
