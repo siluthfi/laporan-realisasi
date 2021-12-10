@@ -174,6 +174,7 @@ class InputController extends Controller
         // $selects = OneInput::all();
         $datas2 = TwoInput::where('one_input_id', 1)->get();
         // $foreign['oneInput'] = $selects;
+        dd($oneinput);
         return view('input.common.detail', [
             'data' => $oneinput,
             'selects' => $selects,
@@ -279,5 +280,72 @@ class InputController extends Controller
         return view('input.common.index_papk', [
             'one_inputs' => OneInput::all(),
         ]);
+    }
+
+// All
+    public function index()
+    {
+        $bidang = Auth::user()->bidang;
+        if ($bidang == 'Admin') {
+            $datas = OneInput::all();
+        } else {
+            $datas = OneInput::where('bidang', $bidang)->get();
+        }
+
+        return view('input.index', [
+            'bidang' => $bidang,
+            'datas' => $datas,
+        ]);
+    }
+
+    public function detail(OneInput $oneinput)
+    {
+        $bidang = Auth::user()->bidang;
+        $selection = OneInput::with('TwoInput')->where('bidang', $bidang)->get();
+        $datas2 = TwoInput::where('one_input_id', $oneinput->id)->get();
+
+        return view('input.detail', [
+            'bidang' => $bidang,
+            'data' => $oneinput,
+            'datas2' => $datas2,
+            'selection' => $selection,
+        ]);
+    }
+
+    public function edit_dokumen(Request $request, $id)
+    {
+        $bidang = Auth::user()->bidang;
+        $input = TwoInput::find($id);
+
+        if ($bidang == 'Admin') {
+            $input->volume_capaian = $request->volcap;
+        } else {
+            $input->uraian = $request->uraian;
+            $input->nomor_dokumen = $request->nodok;
+            $input->tanggal = $request->tanggal;
+            $input->one_input_id = $request->naro;
+        }
+
+        $input->update();
+
+        return back()->withInput()->with('status', 'Dokumen berhasil diperbarui!');
+    }
+
+    public function destroy($id)
+    {
+        $bidang = Auth::user()->id;
+
+        if ($bidang == 'Admin') {
+            $data = OneInput::find($id);
+            $data->delete();
+
+            return redirect('/laporan');
+        } else {
+            $data = TwoInput::find($id);
+            $data->delete();
+
+            return back()->withInput();
+        }
+
     }
 }

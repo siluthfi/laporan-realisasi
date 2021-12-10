@@ -43,14 +43,15 @@ Route::delete('input/common/delete{oneinput:id}', [InputController::class, 'comm
 
 // Umum
 Route::get('/input/umum', [InputController::class, 'umum_index']);
-// PPAI
-Route::get('/input/ppai', [InputController::class, 'ppai_index']);
-// PPAII
-Route::get('/input/ppaii', [InputController::class, 'ppaii_index']);
-// SKKI
-Route::get('/input/skkii', [InputController::class, 'skki_index']);
-// PAPK
-Route::get('/input/papk', [InputController::class, 'papk_index']);
+
+// All
+Route::get('/laporan', [InputController::class, 'index'])->name('index');
+Route::delete('/dokumen/{twoinput:id}/destroy', [InputController::class, 'destroy'])->name('destroy');
+Route::get('/laporan/{oneinput:id}/detail', [InputController::class, 'detail'])->name('detail');
+Route::post('/laporan/{oneinput:id}/store', [InputController::class, 'store_laporan'])->name('store.laporan');
+Route::post('/laporan/{oneinput:id}/edit', [InputController::class, 'edit_laporan'])->name('edit.laporan');
+Route::post('/dokumen/{twoinput:id}/store', [InputController::class, 'store_dokumen'])->name('store.dokumen');
+Route::post('/dokumen/{twoinput:id}/edit', [InputController::class, 'edit_dokumen'])->name('edit.dokumen');
 
 // Output
 Route::get('/output', [OutputController::class, 'index']);
