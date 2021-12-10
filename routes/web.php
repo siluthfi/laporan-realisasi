@@ -63,4 +63,4 @@ Route::post('/dokumen/{twoinput:id}/store', [InputController::class, 'store_doku
 Route::post('/dokumen/{twoinput:id}/edit', [InputController::class, 'edit_dokumen'])->name('edit.dokumen');
 
 // Output
-Route::get('/output', [OutputController::class, 'index']);
+Route::get('/dashboard', [OutputController::class, 'index']);
