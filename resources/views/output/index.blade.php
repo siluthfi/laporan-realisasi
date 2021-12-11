@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- @dd($rpUMUM) --}}
+{{-- @dd($paguUMUM) --}}
 
 <div class="row mb-3">
     <div class="col-md">
@@ -12,12 +12,12 @@
 
 <div class="row mb-5">
     <div class="col-md-8">
-        <div class="card bg-white shadow p-3">
+        <div class="card bg-white shadow-sm p-3">
             <canvas id="chartBarAnggaran"></canvas>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card bg-white shadow p-3">
+        <div class="card bg-white shadow-sm p-3">
             <h4>Anggaran</h4>
             <canvas id="chartPieAnggaran"></canvas>
         </div>
@@ -30,12 +30,12 @@
 </div>
 <div class="row mb-5">
     <div class="col-md-8">
-        <div class="card bg-white shadow p-3">
+        <div class="card bg-white shadow-sm p-3">
             <canvas id="chartBarOutput"></canvas>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card bg-white shadow p-3">
+        <div class="card bg-white shadow-sm p-3">
             <h4>Output</h4>
             <canvas id="chartPieOutput"></canvas>
         </div>
@@ -51,7 +51,7 @@
     labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
     datasets: [
                 {
-                    label: 'REALISASI',      
+                    label: 'REALISASI',
                     data: [{{ $rpUMUM }}, {{ $rpPPAI }}, {{ $rpPPAII }}, {{ $rpSKKI }}, {{ $rpPAPK }}],
                     backgroundColor: ['rgb(255, 99, 132)'],
                     stack: 'Stack 0',
@@ -127,6 +127,7 @@
             labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
             datasets: [{
                 label: '%',
+                // data: [10, 20, 30, 40, 50],
                 data: [{{ $percentageUMUM }}, {{ $percentagePPAI }}, {{ $percentagePPAII }}, {{ $percentageSKKI }}, {{ $percentagePAPK }}],
                 backgroundColor: [
                         '#f3a683',

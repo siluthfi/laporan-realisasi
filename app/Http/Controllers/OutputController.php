@@ -31,21 +31,33 @@ class OutputController extends Controller
         }
 
         // Result Chart Anggaran
-        $resultPaguUMUM = array_sum($allPaguUmum);
-        $resultRPUMUM = array_sum($allRPUmum);
-
+        if( $allPaguUmum and $allRPUmum ) {
+            $resultPaguUMUM = array_sum($allPaguUmum);
+            $resultRPUMUM = array_sum($allRPUmum);
+            
+            // Result Percentage Pie Chart Anggaran
+            $percentageUMUM = ($resultRPUMUM / $resultPaguUMUM) * 100;
+            $resultPercentageUMUM =  number_format(floor($percentageUMUM * 100) / 100, 1, '.', '');
+        } else {
+            $resultPaguUMUM = 0;
+            $resultRPUMUM = 0;
+            $resultPercentageUMUM = 0;
+        }
+        
         // Result Chart Output
-        $resultTargetUMUM = array_sum($allTargetUmum);
-        $resultRP2UMUM = array_sum($allRP2Umum);
-
-        // Result Percentage Pie Chart Anggaran
-        $percentageUMUM = ($resultRPUMUM / $resultPaguUMUM) * 100;
-        $resultPercentageUMUM =  number_format(floor($percentageUMUM * 100) / 100, 1, '.', '');
-
-        // Result Percentage Pie Chart Output
-        $percentageUMUM2 = ($resultRP2UMUM / $resultTargetUMUM) * 100;
-        $resultPercentageUMUM2 =  number_format(floor($percentageUMUM2 * 100) / 100, 2, '.', '');
-
+        if( $allTargetUmum and $allRP2Umum ) {
+            $resultTargetUMUM = array_sum($allTargetUmum);
+            $resultRP2UMUM = array_sum($allRP2Umum);
+            
+            // Result Percentage Pie Chart Output
+            $percentageUMUM2 = ($resultRP2UMUM / $resultTargetUMUM) * 100;
+            $resultPercentageUMUM2 =  number_format(floor($percentageUMUM2 * 100) / 100, 2, '.', '');
+        } else {
+            $resultTargetUMUM = 0;
+            $resultRP2UMUM = 0;
+            $resultPercentageUMUM2 = 0;
+        }
+        
         $sisaUMUM = $resultPaguUMUM - $resultRPUMUM;
         ##### end section
 
@@ -70,21 +82,33 @@ class OutputController extends Controller
         }
 
         // Result Chart Anggaran
-        $resultPaguPPAI = array_sum($allPaguPPAI);
-        $resultRPPPAI = array_sum($allRPPPAI);
-
+        if( $allPaguPPAI and $allRPPPAI ) {
+            $resultPaguPPAI = array_sum($allPaguPPAI);
+            $resultRPPPAI = array_sum($allRPPPAI);
+            
+            // Result Percentage Pie Chart Anggaran
+            $percentagePPAI = ($resultRPPPAI / $resultPaguPPAI) * 100;
+            $resultPercentagePPAI =  number_format(floor($percentagePPAI * 100) / 100, 1, '.', '');
+        } else {
+            $resultPaguPPAI = 0;
+            $resultRPPPAI = 0;
+            $resultPercentagePPAI = 0;
+        }
+        
         // Result Chart Output
-        $resultTargetPPAI = array_sum($allTargetPPAI);
-        $resultRP2PPAI = array_sum($allRP2PPAI);
+        if( $allTargetPPAI and $allRP2PPAI ) {
+            $resultTargetPPAI = array_sum($allTargetPPAI);
+            $resultRP2PPAI = array_sum($allRP2PPAI);
 
-        // Result Percentage Pie Chart Anggaran
-        $percentagePPAI = ($resultRPPPAI / $resultPaguPPAI) * 100;
-        $resultPercentagePPAI =  number_format(floor($percentagePPAI * 100) / 100, 1, '.', '');
-
-        // Result Percentage Pie Chart Output
-        $percentagePPAI2 = ($resultRP2PPAI / $resultTargetPPAI) * 100;
-        $resultPercentagePPAI2 =  number_format(floor($percentagePPAI2 * 100) / 100, 2, '.', '');
-
+            // Result Percentage Pie Chart Output
+            $percentagePPAI2 = ($resultRP2PPAI / $resultTargetPPAI) * 100;
+            $resultPercentagePPAI2 =  number_format(floor($percentagePPAI2 * 100) / 100, 2, '.', '');
+        } else {
+            $resultTargetPPAI = 0;
+            $resultRP2PPAI = 0;
+            $resultPercentagePPAI2 = 0;
+        }
+        
         $sisaPPAI = $resultPaguPPAI - $resultRPPPAI;
         ##### end section
 
@@ -110,21 +134,33 @@ class OutputController extends Controller
         }
 
         // Result Chart Anggaran
-        $resultPaguPPAII = array_sum($allPaguPPAII);
-        $resultRPPPAII = array_sum($allRPPPAII);
-
+        if( $allPaguPPAII and $allRPPPAII ) {
+            $resultPaguPPAII = array_sum($allPaguPPAII);
+            $resultRPPPAII = array_sum($allRPPPAII);
+            
+            // Result Percentage Pie Chart Anggaran
+            $percentagePPAII = ($resultRPPPAII / $resultPaguPPAII) * 100;
+            $resultPercentagePPAII =  number_format(floor($percentagePPAII * 100) / 100, 1, '.', '');
+        } else {
+            $resultPaguPPAII = 0;
+            $resultRPPPAII = 0;
+            $resultPercentagePPAII = 0;
+        }
+        
         // Result Chart Output
-        $resultTargetPPAII = array_sum($allTargetPPAII);
-        $resultRP2PPAII = array_sum($allRP2PPAII);
+        if( $allTargetPPAII and $allRP2PPAII ) {
+            $resultTargetPPAII = array_sum($allTargetPPAII);
+            $resultRP2PPAII = array_sum($allRP2PPAII);
 
-        // Result Percentage Pie Chart Anggaran
-        $percentagePPAII = ($resultRPPPAII / $resultPaguPPAII) * 100;
-        $resultPercentagePPAII =  number_format(floor($percentagePPAII * 100) / 100, 1, '.', '');
-
-        // Result Percentage Pie Chart Output
-        $percentagePPAII2 = ($resultRP2PPAII / $resultTargetPPAII) * 100;
-        $resultPercentagePPAII2 =  number_format(floor($percentagePPAII2 * 100) / 100, 2, '.', '');
-
+            // Result Percentage Pie Chart Output
+            $percentagePPAII2 = ($resultRP2PPAII / $resultTargetPPAII) * 100;
+            $resultPercentagePPAII2 =  number_format(floor($percentagePPAII2 * 100) / 100, 2, '.', '');
+        } else {
+            $resultTargetPPAII = 0;
+            $resultRP2PPAII = 0;
+            $resultPercentagePPAII2 = 0;
+        }
+        
         $sisaPPAII = $resultPaguPPAII - $resultRPPPAII;
         ##### end section
 
@@ -149,21 +185,33 @@ class OutputController extends Controller
         }
 
         // Result Chart Anggaran
-        $resultPaguPAPK = array_sum($allPaguPAPK);
-        $resultRPPAPK = array_sum($allRPPAPK);
-
+        if( $allPaguPAPK and $allRPPAPK ) {
+            $resultPaguPAPK = array_sum($allPaguPAPK);
+            $resultRPPAPK = array_sum($allRPPAPK);
+            
+            // Result Percentage Pie Chart Anggaran
+            $percentagePAPK = ($resultRPPAPK / $resultPaguPAPK) * 100;
+            $resultPercentagePAPK =  number_format(floor($percentagePAPK * 100) / 100, 1, '.', '');
+        } else {
+            $resultPaguPAPK = 0;
+            $resultRPPAPK = 0;
+            $resultPercentagePAPK = 0;
+        }
+        
         // Result Chart Output
-        $resultTargetPAPK = array_sum($allTargetPAPK);
-        $resultRP2PAPK = array_sum($allRP2PAPK);
+        if( $allTargetPAPK and $allRP2PAPK ) {
+            $resultTargetPAPK = array_sum($allTargetPAPK);
+            $resultRP2PAPK = array_sum($allRP2PAPK);
 
-        // Result Percentage Pie Chart Anggaran
-        $percentagePAPK = ($resultRPPAPK / $resultPaguPAPK) * 100;
-        $resultPercentagePAPK =  number_format(floor($percentagePAPK * 100) / 100, 1, '.', '');
-
-        // Result Percentage Pie Chart Output
-        $percentagePAPK2 = ($resultRP2PAPK / $resultTargetPAPK) * 100;
-        $resultPercentagePAPK2 =  number_format(floor($percentagePAPK2 * 100) / 100, 2, '.', '');
-
+            // Result Percentage Pie Chart Output
+            $percentagePAPK2 = ($resultRP2PAPK / $resultTargetPAPK) * 100;
+            $resultPercentagePAPK2 =  number_format(floor($percentagePAPK2 * 100) / 100, 2, '.', '');
+        } else {
+            $resultTargetPAPK = 0;
+            $resultRP2PAPK = 0;
+            $resultPercentagePAPK2 = 0;
+        }
+        
         $sisaPAPK = $resultPaguPAPK - $resultRPPAPK;
         ##### end section
 
@@ -188,23 +236,36 @@ class OutputController extends Controller
         }
 
         // Result Chart Anggaran
-        $resultPaguSKKI = array_sum($allPaguSKKI);
-        $resultRPSKKI = array_sum($allRPSKKI);
-
+        if( $allPaguSKKI and $allRPSKKI ) {
+            $resultPaguSKKI = array_sum($allPaguSKKI);
+            $resultRPSKKI = array_sum($allRPSKKI);
+            
+            // Result Percentage Pie Chart Anggaran
+            $percentageSKKI = ($resultRPSKKI / $resultPaguSKKI) * 100;
+            $resultPercentageSKKI =  number_format(floor($percentageSKKI * 100) / 100, 1, '.', '');
+        } else {
+            $resultPaguSKKI = 0;
+            $resultRPSKKI = 0;
+            $resultPercentageSKKI = 0;
+        }
+        
         // Result Chart Output
-        $resultTargetSKKI = array_sum($allTargetSKKI);
-        $resultRP2SKKI = array_sum($allRP2SKKI);
+        if( $allTargetSKKI and $allRP2SKKI ) {
+            $resultTargetSKKI = array_sum($allTargetSKKI);
+            $resultRP2SKKI = array_sum($allRP2SKKI);
 
-        // Result Percentage Pie Chart Anggaran
-        $percentageSKKI = ($resultRPSKKI / $resultPaguSKKI) * 100;
-        $resultPercentageSKKI =  number_format(floor($percentageSKKI * 100) / 100, 1, '.', '');
-
-        // Result Percentage Pie Chart Output
-        $percentageSKKI2 = ($resultRP2SKKI / $resultTargetSKKI) * 100;
-        $resultPercentageSKKI2 =  number_format(floor($percentageSKKI2 * 100) / 100, 2, '.', '');
-
+            // Result Percentage Pie Chart Output
+            $percentageSKKI2 = ($resultRP2SKKI / $resultTargetSKKI) * 100;
+            $resultPercentageSKKI2 =  number_format(floor($percentageSKKI2 * 100) / 100, 2, '.', '');
+        } else {
+            $resultTargetSKKI = 0;
+            $resultRP2SKKI = 0;
+            $resultPercentageSKKI2 = 0;
+        }
+        
         $sisaSKKI = $resultPaguSKKI - $resultRPSKKI;
         ##### end section
+
 
         return view('output.index', [
             ##### Anggaran Chart Bar and Pie
