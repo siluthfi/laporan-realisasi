@@ -38,10 +38,9 @@
         <div class="row g-0">
             <!-- Login  -->
             <!-- Background Image -->
-            <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image" style="background-color: #EDF8FA"><img class="img-fluid"
-                    src="{{ asset('images/data-report.png') }}" alt="" srcset=""></div>
+            <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image" style="background-image: linear-gradient( 135deg, #97ABFF 10%, #5976EF 100%);"></div>
             <div class="col-md-8 col-lg-5">
-                <div class="py-5 login d-flex align-items-center">
+                <div class="py-5 login d-flex align-items-center bg-light">
                     <div class="container">
                         <div class="row">
                             <div class="mx-auto col-md-6 col-lg-8">
@@ -81,7 +80,7 @@
 
 
                                     <div class="mb-5 d-grid">
-                                        <button class="mb-2 btn btn-lg btn-primary btn-login text-uppercase fw-bold"
+                                        <button class="mb-2 rounded btn btn-lg btn-primary btn-login text-uppercase fw-bold"
                                             type="submit">Login</button>
                                     </div>
 
