@@ -35,6 +35,9 @@
 
 
     <div class="container-fluid ps-md-0 ">
+
+
+
         <div class="row g-0 justify-content-center">
             <!-- Login  -->
             <!-- Background Image -->
@@ -42,7 +45,7 @@
                 <div class="py-5 login d-flex align-items-center">
                     <div class="container ">
                         <div class="row justify-content-center">
-                            <div class="col-md-6 col-lg-8 bg-light border rounded p-5 ">
+                            <div class="p-5 border rounded col-md-6 col-lg-8 bg-light ">
                                 <h3 class="mb-5 login-heading fs-2 fw-bold">Nama Website</h3>
                                 <form action="{{ route('login.store') }}" method="POST">
                                     @csrf
@@ -67,14 +70,6 @@
                                         @enderror
                                         <label for="floatingPassword">Password</label>
                                     </div>
-                                    {{-- <div class="mb-3 fs-6 ">
-                                        <p>Sign in as :
-                                            <a class="text-decoration-none ms-2" href="#"
-                                                onClick="autoFillAdmin(); return true;"> Admin </a>
-                                            <a class="text-decoration-none ms-2" href="#"
-                                                onClick="autoFillUser(); return true;"> Siswa </a>
-                                        </p>
-                                    </div> --}}
 
                                     <div class="mb-3 form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="remember"
@@ -86,16 +81,19 @@
 
 
 
-                                    <div class="mb-5 mt-3 d-grid">
+                                    <div class="mt-3 d-grid">
                                         <button class="mb-2 btn btn-lg btn-primary btn-login text-uppercase fw-bold"
                                             type="submit">Login</button>
                                     </div>
 
                                     @if (session('status'))
-                                        <div class="p-4 mb-6 text-center text-white bg-red-500 rounded-lg">
-                                            {{ session('status') }}
-                                        </div>
-                                    @endif
+                                    <div class="mt-3 alert alert-danger alert-dismissible">
+                                        <button type="button" class="btn-close"
+                                            data-bs-dismiss="alert"></button>
+                                        <strong>{{ session('status') }}</strong>
+                                    </div>
+                                @endif
+
 
                                 </form>
                             </div>
@@ -105,6 +103,8 @@
             </div>
         </div>
     </div>
+
+
 
 </body>
 

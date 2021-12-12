@@ -6,6 +6,9 @@
     <div class="mt-4 mb-4 row">
         <div class="col-lg-12 ">
             <div class="p-4 border rounded shadow-sm bg-light">
+                <h2 class="mb-5">
+                   Laporan
+                </h2>
                 <table id="datatable" class="table table-bordered " style="width:100%">
                     <thead>
                         <tr class="text-center fw-bold">

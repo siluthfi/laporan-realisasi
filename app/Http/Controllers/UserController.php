@@ -11,14 +11,24 @@ class UserController extends Controller
     public function user_index(User $user)
     {
         return view('user.index', [
-            'users' => $user::all()
+            'users' => $user::all(),
+            'title' => 'User'
+
+        ]);
+    }
+
+    public function user_profile(){
+        return view('user.profile', [
+            'title' => 'User'
         ]);
     }
 
     public function user_detail(User $user)
     {
         return view('user.detail', [
-            'user' => $user
+            'user' => $user,
+            'title' => 'User'
+            
         ]);
     }
 
@@ -31,6 +41,7 @@ class UserController extends Controller
         return view('user.new', [
             'user' => $user,
             'bidang' => $bidang,
+            'title' => 'User',
             'gender' => $gender
         ]);
     }
@@ -44,7 +55,6 @@ class UserController extends Controller
             $image = $request->file('file');
             $imageName = time() . '.' . $image->extension();
             $image->move(public_path('images'), $imageName);
-
             $user->user_profile = $imageName;
         } else {
             $user->user_profile = 'user.png';
@@ -73,11 +83,13 @@ class UserController extends Controller
         return view('user.edit', [
             'user' => $user,
             'bidang' => $bidang,
-            'gender' => $gender
+            'gender' => $gender,
+            'title' => 'User'
         ]);
     }
 
-    public function user_update(Request $request, $id){
+    public function user_update(Request $request, $id)
+    {
         $user = User::find($id);
         $password = bcrypt($request->password);
 
@@ -104,7 +116,6 @@ class UserController extends Controller
         $user->update();
 
         return redirect()->back()->with('status', 'User berhasil diperbarui');
-
     }
 
     public function user_delete($id)

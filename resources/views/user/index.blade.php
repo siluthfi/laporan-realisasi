@@ -36,7 +36,8 @@
                             <th style="width: 15%">Nis</th>
                             <th style="width: 5%">Gender</th>
                             <th style="width: 5%">Bidang</th>
-                            <th class="sorting_none" style="width: 10%"></th>
+                            <th class="align-middle sorting_none" style="width: 5%">Opsi</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -50,42 +51,9 @@
                                 <td class="text-center">{{ $user->bidang }}</td>
                                 <td class="text-center"><a href="{{ route('user.detail', $user->id) }}"
                                         class="btn-primary btn-sm text-decoration-none">Detail</a></td>
-
-                                {{-- <a href=""
-                                        class="py-1 text-center text-decoration-none ms-2 me-2">
-                                        Edit </a>
-                                    <button type="text" data-bs-toggle="modal" data-bs-target="#deleteModal_{{ $user->id }}"
-                                        class="py-1 text-center border-0 bg-light text-danger text-decoration-none ms-2 me-2">
-                                        Delete </button> --}}
                                 </td>
                             </tr>
-                            {{-- Modal Start --}}
-                            {{-- <div class="modal fade" id="deleteModal_{{ $user->id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="deleteModalLabel">Konfirmasi</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <i class="fas fa-exclamation-circle text-warning"></i> Apakah Anda Yakin Akan
-                                            Menghapus {{ $user->nama }}
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form action="" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="button" class="px-3 py-1 btn btn-outline-outline-secondary"
-                                                    data-bs-dismiss="modal">No</button>
-                                                <button type="submit" class="px-3 py-1 btn btn-outline-danger">Yes</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            {{-- Modal End --}}
+    
                         @endforeach
                 </table>
                 <!-- Tables End -->
