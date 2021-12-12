@@ -16,13 +16,13 @@
                     <h2 class="mb-2">Detail Laporan</h2>
                     <div class="col-sm">
                         @if($bidang == 'Admin')
-                        <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i class="fas fa-edit"></i>
-                            <a href="{{ route('edit.laporan', $data->id) }}" class="text-decoration-none">
+                        <a href="{{ route('edit.laporan', $data->id) }}" class="text-decoration-none">
+                            <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i class="fas fa-edit"></i>
                                 <div class="d-none d-sm-inline"> Edit</div>
-                            </a>
-                        </button>
+                            </button>
+                        </a>
                         <button type="button" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">
+                            data-bs-target="#hapusLaporan">
                             <i class="fas fa-trash"></i>
                             <div class="d-none d-sm-inline"> Delete</div>
                         </button>
@@ -52,7 +52,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Nama RO</label>
                                     <div class="input-group">
-                                        <input value="" placeholder="{{ $data->nama_ro }}"
+                                        <input value="{{ $data->nama_ro }}" placeholder="{{ $data->nama_ro }}"
                                             class="form-control" name="nama_ro" disabled>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Capaian Ro</label>
                                     <div class="input-group">
-                                        <input value="" placeholder="{{ $data->capaian_ro }}" class="form-control"
+                                        <input value="{{ $data->capaian_ro }}" placeholder="{{ $data->capaian_ro }}" class="form-control"
                                             name="capaian_ro" disabled>
                                     </div>
                                 </div>
@@ -73,54 +73,145 @@
                                         Bagian/Bidang
                                     </label>
                                     <div class="input-group">
-                                        <input class="form-control" placeholder="{{ $data->bidang }}" name="bidang" disabled>
+                                        <select class="form-select" id="inputGroupSelect01" name="bidang" disabled>
+                                            <option value="{{ $data->bidang }}">
+                                                {{ $data->bidang }}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Target Volume Realisasi Output
                                     </label>
                                     <div class="input-group">
-                                        <input type="number" value="" placeholder="{{ $data->volume_target_realisasi }}"
+                                        <input type="number" value="{{ $data->volume_target_realisasi }}" placeholder="{{ $data->volume_target_realisasi }}"
                                             class="form-control" name="volume_target_realisasi" disabled>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Pagu</label>
                                     <div class="input-group">
-                                        <input type="number" value="" placeholder="{{ $data->pagu }}"
-                                            class="form-control" name="pagu" disabled>
+                                        <input type="number" value="{{ $data->pagu }}" placeholder="{{ $data->pagu }}"
+                                            class="form-control" name="pagu" id="rupiah" disabled>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         RP</label>
                                     <div class="input-group">
-                                        <input type="number" value="" placeholder="RP" class="form-control"
-                                            name="{{ $data->rp }}" disabled>
+                                        <input type="number" value="{{ $data->rp }}" placeholder="{{ $data->rp }}"
+                                            class="form-control" name="{{ $data->rp }}" id="rupiah" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        Sisa</label>
+                                    <div class="input-group">
+                                        <input type="number" value="{{ $data->sisa }}" placeholder="{{ $data->sisa }}"
+                                            class="form-control" name="{{ $data->sisa }}" id="rupiah" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        RVO</label>
+                                    <div class="input-group">
+                                        <input value="{{ $data->rvo * 100 }} %" placeholder="{{ $data->rvo * 100 }} %" class="form-control"
+                                            name="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        RVO Maksimal</label>
+                                    <div class="input-group">
+                                        <input value="{{ $data->rvo_maksimal }}" placeholder="{{ $data->rvo_maksimal }}" class="form-control"
+                                            name="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        Capaian Realisasi</label>
+                                    <div class="input-group">
+                                        <input value="{{ $data->capaian_realisasi }}" placeholder="{{ $data->capaian_realisasi }}"
+                                            class="form-control" name="capaian_ro" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        Capaian</label>
+                                    <div class="input-group">
+                                        <input value="{{ $data->capaian * 100 }} %" placeholder="{{ $data->capaian * 100 }} %" class="form-control"
+                                            name="capaian_ro" disabled>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-2">
+                            <div class="col-lg-1">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         ID</label>
                                     <div class="input-group">
-                                        <input value="" placeholder="{{ $data->digit }}" class="form-control"
+                                        <input value="{{ $data->digit }}" placeholder="{{ $data->digit }}" class="form-control"
                                             name="digit" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-1">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        KD KRO</label>
+                                    <div class="input-group">
+                                        <input value="{{ $data->kd_kro }}" placeholder="{{ $data->kd_kro }}" class="form-control"
+                                            name="kd_kro" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        KD RO</label>
+                                    <div class="input-group">
+                                        <input value="{{ $data->nama_ro }}" placeholder="{{ $data->nama_ro }}" class="form-control"
+                                            name="kd_ro" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-2">
+                                <div class="mb-4 form-input">
+                                    <label for="" class="mb-1 fw-bold">
+                                        Target Volume</label>
+                                    <div class="input-group">
+                                        <input type="number" value="{{ $data->volume_target }}" placeholder="{{ $data->volume_target }}"
+                                            class="form-control" name="volume_target" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -128,58 +219,30 @@
                             <div class="col-lg-2">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
-                                        KD KRO</label>
-                                    <div class="input-group">
-                                        <input value="" placeholder="KD KRO" class="form-control"
-                                            name="{{ $data->kd_kro }}" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="mb-4 form-input">
-                                    <label for="" class="mb-1 fw-bold">
-                                        KD RO</label>
-                                    <div class="input-group">
-                                        <input value="" placeholder="KD RO" class="form-control"
-                                            name="{{ $data->nama_ro }}" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="mb-4 form-input">
-                                    <label for="" class="mb-1 fw-bold">
-                                        Target Volume</label>
-                                    <div class="input-group">
-                                        <input type="number" value="" placeholder="{{ $data->volume_target }}"
-                                            class="form-control" name="volume_target" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="mb-4 form-input">
-                                    <label for="" class="mb-1 fw-bold">
                                         Jumlah Volume</label>
                                     <div class="input-group">
-                                        <input type="number" value="" placeholder="{{ $data->volume_jumlah }}"
+                                        <input type="number" value="{{ $data->volume_jumlah }}" placeholder="{{ $data->volume_jumlah }}"
                                             class="form-control" name="volume_jumlah" disabled>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-lg-2">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Satuan</label>
                                     <div class="input-group">
-                                        <input value="" placeholder="Satuan" class="form-control"
-                                            name="{{ $data->satuan }}" disabled>
+                                        <input value="{{ $data->satuan }}" placeholder="{{  $data->satuan  }}" class="form-control"
+                                            name="satuan" disabled>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
+            </div>
             </form>
         </div>
+        <!-- Form End -->
     </div>
     <!-- Form End -->
         <!-- Form 2 Start -->
@@ -368,5 +431,32 @@
         </div>
     </div>
 </div>
+
+{{-- Delete Laporan --}}
+<div class="modal fade" id="hapusLaporan" tabindex="-1" aria-labelledby="deleteModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <i class="fas fa-exclamation-circle text-warning"></i> Apakah Anda Yakin Akan
+                                    Menghapus {{ $data->nama_ro }}
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('destroy.laporan', $data->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="px-3 py-1 btn btn-outline-outline-secondary"
+                                            data-bs-dismiss="modal">No</button>
+                                        <button type="submit" class="px-3 py-1 btn btn-outline-danger">Yes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 @endsection

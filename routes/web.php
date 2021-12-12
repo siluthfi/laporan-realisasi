@@ -39,9 +39,7 @@ Route::get('/input/admin', [InputController::class, 'admin_index'])->name('admin
 Route::get('/input/admin/detail/{oneinput:id}', [InputController::class, 'admin_detail'])->name('admin.detail');
 Route::get('/input/admin/create', [InputController::class, 'admin_create'])->name('admin.create');
 Route::post('/input/admin/create', [InputController::class, 'admin_store'])->name('admin.store');
-Route::get('/input/admin/edit/{oneinput:id}', [InputController::class, 'admin_edit'])->name('admin.edit');
-Route::put('/input/admin/edit/{oneinput:id}', [InputController::class, 'admin_update'])->name('admin.update');
-Route::delete('/input/admin/delete/{oneinput:id}', [InputController::class, 'admin_delete'])->name('admin.delete');
+
 
 // Common
 Route::get('/input/common', [InputController::class, 'common_index'])->name('common.index');
@@ -54,13 +52,17 @@ Route::delete('input/common/delete{oneinput:id}', [InputController::class, 'comm
 Route::get('/input/umum', [InputController::class, 'umum_index']);
 
 // All
+Route::delete('/dokumen/destroy/{twoinput:id}', [InputController::class, 'destroy'])->name('destroy');
+Route::post('/dokumen/store/{twoinput:id}', [InputController::class, 'store_dokumen'])->name('store.dokumen');
+Route::post('/dokumen/edit/{twoinput:id}', [InputController::class, 'edit_dokumen'])->name('edit.dokumen');
+
 Route::get('/laporan', [InputController::class, 'index'])->name('index');
-Route::delete('/dokumen/{twoinput:id}/destroy', [InputController::class, 'destroy'])->name('destroy');
-Route::get('/laporan/{oneinput:id}/detail', [InputController::class, 'detail'])->name('detail');
-Route::post('/laporan/{oneinput:id}/store', [InputController::class, 'store_laporan'])->name('store.laporan');
-Route::post('/laporan/{oneinput:id}/edit', [InputController::class, 'edit_laporan'])->name('edit.laporan');
-Route::post('/dokumen/{twoinput:id}/store', [InputController::class, 'store_dokumen'])->name('store.dokumen');
-Route::post('/dokumen/{twoinput:id}/edit', [InputController::class, 'edit_dokumen'])->name('edit.dokumen');
+Route::get('/laporan/detail/{oneinput:id}', [InputController::class, 'detail'])->name('detail');
+Route::get('/laporan/create', [InputController::class, 'admin_create'])->name('create.laporan');
+Route::post('/laporan/store', [InputController::class, 'store_laporan'])->name('store.laporan');
+Route::get('/laporan/edit/{oneinput:id}', [InputController::class, 'edit_laporan'])->name('edit.laporan');
+Route::put('/laporant/edit/{oneinput:id}', [InputController::class, 'update_laporan'])->name('update.laporan');
+Route::delete('/laporan/delete/{oneinput:id}', [InputController::class, 'destroy_laporan'])->name('destroy.laporan');
 
 // Output
-Route::get('/dashboard', [OutputController::class, 'index']);
+Route::get('/dashboard', [OutputController::class, 'index'] , )->name('dashboard');

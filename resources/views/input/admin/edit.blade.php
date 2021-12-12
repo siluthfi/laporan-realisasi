@@ -19,7 +19,7 @@
                 <!-- Form Start -->
                 <div class="p-4 border rounded bg-light">
                     <div class="row">
-                        <form action="{{ route('admin.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('update.laporan', $item->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -179,7 +179,7 @@
                             <button type="button" class="px-4 py-2 mt-3 btn btn-outline-secondary fw-bold"><i
                                     class="fas fa-caret-square-left"></i>
                                 <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
-                                    href="{{ route('admin.detail', $item->id )}}">
+                                    href="{{ route('detail', $item->id )}}">
                                     Back</a>
                             </button>
                     </div>

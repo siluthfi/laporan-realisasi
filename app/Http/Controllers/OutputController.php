@@ -8,9 +8,15 @@ use App\Http\Controllers\Controller;
 
 class OutputController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(OneInput $oneinput)
     {
         ##### UMUM Section
+
         // GET Bidang
         $dataUMUM = $oneinput->where('bidang', 'UMUM')->get();
 
@@ -34,7 +40,7 @@ class OutputController extends Controller
         if( $allPaguUmum and $allRPUmum ) {
             $resultPaguUMUM = array_sum($allPaguUmum);
             $resultRPUMUM = array_sum($allRPUmum);
-            
+
             // Result Percentage Pie Chart Anggaran
             $percentageUMUM = ($resultRPUMUM / $resultPaguUMUM) * 100;
             $resultPercentageUMUM =  number_format(floor($percentageUMUM * 100) / 100, 1, '.', '');
@@ -43,12 +49,12 @@ class OutputController extends Controller
             $resultRPUMUM = 0;
             $resultPercentageUMUM = 0;
         }
-        
+
         // Result Chart Output
         if( $allTargetUmum and $allRP2Umum ) {
             $resultTargetUMUM = array_sum($allTargetUmum);
             $resultRP2UMUM = array_sum($allRP2Umum);
-            
+
             // Result Percentage Pie Chart Output
             $percentageUMUM2 = ($resultRP2UMUM / $resultTargetUMUM) * 100;
             $resultPercentageUMUM2 =  number_format(floor($percentageUMUM2 * 100) / 100, 2, '.', '');
@@ -57,7 +63,7 @@ class OutputController extends Controller
             $resultRP2UMUM = 0;
             $resultPercentageUMUM2 = 0;
         }
-        
+
         $sisaUMUM = $resultPaguUMUM - $resultRPUMUM;
         ##### end section
 
@@ -85,7 +91,7 @@ class OutputController extends Controller
         if( $allPaguPPAI and $allRPPPAI ) {
             $resultPaguPPAI = array_sum($allPaguPPAI);
             $resultRPPPAI = array_sum($allRPPPAI);
-            
+
             // Result Percentage Pie Chart Anggaran
             $percentagePPAI = ($resultRPPPAI / $resultPaguPPAI) * 100;
             $resultPercentagePPAI =  number_format(floor($percentagePPAI * 100) / 100, 1, '.', '');
@@ -94,7 +100,7 @@ class OutputController extends Controller
             $resultRPPPAI = 0;
             $resultPercentagePPAI = 0;
         }
-        
+
         // Result Chart Output
         if( $allTargetPPAI and $allRP2PPAI ) {
             $resultTargetPPAI = array_sum($allTargetPPAI);
@@ -108,7 +114,7 @@ class OutputController extends Controller
             $resultRP2PPAI = 0;
             $resultPercentagePPAI2 = 0;
         }
-        
+
         $sisaPPAI = $resultPaguPPAI - $resultRPPPAI;
         ##### end section
 
@@ -137,7 +143,7 @@ class OutputController extends Controller
         if( $allPaguPPAII and $allRPPPAII ) {
             $resultPaguPPAII = array_sum($allPaguPPAII);
             $resultRPPPAII = array_sum($allRPPPAII);
-            
+
             // Result Percentage Pie Chart Anggaran
             $percentagePPAII = ($resultRPPPAII / $resultPaguPPAII) * 100;
             $resultPercentagePPAII =  number_format(floor($percentagePPAII * 100) / 100, 1, '.', '');
@@ -146,7 +152,7 @@ class OutputController extends Controller
             $resultRPPPAII = 0;
             $resultPercentagePPAII = 0;
         }
-        
+
         // Result Chart Output
         if( $allTargetPPAII and $allRP2PPAII ) {
             $resultTargetPPAII = array_sum($allTargetPPAII);
@@ -160,7 +166,7 @@ class OutputController extends Controller
             $resultRP2PPAII = 0;
             $resultPercentagePPAII2 = 0;
         }
-        
+
         $sisaPPAII = $resultPaguPPAII - $resultRPPPAII;
         ##### end section
 
@@ -188,7 +194,7 @@ class OutputController extends Controller
         if( $allPaguPAPK and $allRPPAPK ) {
             $resultPaguPAPK = array_sum($allPaguPAPK);
             $resultRPPAPK = array_sum($allRPPAPK);
-            
+
             // Result Percentage Pie Chart Anggaran
             $percentagePAPK = ($resultRPPAPK / $resultPaguPAPK) * 100;
             $resultPercentagePAPK =  number_format(floor($percentagePAPK * 100) / 100, 1, '.', '');
@@ -197,7 +203,7 @@ class OutputController extends Controller
             $resultRPPAPK = 0;
             $resultPercentagePAPK = 0;
         }
-        
+
         // Result Chart Output
         if( $allTargetPAPK and $allRP2PAPK ) {
             $resultTargetPAPK = array_sum($allTargetPAPK);
@@ -211,7 +217,7 @@ class OutputController extends Controller
             $resultRP2PAPK = 0;
             $resultPercentagePAPK2 = 0;
         }
-        
+
         $sisaPAPK = $resultPaguPAPK - $resultRPPAPK;
         ##### end section
 
@@ -239,7 +245,7 @@ class OutputController extends Controller
         if( $allPaguSKKI and $allRPSKKI ) {
             $resultPaguSKKI = array_sum($allPaguSKKI);
             $resultRPSKKI = array_sum($allRPSKKI);
-            
+
             // Result Percentage Pie Chart Anggaran
             $percentageSKKI = ($resultRPSKKI / $resultPaguSKKI) * 100;
             $resultPercentageSKKI =  number_format(floor($percentageSKKI * 100) / 100, 1, '.', '');
@@ -248,7 +254,7 @@ class OutputController extends Controller
             $resultRPSKKI = 0;
             $resultPercentageSKKI = 0;
         }
-        
+
         // Result Chart Output
         if( $allTargetSKKI and $allRP2SKKI ) {
             $resultTargetSKKI = array_sum($allTargetSKKI);
@@ -262,12 +268,14 @@ class OutputController extends Controller
             $resultRP2SKKI = 0;
             $resultPercentageSKKI2 = 0;
         }
-        
+
         $sisaSKKI = $resultPaguSKKI - $resultRPSKKI;
         ##### end section
 
 
         return view('output.index', [
+            'title' => 'Dashboard',
+
             ##### Anggaran Chart Bar and Pie
             // UMUM
             'paguUMUM' => $resultPaguUMUM,
