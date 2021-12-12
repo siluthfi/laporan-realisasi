@@ -37,7 +37,6 @@ class UserController extends Controller
         $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
         $gender = ['Pria', 'Perempuan'];
 
-
         return view('user.new', [
             'user' => $user,
             'bidang' => $bidang,
