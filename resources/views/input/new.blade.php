@@ -173,7 +173,7 @@
                             <button type="button" class="px-4 py-2 mt-3 btn btn-outline-secondary fw-bold"><i
                                     class="fas fa-caret-square-left"></i>
                                 <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
-                                    href="">
+                                    href="{{ route('index') }}">
                                     Back</a>
                             </button>
                     </div>
