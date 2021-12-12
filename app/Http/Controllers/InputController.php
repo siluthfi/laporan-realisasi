@@ -283,199 +283,198 @@ class InputController extends Controller
     }
 
 
-// All
-public function index()
-{
-    $bidang = Auth::user()->bidang;
-    if ($bidang == 'Admin') {
-        $datas = OneInput::all();
-    } else {
-        $datas = OneInput::where('bidang', $bidang)->get();
+    // All
+    public function index()
+    {
+        $bidang = Auth::user()->bidang;
+        if ($bidang == 'Admin') {
+            $datas = OneInput::all();
+        } else {
+            $datas = OneInput::where('bidang', $bidang)->get();
+        }
+
+        return view('input.index', [
+            'bidang' => $bidang,
+            'datas' => $datas,
+            'title' => 'Laporan',
+
+        ]);
     }
 
-    return view('input.index', [
-        'bidang' => $bidang,
-        'datas' => $datas,
-        'title' => 'Laporan',
+    public function detail(OneInput $oneinput)
+    {
+        $bidang = Auth::user()->bidang;
+        $selection = OneInput::with('TwoInput')->where('bidang', $bidang)->get();
+        $datas2 = TwoInput::where('one_input_id', $oneinput->id)->get();
 
-    ]);
-}
-
-public function detail(OneInput $oneinput)
-{
-    $bidang = Auth::user()->bidang;
-    $selection = OneInput::with('TwoInput')->where('bidang', $bidang)->get();
-    $datas2 = TwoInput::where('one_input_id', $oneinput->id)->get();
-
-    return view('input.detail', [
-        'bidang' => $bidang,
-        'data' => $oneinput,
-        'datas2' => $datas2,
-        'selection' => $selection,
-        'title' => 'Laporan',
-    ]);
-}
-
-public function edit_dokumen(Request $request, $id)
-{
-    $bidang = Auth::user()->bidang;
-    $input = TwoInput::find($id);
-
-    if ($bidang == 'Admin') {
-        $input->volume_capaian = $request->volcap;
-    } else {
-        $input->uraian = $request->uraian;
-        $input->nomor_dokumen = $request->nodok;
-        $input->tanggal = $request->tanggal;
-        $input->one_input_id = $request->naro;
+        return view('input.detail', [
+            'bidang' => $bidang,
+            'data' => $oneinput,
+            'datas2' => $datas2,
+            'selection' => $selection,
+            'title' => 'Laporan',
+        ]);
     }
 
-    $input->update();
+    public function edit_dokumen(Request $request, $id)
+    {
+        $bidang = Auth::user()->bidang;
+        $input = TwoInput::find($id);
 
-    return back()->withInput()->with('status', 'Dokumen berhasil diperbarui!');
-}
+        if ($bidang == 'Admin') {
+            $input->volume_capaian = $request->volcap;
+        } else {
+            $input->uraian = $request->uraian;
+            $input->nomor_dokumen = $request->nodok;
+            $input->tanggal = $request->tanggal;
+            $input->one_input_id = $request->naro;
+        }
 
-public function edit_laporan($id)
-{
-    $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
+        $input->update();
 
-    return view('input.edit', [
-        'item' => OneInput::find($id),
-        'bidangs' => $bidang,
-        "title" => 'Laporan',
-    ]);
-}
+        return back()->withInput()->with('status', 'Dokumen berhasil diperbarui!');
+    }
 
-public function destroy_laporan($id)
-{
-    $item = OneInput::find($id);
-    $item->delete();
-    return redirect('/laporan');
-}
+    public function edit_laporan($id)
+    {
+        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
 
-public function destroy($id)
-{
-    $bidang = Auth::user()->id;
+        return view('input.edit', [
+            'item' => OneInput::find($id),
+            'bidangs' => $bidang,
+            "title" => 'Laporan',
+        ]);
+    }
 
-    if ($bidang == 'Admin') {
-        $data = OneInput::find($id);
-        $data->delete();
-
+    public function destroy_laporan($id)
+    {
+        $item = OneInput::find($id);
+        $item->delete();
         return redirect('/laporan');
-    } else {
-        $data = TwoInput::find($id);
-        $data->delete();
-
-        return back()->withInput();
     }
 
-}
+    public function destroy($id)
+    {
+        $bidang = Auth::user()->id;
 
-public function update_laporan(Request $request, $id)
-{
-    $input = OneInput::find($id);
+        if ($bidang == 'Admin') {
+            $data = OneInput::find($id);
+            $data->delete();
 
-    $pagu = (int)str_replace([',', '.', 'Rp', ' '], '', $request->pagu);
-    $rp = (int)str_replace([',', '.', 'Rp', ' '], '', $request->rp);
+            return redirect('/laporan');
+        } else {
+            $data = TwoInput::find($id);
+            $data->delete();
 
-    $rvo = ($request->volume_jumlah / $request->volume_target);
-
-    if ($rvo >= 1.2) {
-        $rvo_max = 1.2;
-    } else {
-        $rvo_max = $rvo;
+            return back()->withInput();
+        }
     }
 
-    $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi);
-    $capaian =  ($rp / $pagu);
-    $sisa =  ($pagu - $rp);
+    public function update_laporan(Request $request, $id)
+    {
+        $input = OneInput::find($id);
 
-    // Manual
+        $pagu = (int)str_replace([',', '.', 'Rp', ' '], '', $request->pagu);
+        $rp = (int)str_replace([',', '.', 'Rp', ' '], '', $request->rp);
 
-    $input->digit = $request->digit;
-    $input->bidang = $request->bidang;
-    $input->satuan = $request->satuan;
-    $input->kd_kro = $request->kd_kro;
-    $input->kd_ro = $request->kd_ro;
-    $input->nama_ro = $request->nama_ro;
-    $input->capaian_ro = $request->capaian_ro;
-    $input->volume_target = $request->volume_target;
-    $input->volume_jumlah = $request->volume_jumlah;
-    $input->volume_target_realisasi = $request->volume_target_realisasi;
-    $input->pagu = $pagu;
-    $input->rp = $rp;
+        $rvo = ($request->volume_jumlah / $request->volume_target);
 
-    // Otomatis
-    $input->rvo = $rvo;
-    $input->rvo_maksimal = $rvo_max;
-    $input->capaian_realisasi = $capaian_realisasi;
-    $input->capaian = $capaian;
-    $input->sisa = $sisa;
+        if ($rvo >= 1.2) {
+            $rvo_max = 1.2;
+        } else {
+            $rvo_max = $rvo;
+        }
 
-    $input->update();
+        $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi);
+        $capaian =  ($rp / $pagu);
+        $sisa =  ($pagu - $rp);
 
-    return redirect()->back()->with('status', 'Laporan admin berhasil diperbarui');
-}
+        // Manual
 
-public function create_laporan()
-{
-    $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
+        $input->digit = $request->digit;
+        $input->bidang = $request->bidang;
+        $input->satuan = $request->satuan;
+        $input->kd_kro = $request->kd_kro;
+        $input->kd_ro = $request->kd_ro;
+        $input->nama_ro = $request->nama_ro;
+        $input->capaian_ro = $request->capaian_ro;
+        $input->volume_target = $request->volume_target;
+        $input->volume_jumlah = $request->volume_jumlah;
+        $input->volume_target_realisasi = $request->volume_target_realisasi;
+        $input->pagu = $pagu;
+        $input->rp = $rp;
 
-    return view('input.new', [
-        'one_inputs' => OneInput::all(),
-        'bidangs' => $bidang,
-        'title' => 'Laporan',
+        // Otomatis
+        $input->rvo = $rvo;
+        $input->rvo_maksimal = $rvo_max;
+        $input->capaian_realisasi = $capaian_realisasi;
+        $input->capaian = $capaian;
+        $input->sisa = $sisa;
 
-    ]);
-}
+        $input->update();
 
-public function store_laporan(Request $request)
-{
-    $pagu = (int)str_replace([',', '.', 'Rp', ' '], '', $request->pagu);
-    $rp = (int)str_replace([',', '.', 'Rp', ' '], '', $request->rp);
-
-
-
-    $rvo = ($request->volume_jumlah / $request->volume_target);
-
-    if ($rvo >= 1.2) {
-        $rvo_max = 1.2;
-    } else {
-        $rvo_max = $rvo;
+        return redirect()->back()->with('status', 'Laporan admin berhasil diperbarui');
     }
 
-    $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi);
-    $capaian =  ($rp / $pagu);
-    $sisa =  ($pagu - $rp);
+    public function create_laporan()
+    {
+        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
+
+        return view('input.new', [
+            'one_inputs' => OneInput::all(),
+            'bidangs' => $bidang,
+            'title' => 'Laporan',
+
+        ]);
+    }
+
+    public function store_laporan(Request $request)
+    {
+        $pagu = (int)str_replace([',', '.', 'Rp', ' '], '', $request->pagu);
+        $rp = (int)str_replace([',', '.', 'Rp', ' '], '', $request->rp);
 
 
-    $input = new OneInput();
+
+        $rvo = ($request->volume_jumlah / $request->volume_target);
+
+        if ($rvo >= 1.2) {
+            $rvo_max = 1.2;
+        } else {
+            $rvo_max = $rvo;
+        }
+
+        $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi);
+        $capaian =  ($rp / $pagu);
+        $sisa =  ($pagu - $rp);
 
 
-    // Manual
-    $input->digit = $request->digit;
-    $input->bidang = $request->bidang;
-    $input->satuan = $request->satuan;
-    $input->kd_kro = $request->kd_kro;
-    $input->kd_ro = $request->kd_ro;
-    $input->nama_ro = $request->nama_ro;
-    $input->capaian_ro = $request->capaian_ro;
-    $input->volume_target = $request->volume_target;
-    $input->volume_jumlah = $request->volume_jumlah;
-    $input->volume_target_realisasi = $request->volume_target_realisasi;
-    $input->pagu = $pagu;
-    $input->rp = $rp;
+        $input = new OneInput();
 
-    // Otomatis
 
-    $input->rvo = $rvo;
-    $input->rvo_maksimal = $rvo_max;
-    $input->capaian_realisasi = $capaian_realisasi;
-    $input->capaian = $capaian;
-    $input->sisa = $sisa;
+        // Manual
+        $input->digit = $request->digit;
+        $input->bidang = $request->bidang;
+        $input->satuan = $request->satuan;
+        $input->kd_kro = $request->kd_kro;
+        $input->kd_ro = $request->kd_ro;
+        $input->nama_ro = $request->nama_ro;
+        $input->capaian_ro = $request->capaian_ro;
+        $input->volume_target = $request->volume_target;
+        $input->volume_jumlah = $request->volume_jumlah;
+        $input->volume_target_realisasi = $request->volume_target_realisasi;
+        $input->pagu = $pagu;
+        $input->rp = $rp;
 
-    $input->save();
+        // Otomatis
 
-    return redirect()->back()->with('status', 'Laporan admin berhasil ditambahkan');
-}
+        $input->rvo = $rvo;
+        $input->rvo_maksimal = $rvo_max;
+        $input->capaian_realisasi = $capaian_realisasi;
+        $input->capaian = $capaian;
+        $input->sisa = $sisa;
+
+        $input->save();
+
+        return redirect()->back()->with('status', 'Laporan admin berhasil ditambahkan');
+    }
 }

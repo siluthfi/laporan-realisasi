@@ -19,7 +19,7 @@
                 <!-- Form Start -->
                 <div class="p-4 border rounded bg-light">
                     <div class="row">
-                        <form action="{{ route('admin.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('update.laporan', $item->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 

@@ -25,7 +25,7 @@
                                 </button>
                             </a>
                             <button type="button" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold"
-                                data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                data-bs-toggle="modal" data-bs-target="#deleteLaporan">
                                 <i class="fas fa-trash"></i>
                                 <div class="d-none d-sm-inline"> Delete</div>
                             </button>
@@ -390,7 +390,7 @@
                                 Apakah anda yakin ingin menghapus {{ $data2->uraian }}?
                             </div>
                             <div class="modal-footer">
-                                <form action="{{ route('destroy', $data2->id) }}" method="POST">
+                                <form action="{{ route('destroy.dokumen', $data2->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="px-3 py-1 btn btn-outline-secondary"
@@ -419,7 +419,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Dokumen Baru</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('common.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('store.dokumen') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -461,6 +461,32 @@
                         <button type="submit" class="btn btn-outline-primary">Tambah</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Laporan --}}
+    {{-- Modal --}}
+    <div class="modal fade" id="deleteLaporan" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Konfirmasi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <i class="fas fa-exclamation-circle text-warning"></i> Apakah Anda Yakin Akan
+                    Menghapus {{ $data->nama_ro }}
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ route('destroy.laporan', $data->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="px-3 py-1 btn btn-outline-outline-secondary"
+                            data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="px-3 py-1 btn btn-outline-danger">Yes</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

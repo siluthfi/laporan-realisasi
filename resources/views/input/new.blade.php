@@ -19,7 +19,7 @@
                 <!-- Form Start -->
                 <div class="p-4 border rounded bg-light">
                     <div class="row">
-                        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('store.laporan') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-4">
