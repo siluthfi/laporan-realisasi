@@ -35,17 +35,16 @@
 
 
     <div class="container-fluid ps-md-0 ">
-
-
-
-        <div class="row g-0 justify-content-center">
+        <div class="row g-0">
             <!-- Login  -->
             <!-- Background Image -->
-            <div class="col-md-8 col-lg-6">
+            <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image" style="background-color: #EDF8FA"><img class="img-fluid"
+                    src="{{ asset('images/data-report.png') }}" alt="" srcset=""></div>
+            <div class="col-md-8 col-lg-5">
                 <div class="py-5 login d-flex align-items-center">
-                    <div class="container ">
-                        <div class="row justify-content-center">
-                            <div class="p-5 border rounded col-md-6 col-lg-8 bg-light ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="mx-auto col-md-6 col-lg-8">
                                 <h3 class="mb-5 login-heading fs-2 fw-bold">Nama Website</h3>
                                 <form action="{{ route('login.store') }}" method="POST">
                                     @csrf
@@ -71,6 +70,7 @@
                                         <label for="floatingPassword">Password</label>
                                     </div>
 
+
                                     <div class="mb-3 form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="remember"
                                             name="remember">
@@ -80,19 +80,18 @@
                                     </div>
 
 
-
-                                    <div class="mt-3 d-grid">
+                                    <div class="mb-5 d-grid">
                                         <button class="mb-2 btn btn-lg btn-primary btn-login text-uppercase fw-bold"
                                             type="submit">Login</button>
                                     </div>
 
                                     @if (session('status'))
-                                    <div class="mt-3 alert alert-danger alert-dismissible">
-                                        <button type="button" class="btn-close"
-                                            data-bs-dismiss="alert"></button>
-                                        <strong>{{ session('status') }}</strong>
-                                    </div>
-                                @endif
+                                        <div class="mt-3 alert alert-danger alert-dismissible">
+                                            <button type="button" class="btn-close"
+                                                data-bs-dismiss="alert"></button>
+                                            <strong>{{ session('status') }}</strong>
+                                        </div>
+                                    @endif
 
 
                                 </form>
@@ -103,7 +102,6 @@
             </div>
         </div>
     </div>
-
 
 
 </body>
