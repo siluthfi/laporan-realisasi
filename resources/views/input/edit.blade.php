@@ -13,22 +13,24 @@
         <div class="row">
             <div class="col-lg-12 ">
                 <div class="p-2 mb-4 bg-light">
-                    <h2 class="mb-2">Tambahkan Laporan</h2>
+                    <h2 class="mb-2">Edit Laporan</h2>
                 </div>
                 <!-- Panel End -->
                 <!-- Form Start -->
                 <div class="p-4 border rounded bg-light">
                     <div class="row">
-                        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
+
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             Nama RO</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="Nama Ro" class="form-control" name="nama_ro"
-                                                required>
+                                            <input value="{{ $item->nama_ro }}" placeholder="{{ $item->nama_ro }}"
+                                                class="form-control" name="nama_ro">
                                         </div>
                                     </div>
                                 </div>
@@ -37,18 +39,20 @@
                                         <label for="" class="mb-1 fw-bold">
                                             Capaian Ro</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="Capaian Ro" class="form-control"
-                                                name="capaian_ro">
+                                            <input value="{{ $item->capaian_ro }}" placeholder="{{ $item->capaian_ro }}"
+                                                class="form-control" name="capaian_ro">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-4 input-group">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             Bagian/Bidang
                                         </label>
                                         <div class="input-group">
-                                            <select class="form-select" id="inputGroupSelect01" name="bidang" required>
+                                            <select class="form-select" id="inputGroupSelect01" name="bidang">
+                                                <option value="{{ $item->bidang }}">
+                                                    {{ $item->bidang }}</option>
                                                 @foreach ($bidangs as $bidang)
                                                     <option value="{{ $bidang }}">
                                                         {{ $bidang }}</option>
@@ -62,65 +66,67 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             Target Volume Realisasi Output
                                         </label>
                                         <div class="input-group">
-                                            <input type="number" value="" placeholder="Target Volume Realisasi Output"
-                                                class="form-control" name="volume_target_realisasi" required>
+                                            <input type="number" value="{{ $item->volume_target_realisasi }}"
+                                                placeholder="{{ $item->volume_target_realisasi }}" class="form-control"
+                                                name="volume_target_realisasi">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             Pagu</label>
                                         <div class="input-group">
-                                            <input type="text" value="" placeholder="Pagu" class="form-control"
-                                                id="rupiah" name="pagu" required>
+                                            <input type="text" value="{{ $item->pagu }}"
+                                                placeholder="{{ $item->pagu }}" class="form-control" name="pagu" id="rupiah">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             RP</label>
                                         <div class="input-group">
-                                            <input type="text" value="" placeholder="RP" class="form-control" name="rp" id="rupiah2"
-                                                required>
+                                            <input type="text" value="{{ $item->rp }}"
+                                                placeholder="{{ $item->rp }}" class="form-control" name="rp" id="rupiah2">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-2">
+                                <div class="col-lg-1">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             ID</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="ID" class="form-control" name="digit" required>
+                                            <input value="{{ $item->digit }}" placeholder="{{ $item->digit }}"
+                                                class="form-control" name="digit">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-2">
+                                <div class="col-lg-1">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             KD KRO</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="KD KRO" class="form-control" name="kd_kro"
-                                                required>
+                                            <input value="{{ $item->kd_kro }}" placeholder="{{ $item->kd_kro }}"
+                                                class="form-control" name="kd_kro">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-4">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             KD RO</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="KD RO" class="form-control" name="kd_ro"
-                                                required>
+                                            <input value="{{ $item->nama_ro }}" placeholder="{{ $item->nama_ro }}"
+                                                class="form-control" name="kd_ro">
                                         </div>
                                     </div>
                                 </div>
@@ -128,45 +134,43 @@
 
                                 <div class="col-lg-2">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             Target Volume</label>
                                         <div class="input-group">
-                                            <input type="number" value="" placeholder="Target Volume" class="form-control"
-                                                name="volume_target" required>
+                                            <input type="number" value="{{ $item->volume_target }}"
+                                                placeholder="{{ $item->volume_target }}" class="form-control"
+                                                name="volume_target">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-2">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             Jumlah Volume</label>
                                         <div class="input-group">
-                                            <input type="number" value="" placeholder="Jumlah Volume" class="form-control"
-                                                name="volume_jumlah" required>
+                                            <input type="number" value="{{ $item->volume_jumlah }}"
+                                                placeholder="{{ $item->volume_jumlah }}" class="form-control"
+                                                name="volume_jumlah">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-2">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             Satuan</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="Satuan" class="form-control" name="satuan"
-                                                required>
+                                            <input value="{{ $item->satuan }}" placeholder="{{ $item->satuan }}"
+                                                class="form-control" name="satuan">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-
-
-
-
                             <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i
-                                    class="fas fa-plus"></i>
-                                <div class="d-none d-sm-inline"> Tambahkan</div>
+                                    class="fas fa-edit"></i>
+                                <div class="d-none d-sm-inline"> Update</div>
                             </button>
                             <button type="reset" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold" value="reset"><i
                                     class="fas fa-undo"></i>
@@ -175,7 +179,7 @@
                             <button type="button" class="px-4 py-2 mt-3 btn btn-outline-secondary fw-bold"><i
                                     class="fas fa-caret-square-left"></i>
                                 <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
-                                    href="">
+                                    href="{{ route('detail.laporan', $item->id )}}">
                                     Back</a>
                             </button>
                     </div>
@@ -188,9 +192,8 @@
     </div>
     <!-- Content End -->
 
-
-    <script type="text/javascript">
-        var rupiah = document.getElementById('rupiah');
+    <script>
+                var rupiah = document.getElementById('rupiah');
         rupiah.addEventListener('keyup', function(e) {
             // tambahkan 'Rp.' pada saat form di ketik
             // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
@@ -234,5 +237,6 @@
             return prefix == undefined ? rupiah2 : (rupiah2 ? 'Rp. ' + rupiah2 : '');
         }
     </script>
+
 
 @endsection
