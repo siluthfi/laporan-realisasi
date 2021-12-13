@@ -20,3 +20,19 @@
 
 
 /* Sidebar */
+
+.border-top-orange {
+    border-top: coral 7px solid;
+}
+
+.border-top-blue {
+    border-top: lightsteelblue 7px solid;
+}
+
+.border-top-red {
+    border-top: indianred 7px solid;
+}
+
+.border-top-yellow {
+    border-top: #FDDD5C 7px solid;
+}
