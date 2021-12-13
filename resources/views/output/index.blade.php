@@ -4,39 +4,49 @@
 
 {{-- @dd($paguUMUM) --}}
 
-<div class="row mb-3">
+{{-- <div class="row mb-3">
     <div class="col-md">
         <h2 class="" style="text-align: center">ANGGARAN</h2>
     </div>
-</div>
+</div> --}}
 
-<div class="row mb-5">
-    <div class="col-md-8">
-        <div class="card bg-white shadow-sm p-3">
-            <canvas id="chartBarAnggaran"></canvas>
+<div class="row my-5">
+    <div class="col-md-8 mb-3">
+        <div class="card shadow-sm p-3 border-top-blue">
+            <div class="card-header bg-white">
+                <h2>Anggaran</h2>
+            </div>
+            <canvas id="chartBarAnggaran" height="465"></canvas>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card bg-white shadow-sm p-3">
-            <h4>Anggaran</h4>
+    <div class="col-md-4 mb-3">
+        <div class="card bg-white shadow-sm p-3 border-top-red">
+            <div class="card-header bg-white mb-3">
+                <h2>Anggaran</h2>
+            </div>
             <canvas id="chartPieAnggaran"></canvas>
         </div>
     </div>
 </div>
-<div class="row mb-3">
-    <div class="col-md">
-        <h2 style="text-align: center">OUTPUT</h2>
-    </div>
+
+<div class="row">
 </div>
+
 <div class="row mb-5">
-    <div class="col-md-8">
-        <div class="card bg-white shadow-sm p-3">
-            <canvas id="chartBarOutput"></canvas>
+    {{-- <div class="col-md-3 offset-md-3"> --}}
+    <div class="col-md-8 mb-3">
+        <div class="card shadow-sm p-3 border-top-orange">
+            <div class="card-header bg-white">
+                <h2>Output</h2>
+            </div>
+            <canvas id="chartBarOutput" height="465"></canvas>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card bg-white shadow-sm p-3">
-            <h4>Output</h4>
+    <div class="col-md-4 mb-3">
+        <div class="card bg-white shadow-sm p-3 border-top-yellow">
+            <div class="card-header bg-white mb-3">
+                <h2>Output</h2>
+            </div>
             <canvas id="chartPieOutput"></canvas>
         </div>
     </div>
@@ -81,8 +91,7 @@
         options: {
             plugins: {
             title: {
-                    display: true,
-                    text: 'ANGGARAN'
+                    display: true
                 },
             },
                 responsive: true,
@@ -145,6 +154,7 @@
         data: setupPieAnggaran,
         options: {
             plugins: {
+                responsive: false,
                 tooltip: {
                     enabled: true
                 },
@@ -190,8 +200,7 @@
         options: {
             plugins: {
             title: {
-                    display: true,
-                    text: 'OUTPUT'
+                    display: true
                 },
             },
                 responsive: true,
