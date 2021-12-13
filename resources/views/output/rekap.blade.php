@@ -32,9 +32,9 @@
                             <tr>
                                 <td>1</td>
                                 <td>Umum</td>
-                                <td>{{ $paguUMUM }}</td>
-                                <td>{{ $rpUMUM }}</td>
-                                <td>{{ $paguUMUM - $rpUMUM }}</td>
+                                <td>Rp. {{ number_format($paguUMUM, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($rpUMUM, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($paguUMUM - $rpUMUM, 0, ".", "."); }}</td>
                                 <td>{{ $percentageUMUM }} % </td>
                                 <td>{{ $targetUMUM }}</td>
                                 <td>{{ $rp2UMUM }}</td>
@@ -44,9 +44,9 @@
                             <tr>
                                 <td>2</td>
                                 <td>PPAI</td>
-                                <td>{{ $paguPPAI }}</td>
-                                <td>{{ $rpPPAI }}</td>
-                                <td>{{ $paguPPAI - $rpPPAI }}</td>
+                                <td>Rp. {{ number_format($paguPPAI, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($rpPPAI, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($paguPPAI - $rpPPAI, 0, ".", "."); }}</td>
                                 <td>{{ $percentagePPAI }} % </td>
                                 <td>{{ $targetPPAI }}</td>
                                 <td>{{ $rp2PPAI }}</td>
@@ -56,9 +56,9 @@
                             <tr>
                                 <td>3</td>
                                 <td>PPAII</td>
-                                <td>{{ $paguPPAII }}</td>
-                                <td>{{ $rpPPAII }}</td>
-                                <td>{{ $paguPPAII - $rpPPAII }}</td>
+                                <td>Rp. {{ number_format($paguPPAII, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($rpPPAII, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($paguPPAII - $rpPPAII, 0, ".", "."); }}</td>
                                 <td>{{ $percentagePPAII }} % </td>
                                 <td>{{ $targetPPAII }}</td>
                                 <td>{{ $rp2PPAII }}</td>
@@ -68,9 +68,9 @@
                             <tr>
                                 <td>4</td>
                                 <td>SKKI</td>
-                                <td>{{ $paguSKKI }}</td>
-                                <td>{{ $rpSKKI }}</td>
-                                <td>{{ $paguSKKI - $rpSKKI }}</td>
+                                <td>Rp. {{ number_format($paguSKKI, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($rpSKKI, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($paguSKKI - $rpSKKI, 0, ".", "."); }}</td>
                                 <td>{{ $percentageSKKI }} % </td>
                                 <td>{{ $targetSKKI }}</td>
                                 <td>{{ $rp2SKKI }}</td>
@@ -80,9 +80,9 @@
                             <tr>
                                 <td>5</td>
                                 <td>PAPK</td>
-                                <td>{{ $paguPAPK }}</td>
-                                <td>{{ $rpPAPK }}</td>
-                                <td>{{ $paguPAPK - $rpPAPK }}</td>
+                                <td>Rp. {{ number_format($paguPAPK, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($rpPAPK, 0, ".", "."); }}</td>
+                                <td>Rp. {{ number_format($paguPAPK - $rpPAPK, 0, ".", "."); }}</td>
                                 <td>{{ $percentagePAPK }} % </td>
                                 <td>{{ $targetPAPK }}</td>
                                 <td>{{ $rp2PAPK }}</td>

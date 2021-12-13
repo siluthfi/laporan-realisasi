@@ -104,7 +104,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Pagu</label>
                                     <div class="input-group">
-                                        <input type="number" value="{{ $data->pagu }}" placeholder="{{ $data->pagu }}"
+                                        <input type="number" value="Rp. {{ number_format($data->pagu, 0, ".", "."); }}" placeholder="Rp. {{ number_format($data->pagu, 0, ".", "."); }}"
                                             class="form-control" name="pagu" id="rupiah" disabled>
                                     </div>
                                 </div>
@@ -114,8 +114,8 @@
                                     <label for="" class="mb-1 fw-bold">
                                         RP</label>
                                     <div class="input-group">
-                                        <input type="number" value="{{ $data->rp }}" placeholder="{{ $data->rp }}"
-                                            class="form-control" name="{{ $data->rp }}" id="rupiah" disabled>
+                                        <input type="number" value="Rp. {{ number_format($data->rp, 0, ".", "."); }}" placeholder="Rp. {{ number_format($data->rp, 0, ".", "."); }}"
+                                            class="form-control" name="rp" id="rupiah" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -124,8 +124,8 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Sisa</label>
                                     <div class="input-group">
-                                        <input type="number" value="{{ $data->sisa }}" placeholder="{{ $data->sisa }}"
-                                            class="form-control" name="{{ $data->sisa }}" id="rupiah" disabled>
+                                        <input type="number" value="Rp. {{ number_format($data->sisa, 0, ".", "."); }}" placeholder="Rp. {{ number_format($data->sisa, 0, ".", "."); }}"
+                                            class="form-control" name="sisa" id="rupiah" disabled>
                                     </div>
                                 </div>
                             </div>

@@ -4143,7 +4143,8 @@ fieldset:disabled .btn {
     padding: .5rem 1rem;
     color: #2f54eb;
     text-decoration: none;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -4154,7 +4155,9 @@ fieldset:disabled .btn {
 
 .nav-link:focus,
 .nav-link:hover {
-    color: #5976ef
+    color: #5976ef;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    border-bottom: 2px solid #5977efea;
 }
 
 .nav-link.disabled {

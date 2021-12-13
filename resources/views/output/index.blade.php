@@ -108,8 +108,8 @@
                 currency: {
                     type: 'linear',
                     position: 'left',
-                    min: 100000,
-                    max: 2000000000,
+                    min:{{ min(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
+                    max:{{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
                     grid: {
                         display: false
                     }
@@ -117,8 +117,8 @@
                 percentage: {
                     type: 'linear',
                     position: 'right',
-                    min: 100000,
-                    max: 2000000000,
+                    min:{{ min(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
+                    max: {{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
                     grid: {
                         display: false
                     }
@@ -218,7 +218,7 @@
                     type: 'linear',
                     position: 'left',
                     min: 0,
-                    max: 10000,
+                    max: {{ max(array( $targetUMUM ,  $targetPPAI ,  $targetPPAII ,  $targetSKKI ,  $targetPAPK )) }},
                     grid: {
                         display: false
                     }
@@ -227,7 +227,7 @@
                     type: 'linear',
                     position: 'right',
                     min: 0,
-                    max: 10000,
+                    max: {{ max(array( $targetUMUM ,  $targetPPAI ,  $targetPPAII ,  $targetSKKI ,  $targetPAPK )) }},
                     grid: {
                         display: false
                     }

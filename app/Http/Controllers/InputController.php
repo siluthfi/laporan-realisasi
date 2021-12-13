@@ -159,128 +159,124 @@ class InputController extends Controller
 
     // Common
     // Index
-    public function commmon_index()
-    {
-        $bidang = Auth::user()->bidang;
-        return view('input.common.index_umum', [
-            'datas' => OneInput::where('bidang', '$bidang'),
-        ]);
-    }
-    // Detail
-    public function common_detail(OneInput $oneinput)
-    {
-        $bidang = 'Umum';
-        $selects = OneInput::with('TwoInput')->where('bidang', $bidang)->get();
-        // $selects = OneInput::all();
-        $datas2 = TwoInput::where('one_input_id', 1)->get();
-        // $foreign['oneInput'] = $selects;
-        dd($oneinput);
-        return view('input.common.detail', [
-            'data' => $oneinput,
-            'selects' => $selects,
-            'datas2' => $datas2,
-            // 'foreign' => $foreign,
-        ]);
-    }
-    // Store
-    public function common_store(Request $request)
-    {
-        $input = new TwoInput();
-        $add = new OneInput();
-        // $bagian = Auth::user()->bidang;
-        $bidang = 'umum';
+    // public function commmon_index()
+    // {
+    //     $bidang = Auth::user()->bidang;
+    //     return view('input.common.index_umum', [
+    //         'datas' => OneInput::where('bidang', '$bidang'),
+    //     ]);
+    // }
+    // // Detail
+    // public function common_detail(OneInput $oneinput)
+    // {
+    //     $bidang = 'Umum';
+    //     $selects = OneInput::with('TwoInput')->where('bidang', $bidang)->get();
+    //     // $selects = OneInput::all();
+    //     $datas2 = TwoInput::where('one_input_id', 1)->get();
+    //     // $foreign['oneInput'] = $selects;
+    //     dd($oneinput);
+    //     return view('input.common.detail', [
+    //         'data' => $oneinput,
+    //         'selects' => $selects,
+    //         'datas2' => $datas2,
+    //         // 'foreign' => $foreign,
+    //     ]);
+    // }
+    // // Store
+    // public function common_store(Request $request)
+    // {
+    //     $input = new TwoInput();
+    //     $add = new OneInput();
+    //     // $bagian = Auth::user()->bidang;
+    //     $bidang = 'umum';
 
-        $input->uraian = $request->uraian;
-        $input->nomor_dokumen = $request->nodok;
-        $input->tanggal = $request->tanggal;
-        $input->one_input_id = $request->naro;
-        $input->save();
+    //     $input->uraian = $request->uraian;
+    //     $input->nomor_dokumen = $request->nodok;
+    //     $input->tanggal = $request->tanggal;
+    //     $input->one_input_id = $request->naro;
+    //     $input->save();
 
-        // $add->volume_jumlah = 0;
-        // $add->volume_jumlah += $request->volume_capaian;
-        // $add->update();
+    //     return redirect()->back()->with('status', 'Data berhasil dimasukkan!');
+    // }
+    // // Edit
+    // public function common_edit(Request $request, $id)
+    // {
+    //     $input = TwoInput::find($id);
 
-        return redirect()->back()->with('status', 'Data berhasil dimasukkan!');
-    }
-    // Edit
-    public function common_edit(Request $request, $id)
-    {
-        $input = TwoInput::find($id);
+    //     $input->uraian = $request->uraian;
+    //     $input->nomor_dokumen = $request->nodok;
+    //     $input->tanggal = $request->tanggal;
+    //     $input->one_input_id = $request->naro;
 
-        $input->uraian = $request->uraian;
-        $input->nomor_dokumen = $request->nodok;
-        $input->tanggal = $request->tanggal;
-        $input->one_input_id = $request->naro;
+    //     $input->update();
 
-        $input->update();
+    //     return back()->withInput()->with('status', 'Dokumen berhasil diperbarui!');
+    // }
+    // // Delete
+    // public function common_delete($id)
+    // {
+    //     $item = TwoInput::find($id);
+    //     $item->delete();
 
-        return back()->withInput()->with('status', 'Dokumen berhasil diperbarui!');
-    }
-    // Delete
-    public function common_delete($id)
-    {
-        $item = TwoInput::find($id);
-        $item->delete();
+    //     return back()->withInput();
+    // }
 
-        return back()->withInput();
-    }
+    // // Umum
+    // public function umum_index()
+    // {
+    //     $bidang = 'Umum';
+    //     return view('input.common.index_umum', [
+    //         'datas' => OneInput::where('bidang', $bidang)->get(),
+    //     ]);
+    // }
+    // // PPA I
+    // public function ppai_index()
+    // {
+    //     $bidang = 'PPA I';
+    //     $datas = DB::table('one_inputs')
+    //         ->where('bidang', $bidang)
+    //         ->get();
 
-    // Umum
-    public function umum_index()
-    {
-        $bidang = 'Umum';
-        return view('input.common.index_umum', [
-            'datas' => OneInput::where('bidang', $bidang)->get(),
-        ]);
-    }
-    // PPA I
-    public function ppai_index()
-    {
-        $bidang = 'PPA I';
-        $datas = DB::table('one_inputs')
-            ->where('bidang', $bidang)
-            ->get();
+    //     return view('input.common.index_ppai', [
+    //         'one_inputs' => OneInput::all(),
+    //     ]);
+    // }
+    // // PPA II
+    // public function ppaii_index()
+    // {
+    //     $bidang = 'PPA II';
+    //     $datas = DB::table('one_inputs')
+    //         ->where('bidang', $bidang)
+    //         ->get();
 
-        return view('input.common.index_ppai', [
-            'one_inputs' => OneInput::all(),
-        ]);
-    }
-    // PPA II
-    public function ppaii_index()
-    {
-        $bidang = 'PPA II';
-        $datas = DB::table('one_inputs')
-            ->where('bidang', $bidang)
-            ->get();
+    //     return view('input.common.index_ppaii', [
+    //         'one_inputs' => OneInput::all(),
+    //     ]);
+    // }
+    // // SKKI
+    // public function skki_index()
+    // {
+    //     $bidang = 'SKKI';
+    //     $datas = DB::table('one_inputs')
+    //         ->where('bidang', $bidang)
+    //         ->get();
 
-        return view('input.common.index_ppaii', [
-            'one_inputs' => OneInput::all(),
-        ]);
-    }
-    // SKKI
-    public function skki_index()
-    {
-        $bidang = 'SKKI';
-        $datas = DB::table('one_inputs')
-            ->where('bidang', $bidang)
-            ->get();
+    //     return view('input.common.index_skki', [
+    //         'one_inputs' => OneInput::all(),
+    //     ]);
+    // }
+    // // PAPK
+    // public function papk_index()
+    // {
+    //     $bidang = 'PAPK';
+    //     $datas = DB::table('one_inputs')
+    //         ->where('bidang', $bidang)
+    //         ->get();
 
-        return view('input.common.index_skki', [
-            'one_inputs' => OneInput::all(),
-        ]);
-    }
-    // PAPK
-    public function papk_index()
-    {
-        $bidang = 'PAPK';
-        $datas = DB::table('one_inputs')
-            ->where('bidang', $bidang)
-            ->get();
-
-        return view('input.common.index_papk', [
-            'one_inputs' => OneInput::all(),
-        ]);
-    }
+    //     return view('input.common.index_papk', [
+    //         'one_inputs' => OneInput::all(),
+    //     ]);
+    // }
 
 
     // All
@@ -337,7 +333,7 @@ class InputController extends Controller
 
     public function edit_laporan($id)
     {
-        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
+        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK'];
 
         return view('input.edit', [
             'item' => OneInput::find($id),
@@ -418,7 +414,7 @@ class InputController extends Controller
 
     public function create_laporan()
     {
-        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
+        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK'];
 
         return view('input.new', [
             'one_inputs' => OneInput::all(),
