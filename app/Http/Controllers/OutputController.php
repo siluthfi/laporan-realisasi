@@ -8,9 +8,15 @@ use App\Http\Controllers\Controller;
 
 class OutputController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(OneInput $oneinput)
     {
         ##### UMUM Section
+
         // GET Bidang
         $dataUMUM = $oneinput->where('bidang', 'UMUM')->get();
 

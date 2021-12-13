@@ -29,11 +29,11 @@
                 @endif
             </ul>
         </div>
-        <div class="div">
+        <div class="div ms-auto mb-1">
             <div class="flex-shrink-0 px-1 dropdown">
                 <a href="#" class="d-block link-light text-decoration-none " id="dropdownUser2"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class='fa fa-angle-down text-secondary'></i>
+                    <i class='fa fa-angle-down text-secondary me-1'></i>
                     <img src="{{ asset('images/user.png') }}" alt="Username" width="30" height="30"
                         class="bg-white border rounded-circle">
                 </a>

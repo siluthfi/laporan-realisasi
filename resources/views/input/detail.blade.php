@@ -104,7 +104,8 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Pagu</label>
                                     <div class="input-group">
-                                        <input type="number" value="Rp. {{ number_format($data->pagu, 0, ".", "."); }}" placeholder="Rp. {{ number_format($data->pagu, 0, ".", "."); }}"
+                                        <input type="number" value="Rp. {{ number_format($data->pagu, 0, '.', '.') }}"
+                                            placeholder="Rp. {{ number_format($data->pagu, 0, '.', '.') }}"
                                             class="form-control" name="pagu" id="rupiah" disabled>
                                     </div>
                                 </div>
@@ -114,7 +115,8 @@
                                     <label for="" class="mb-1 fw-bold">
                                         RP</label>
                                     <div class="input-group">
-                                        <input type="number" value="Rp. {{ number_format($data->rp, 0, ".", "."); }}" placeholder="Rp. {{ number_format($data->rp, 0, ".", "."); }}"
+                                        <input type="number" value="Rp. {{ number_format($data->rp, 0, '.', '.') }}"
+                                            placeholder="Rp. {{ number_format($data->rp, 0, '.', '.') }}"
                                             class="form-control" name="rp" id="rupiah" disabled>
                                     </div>
                                 </div>
@@ -124,7 +126,8 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Sisa</label>
                                     <div class="input-group">
-                                        <input type="number" value="Rp. {{ number_format($data->sisa, 0, ".", "."); }}" placeholder="Rp. {{ number_format($data->sisa, 0, ".", "."); }}"
+                                        <input type="number" value="Rp. {{ number_format($data->sisa, 0, '.', '.') }}"
+                                            placeholder="Rp. {{ number_format($data->sisa, 0, '.', '.') }}"
                                             class="form-control" name="sisa" id="rupiah" disabled>
                                     </div>
                                 </div>
@@ -275,7 +278,7 @@
                     @if ($bidang == 'Admin')
                         <th class="align-middle sorting_none" style="width: 4%">Opsi</th>
                     @else
-                        <th class="align-middle sorting_none" style="width: 11%">Opsi</th>
+                        <th class="align-middle sorting_none" style="width: 7%">Opsi</th>
                     @endif
                 </tr>
             </thead>
@@ -286,15 +289,13 @@
                     <td class="text-center">{{ $data2->nomor_dokumen }}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
                     <td class="text-center">{{ $data2->volume_capaian }}</td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
-                            data-bs-target="#editDokumen_{{ $data2->id }}"><i
-                                class='fas fa-pencil-alt me-2'></i>Edit</button>
+                    <td class="justify-content-center">
+                        <button type="button" class="btn btn-sm btn-success px-2" data-bs-toggle="modal"
+                            data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
                         @if ($bidang == 'Admin')
                         @else
                             <button type="button" class="btn btn-sm btn-danger ms-1" data-bs-toggle="modal"
-                                data-bs-target="#hapusDokumen_{{ $data2->id }}"><i
-                                    class='fas fa-trash-alt me-2'></i>Hapus</button>
+                                data-bs-target="#hapusDokumen_{{ $data2->id }}"></i>Hapus</button>
                         @endif
                     </td>
                 </tbody>
@@ -445,13 +446,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row d-none">
                             <label for="naro" class="form-label">Nama RO</label>
                             <div class="mb-3 input-group">
                                 <select type="select" class="form-control" id="naro" name="naro" required>
-                                    @foreach ($selection as $select)
-                                        <option value="{{ $select->id }}">{{ $select->nama_ro }}</option>
-                                    @endforeach
+                                    <option value="{{ $data->id }}"></option>
                                 </select>
                             </div>
                         </div>

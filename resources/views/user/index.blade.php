@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="p-2 rounded bg-light">
-                    <h2 class="mb-3 ">Users</h2>
+                    <h2 class="mb-2 ">Users</h2>
                     <div class="mb-2 row">
                         <div class="col-sm">
                             <a href="{{ route('user.create') }}" class="text-white text-decoration-none">
