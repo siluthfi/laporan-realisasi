@@ -10,7 +10,7 @@
                     <div class="mb-2 row">
                         <div class="col-sm">
                             <a href="{{ route('user.create') }}" class="text-white text-decoration-none">
-                                <button class="px-4 py-2 btn btn-outline-primary fw-bold "><i class="fas fa-plus"></i>
+                                <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold "><i class="fas fa-plus"></i>
                                     <div class="d-none d-sm-inline"> New
                                 </button>
                             </a>

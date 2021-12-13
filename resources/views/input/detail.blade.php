@@ -18,9 +18,9 @@
                 <div class="p-2 rounded bg-light">
                     <div class="col-sm">
                         @if ($bidang == 'Admin')
+
                             <a href="{{ route('edit.laporan', $data->id) }}" class="text-decoration-none">
-                                <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i
-                                        class="fas fa-edit"></i>
+                                <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i class="fas fa-edit"></i>
                                     <div class="d-none d-sm-inline"> Edit</div>
                                 </button>
                             </a>
@@ -37,6 +37,7 @@
                                 href="{{ route('index') }}">
                                 Back</a>
                         </button>
+
                     </div>
                 </div>
             </div>
@@ -261,6 +262,14 @@
     <!-- Form 2 Start -->
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <h2 class="mb-5 d-flex justify-content-between">Daftar Dokumen @if ($bidang == 'Admin')
+                <form action="{{ route('reset_volume.laporan', $data->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="px-4 py-2 btn btn-outline-primary fw-bold "><i
+                            class="fas fa-undo "></i>
+                        <div class="d-none d-sm-inline">Reset Jumlah Volume Laporan
+                    </button>
+                </form>
             @else
                 <button class="btn btn-block btn-outline-primary" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i
                         class='fas fa-plus me-2'></i>Tambah Dokumen</button>

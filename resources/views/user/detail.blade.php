@@ -12,17 +12,17 @@
                     <div class="mb-2 row">
                         <div class="col-sm">
                             <a href="{{ route('user.edit', $user->id) }}" class="text-white text-decoration-none">
-                                <button class="px-4 py-2 btn btn-outline-primary fw-bold "><i class="fas fa-edit "></i>
+                                <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold "><i class="fas fa-edit "></i>
                                     <div class="d-none d-sm-inline"> Edit</div>
                                 </button>
                             </a>
                             <!-- Button trigger modal -->
-                            <button type="button" class="px-4 py-2 btn btn-outline-danger fw-bold" data-bs-toggle="modal"
+                            <button type="button" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal_{{ $user->id }}">
                                 <i class="fas fa-trash"></i>
                                 <div class="d-none d-sm-inline"> Delete</div>
                             </button>
-                            <button type="button" class="px-4 py-2 btn btn-outline-secondary fw-bold"><i
+                            <button type="button" class="px-4 py-2 mt-3 btn btn-outline-secondary fw-bold"><i
                                     class="fas fa-caret-square-left"></i>
                                 <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
                                     href="{{ route('user') }}">
