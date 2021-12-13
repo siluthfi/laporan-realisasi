@@ -1,27 +1,24 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="p-4 mb-4 border rounded shadow-sm bg-light">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="p-2 rounded bg-light">
-                    <h2 class="mb-3 ">Laporan Realisasi</h2>
-                    <div class="mb-2 row">
-                        <div class="col-sm">
-                            @if($bidang == 'Admin')
-                            <a href="{{ route('create.laporan') }}" class="text-white text-decoration-none">
-                                <button class="px-4 py-2 btn btn-outline-primary fw-bold "><i class="fas fa-plus "></i>
-                                    <div class="d-none d-sm-inline"> New
-                                </button>
-                            </a>
-                            @endif
-                        </div>
+<div class="p-4 mb-4 border rounded shadow-sm bg-light">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="p-2 rounded bg-light">
+                <h2 class="mb-3 ">Admin Laporan Realisasi</h2>
+                <div class="mb-2 row">
+                    <div class="col-sm">
+                        <a href="{{ route('create.laporan') }}" class="text-white text-decoration-none">
+                            <button class="px-4 py-2 btn btn-outline-primary fw-bold "><i class="fas fa-plus "></i>
+                                <div class="d-none d-sm-inline">New
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 
     <div class="mt-4 mb-4 row">
         <div class="col-lg-12 ">
