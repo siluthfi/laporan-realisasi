@@ -34,7 +34,7 @@
                 <a href="#" class="d-block link-light text-decoration-none " id="dropdownUser2"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class='fa fa-angle-down text-secondary me-1'></i>
-                    <img src="{{ asset('images/user.png') }}" alt="Username" width="30" height="30"
+                    <img src="{{ asset('images/') }}/{{ Auth()->user()->user_profile }}" alt="{{  Auth()->user()->nama }}" width="30" height="30"
                         class="bg-white border rounded-circle">
                 </a>
                 <ul class="mt-4 shadow dropdown-menu" style="margin-left: -100px" aria-labelledby="dropdownUser2">
