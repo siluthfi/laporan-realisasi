@@ -10,6 +10,10 @@ class UserController extends Controller
 {
     public function user_index(User $user)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         return view('user.index', [
             'users' => $user::all(),
             'title' => 'User'
@@ -18,6 +22,7 @@ class UserController extends Controller
     }
 
     public function user_profile(){
+
         return view('user.profile', [
             'title' => 'User'
         ]);
@@ -25,6 +30,10 @@ class UserController extends Controller
 
     public function user_detail(User $user)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         return view('user.detail', [
             'user' => $user,
             'title' => 'User'
@@ -34,6 +43,10 @@ class UserController extends Controller
 
     public function user_create(User $user)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
         $gender = ['Pria', 'Perempuan'];
 
@@ -47,6 +60,10 @@ class UserController extends Controller
 
     public function user_store(Request $request)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $user = new User();
         $password = bcrypt($request->password);
 
@@ -75,6 +92,10 @@ class UserController extends Controller
 
     public function user_edit(User $user)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
         $gender = ['Pria', 'Perempuan'];
 
@@ -89,6 +110,10 @@ class UserController extends Controller
 
     public function user_update(Request $request, $id)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $user = User::find($id);
         $password = bcrypt($request->password);
 
@@ -119,6 +144,10 @@ class UserController extends Controller
 
     public function user_delete($id)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $user = User::find($id);
         $user->delete();
         return redirect('/user/');

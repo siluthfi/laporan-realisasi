@@ -8,20 +8,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="p-2 rounded bg-light">
-                    <h2 class="mb-3 ">Detail User</h2>
-                    <div class="mb-2 row">
-                        <div class="col-sm">
-                            <button type="button" class="px-4 py-2 btn btn-outline-secondary fw-bold"><i
-                                    class="fas fa-caret-square-left"></i>
-                                <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
-                                    href="{{ route('user') }}">
-                                    Back</a>
-                            </button>
-                            {{-- Modal Start --}}
-                           
-                            {{-- Modal End --}}
-                        </div>
-                    </div>
+                    <h2 class="mb-3 ">Profile User</h2>
                 </div>
             </div>
         </div>
