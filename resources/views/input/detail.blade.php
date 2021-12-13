@@ -445,13 +445,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row d-none">
                             <label for="naro" class="form-label">Nama RO</label>
                             <div class="mb-3 input-group">
                                 <select type="select" class="form-control" id="naro" name="naro" required>
-                                    @foreach ($selection as $select)
-                                        <option value="{{ $select->id }}">{{ $select->nama_ro }}</option>
-                                    @endforeach
+                                        <option value="{{ $data->id }}"></option>
                                 </select>
                             </div>
                         </div>

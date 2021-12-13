@@ -25,7 +25,7 @@ Route::put('/user/edit/{user:id}', [UserController::class, 'user_update'])->name
 Route::delete('/user/delete/{user:id}', [UserController::class, 'user_delete'])->name('user.delete');
 
 // All
-Route::delete('/dokumen/destroy/{twoinput:id}', [InputController::class, 'destroy'])->name('destroy.dokumen');
+Route::delete('/dokumen/destroy/{twoinput:id}', [InputController::class, 'destroy_dokumen'])->name('destroy.dokumen');
 Route::post('/dokumen/store', [InputController::class, 'store_dokumen'])->name('store.dokumen');
 Route::post('/dokumen/edit/{twoinput:id}', [InputController::class, 'edit_dokumen'])->name('edit.dokumen');
 
