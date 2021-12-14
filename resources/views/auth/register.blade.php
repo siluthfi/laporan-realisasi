@@ -92,26 +92,29 @@
         <div class="row g-0">
             <!-- Login  -->
             <!-- Background Image -->
-            <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image css-selector" style=""></div>
-            <div class="col-md-8 col-lg-5">
+            <div class="col-md-8 col-lg-7">
                 <div class="py-5 login d-flex align-items-center bg-light">
                     <div class="container">
                         <div class="row">
-                            <div class="mx-auto col-md-6 col-lg-8">
+                            <div class="mx-auto col-md-6 col-lg-7">
 
-                                <h3 class="mb-5 login-heading fs-2 fw-bold">Login</h3>
-                                <form action="{{ route('login.store') }}" method="POST">
+
+                                <h3 class="mb-5 login-heading fs-2 fw-bold">Register</h3>
+                                <form action="{{ route('register.store') }}" method="POST">
                                     @csrf
-                                    <div class="mb-3 form-floating"> <input type="text"
-                                            class="form-control bg-input                                             @if (session('status'))
-                                        border-danger
-                                        @endif"
-                                            id=" floatingInput" placeholder="Username" name="username">
-                                        @if (session('status'))
+                                    <div class="mb-3 form-floating">
+                                        <input type="text" class="form-control bg-input" id="floatingInput"
+                                            placeholder="Nama" name="nama">
+                                        @error('username')
                                             <div class="text-danger">
-                                                * {{ session('status') }}
+                                                * {{ $message }}
                                             </div>
-                                        @endif
+                                        @enderror
+                                        <label for="floatingInput">Nama</label>
+                                    </div>
+                                    <div class="mb-3 form-floating">
+                                        <input type="text" class="form-control bg-input" id="floatingInput"
+                                            placeholder="Username" name="username">
                                         @error('username')
                                             <div class="text-danger">
                                                 * {{ $message }}
@@ -131,26 +134,33 @@
                                         <label for="floatingPassword">Password</label>
                                     </div>
 
-
-                                    <div class="mb-3 form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="remember"
-                                            name="remember">
-                                        <label class="form-check-label" for="remember">
-                                            Remember me
-                                        </label>
+                                    <div class="mb-5 form-floating ">
+                                        <select class="form-select bg-input" id="floatingSelect"
+                                            aria-label="Floating label select example" name="bidang">
+                                            @foreach ($bidang as $b)
+                                                <option value="{{ $b }}">{{ $b }}</option>
+                                            @endforeach
+                                        </select>
+                                        <label for="floatingSelect">Bidang User</label>
                                     </div>
 
 
-                                    <div class="d-grid">
+                                    <div class="mb-3 d-grid">
                                         <button
-                                            class="mb-2 rounded btn btn-lg btn-primary btn-login text-uppercase fw-bold "
-                                            type=" submit">Login</button>
+                                            class="mb-2 rounded btn btn-lg btn-primary btn-login text-uppercase fw-bold"
+                                            type="submit">Create</button>
                                     </div>
 
+                                    @if (session('status'))
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                        <strong>{{ session('status') }}</strong>
+                                    </div>
+                                @endif
 
-                                    <div class="mt-3 text-center">
-                                        <a href="{{ route('register') }}" class="text-decoration-none">Create
-                                            Account</a>
+
+                                    <div class="mt-3 text-center ">
+                                        <a href="{{ route('login') }}" class="text-decoration-none">Sign in</a>
                                     </div>
 
 
@@ -161,6 +171,8 @@
                     </div>
                 </div>
             </div>
+            <div class="d-none d-md-flex col-md-4 col-lg-5 bg-image css-selector" style=""></div>
+
         </div>
     </div>
 

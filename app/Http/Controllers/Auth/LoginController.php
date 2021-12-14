@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
@@ -29,5 +30,35 @@ class LoginController extends Controller
             };
 
             return redirect('/dashboard/');
+      }
+
+      public function register()
+      {
+            $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
+
+            return view('auth.register', [
+                  'bidang' => $bidang,
+            ]);
+      }
+
+      public function register_store(Request $request)
+      {
+
+            $user = new User();
+            $password = bcrypt($request->password);
+            $user->user_profile = 'user.png';
+
+            $user->nama = $request->nama;
+            $user->username = $request->username;
+            $user->password = $password;
+            $user->email = "user@mail";
+            $user->nip = 123;
+            $user->gender = "Pria";
+            $user->nomor_telepon  = 123;
+            $user->bidang = $request->bidang;
+
+            $user->save();
+
+            return redirect('/login/');
       }
 }
