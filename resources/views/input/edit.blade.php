@@ -99,7 +99,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-1">
+                                <div class="col-lg-2">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             ID</label>
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-1">
+                                <div class="col-lg-2">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             KD KRO</label>
@@ -120,12 +120,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-2">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             KD RO</label>
                                         <div class="input-group">
-                                            <input value="{{ $item->nama_ro }}" placeholder="{{ $item->nama_ro }}"
+                                        <input value="{{ $item->kd_ro }}" placeholder="{{ $item->kd_ro }}"
                                                 class="form-control" name="kd_ro">
                                         </div>
                                     </div>

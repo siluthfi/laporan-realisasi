@@ -34,28 +34,28 @@
 
                                 <div class="col-lg-5">
                                     <div class="mb-3 form-input">
-                                        <label for="" class="mb-1 fw-bold"> Nama</label>
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span> Nama</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="Nama" class="form-control" name="nama">
+                                            <input value="" placeholder="Nama" class="form-control" name="nama" required> 
                                         </div>
                                     </div>
                                     <div class="mb-3 form-input">
-                                        <label for="" class="mb-1 fw-bold"> Username</label>
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span> Username</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="Username" class="form-control" name="username">
+                                            <input value="" placeholder="Username" class="form-control" name="username" required>
                                         </div>
                                     </div>
                                     <div class="mb-3 form-input">
-                                        <label for="" class="mb-1 fw-bold"> Password</label>
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span> Password</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="Password" class="form-control" name="password"
+                                            <input value="" placeholder="Password" class="form-control" name="password" required
                                                 type="password">
                                         </div>
                                     </div>
                                     <div class="mb-3 form-input">
-                                        <label for="" class="mb-1 fw-bold"> Email</label>
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span> Email</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="Email" class="form-control" name="email">
+                                            <input value="" placeholder="Email" class="form-control" name="email" required>
                                         </div>
                                     </div>
 
@@ -85,22 +85,22 @@
 
                                 <div class="col-lg-5">
                                     <div class="mb-3 form-input">
-                                        <label for="" class="mb-1 fw-bold"> NIP</label>
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span> NIP</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="NIP" class="form-control" name="nip">
+                                            <input value="" placeholder="NIP" class="form-control" name="nip" required>
                                         </div>
                                     </div>
                                     <div class="mb-3 form-input">
-                                        <label for="" class="mb-1 fw-bold"> Nomor</label>
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span> Nomor</label>
                                         <div class="input-group">
-                                            <input value="" placeholder="Nomor" class="form-control" name="nomor">
+                                            <input value="" placeholder="Nomor" class="form-control" name="nomor" required>
                                         </div>
                                     </div>
                                     <div class="mb-3 input-group">
-                                        <label for="" class="mb-1 fw-bold"> Bidang
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span> Bidang
                                         </label>
                                         <div class="input-group">
-                                            <select class="form-select" id="inputGroupSelect01" name="bidang">
+                                            <select class="form-select" id="inputGroupSelect01" name="bidang" required>
                                                 @foreach ($bidang as $b)
                                                     <option value="{{ $b }}">{{ $b }}</option>
                                                 @endforeach
@@ -108,10 +108,10 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 input-group">
-                                        <label for="" class="mb-1 fw-bold"> Gender
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>  Gender
                                         </label>
                                         <div class="input-group">
-                                            <select class="form-select" id="inputGroupSelect01" name="gender">
+                                            <select class="form-select" id="inputGroupSelect01" name="gender" required>
                                                 @foreach ($gender as $g)
                                                     <option value="{{ $g }}">{{ $g }}</option>
                                                 @endforeach

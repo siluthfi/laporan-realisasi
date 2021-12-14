@@ -183,7 +183,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-1">
+                            <div class="col-lg-2">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         ID</label>
@@ -194,7 +194,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-1">
+                            <div class="col-lg-2">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         KD KRO</label>
@@ -205,12 +205,12 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-2">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         KD RO</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->nama_ro }}" placeholder="{{ $data->nama_ro }}"
+                                        <input value="{{ $data->kd_ro }}" placeholder="{{ $data->kd_ro }}"
                                             class="form-control" name="kd_ro" disabled>
                                     </div>
                                 </div>
@@ -299,7 +299,7 @@
                     <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
                     <td class="text-center">{{ $data2->volume_capaian }}</td>
                     <td class="justify-content-center">
-                        <button type="button" class="btn btn-sm btn-success px-2" data-bs-toggle="modal"
+                        <button type="button" class="px-2 btn btn-sm btn-success" data-bs-toggle="modal"
                             data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
                         @if ($bidang == 'Admin')
                         @else

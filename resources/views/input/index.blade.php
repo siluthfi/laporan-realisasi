@@ -10,7 +10,7 @@
                         @if ($bidang === 'Admin')
                             <div class="col-sm ">
                                 <a href="{{ route('create.laporan') }}" class="text-white text-decoration-none">
-                                    <button class="px-4 py-2  mt-3 btn btn-outline-primary fw-bold "><i class="fas fa-plus "></i>
+                                    <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold "><i class="fas fa-plus "></i>
                                         <div class="d-none d-sm-inline">New
                                     </button>
                                 </a>
@@ -25,9 +25,6 @@
     <div class="mt-4 mb-4 row">
         <div class="col-lg-12 ">
             <div class="p-4 border rounded shadow-sm bg-light">
-                <h2 class="mb-5">
-                    Laporan
-                </h2>
                 <table id="datatable" class="table table-bordered " style="width:100%">
                     <thead>
                         <tr class="text-center fw-bold">

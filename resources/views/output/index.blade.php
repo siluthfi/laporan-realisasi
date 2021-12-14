@@ -4,24 +4,24 @@
 
 {{-- @dd($paguUMUM) --}}
 
-{{-- <div class="row mb-3">
+{{-- <div class="mb-3 row">
     <div class="col-md">
         <h2 class="" style="text-align: center">ANGGARAN</h2>
     </div>
 </div> --}}
 
-<div class="row my-5">
-    <div class="col-md-8 mb-3">
-        <div class="card shadow-sm p-3 border-top-blue">
-            <div class="card-header bg-white">
+<div class="my-5 row">
+    <div class="mb-3 col-md-8">
+        <div class="p-3 shadow-sm card border-top-blue">
+            <div class="bg-white card-header">
                 <h2>Anggaran</h2>
             </div>
             <canvas id="chartBarAnggaran" height="465"></canvas>
         </div>
     </div>
-    <div class="col-md-4 mb-3">
-        <div class="card bg-white shadow-sm p-3 border-top-red">
-            <div class="card-header bg-white mb-3">
+    <div class="mb-3 col-md-4">
+        <div class="p-3 bg-white shadow-sm card border-top-red">
+            <div class="mb-3 bg-white card-header">
                 <h2>Anggaran</h2>
             </div>
             <canvas id="chartPieAnggaran"></canvas>
@@ -32,19 +32,19 @@
 <div class="row">
 </div>
 
-<div class="row mb-5">
+<div class="mb-5 row">
     {{-- <div class="col-md-3 offset-md-3"> --}}
-    <div class="col-md-8 mb-3">
-        <div class="card shadow-sm p-3 border-top-orange">
-            <div class="card-header bg-white">
+    <div class="mb-3 col-md-8">
+        <div class="p-3 shadow-sm card border-top-orange">
+            <div class="bg-white card-header">
                 <h2>Output</h2>
             </div>
             <canvas id="chartBarOutput" height="465"></canvas>
         </div>
     </div>
-    <div class="col-md-4 mb-3">
-        <div class="card bg-white shadow-sm p-3 border-top-yellow">
-            <div class="card-header bg-white mb-3">
+    <div class="mb-3 col-md-4">
+        <div class="p-3 bg-white shadow-sm card border-top-yellow">
+            <div class="mb-3 bg-white card-header">
                 <h2>Output</h2>
             </div>
             <canvas id="chartPieOutput"></canvas>

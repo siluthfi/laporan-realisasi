@@ -38,13 +38,13 @@
         <div class="row g-0">
             <!-- Login  -->
             <!-- Background Image -->
-            <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image" style="background-image: linear-gradient( 135deg, #97ABFF 10%, #5976EF 100%);"></div>
+            <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image" style="background-image: linear-gradient( 135deg, #738ae8 10%, #3451c7 100%);"></div>
             <div class="col-md-8 col-lg-5">
                 <div class="py-5 login d-flex align-items-center bg-light">
                     <div class="container">
                         <div class="row">
                             <div class="mx-auto col-md-6 col-lg-8">
-                                <h3 class="mb-5 login-heading fs-2 fw-bold">Nama Website</h3>
+                                <h3 class="mb-5 login-heading fs-2 fw-bold">Laporan Output</h3>
                                 <form action="{{ route('login.store') }}" method="POST">
                                     @csrf
                                     <div class="mb-3 form-floating">

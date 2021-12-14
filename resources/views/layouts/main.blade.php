@@ -29,7 +29,7 @@
         });
     </script>
 
-    <title>Laporan Realisasi</title>
+    <title>Laporan Output</title>
 
 </head>
 
