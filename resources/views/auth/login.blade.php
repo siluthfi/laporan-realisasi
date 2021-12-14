@@ -28,6 +28,34 @@
         });
     </script>
 
+    <style>
+ .css-selector {
+    background: linear-gradient(138deg, #cbd2f3, #3451c7);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 2%}
+    50%{background-position:100% 99%}
+    100%{background-position:0% 2%}
+}
+
+    </style>
+
     <title></title>
 </head>
 
@@ -38,7 +66,8 @@
         <div class="row g-0">
             <!-- Login  -->
             <!-- Background Image -->
-            <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image" style="background-image: linear-gradient( 135deg, #738ae8 10%, #3451c7 100%);"></div>
+            <div class="d-none d-md-flex col-md-4 col-lg-7 bg-image css-selector"
+                style=""></div>
             <div class="col-md-8 col-lg-5">
                 <div class="py-5 login d-flex align-items-center bg-light">
                     <div class="container">
@@ -80,7 +109,8 @@
 
 
                                     <div class="mb-5 d-grid">
-                                        <button class="mb-2 rounded btn btn-lg btn-primary btn-login text-uppercase fw-bold"
+                                        <button
+                                            class="mb-2 rounded btn btn-lg btn-primary btn-login text-uppercase fw-bold"
                                             type="submit">Login</button>
                                     </div>
 
