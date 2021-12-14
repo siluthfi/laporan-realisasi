@@ -38,7 +38,7 @@
                                 <td>{{ $percentageUMUM }} % </td>
                                 <td>{{ $targetUMUM }}</td>
                                 <td>{{ $rp2UMUM }}</td>
-                                <td>{{ $percentageUMUM2 }}</td>
+                                <td>{{ $percentageUMUM2 }} % </td>
                             </tr>
 
                             <tr>
@@ -50,7 +50,7 @@
                                 <td>{{ $percentagePPAI }} % </td>
                                 <td>{{ $targetPPAI }}</td>
                                 <td>{{ $rp2PPAI }}</td>
-                                <td>{{ $percentagePPAI2 }}</td>
+                                <td>{{ $percentagePPAI2 }} % </td>
                             </tr>
 
                             <tr>
@@ -62,7 +62,7 @@
                                 <td>{{ $percentagePPAII }} % </td>
                                 <td>{{ $targetPPAII }}</td>
                                 <td>{{ $rp2PPAII }}</td>
-                                <td>{{ $percentagePPAII2 }}</td>
+                                <td>{{ $percentagePPAII2 }} % </td>
                             </tr>
 
                             <tr>
@@ -74,7 +74,7 @@
                                 <td>{{ $percentageSKKI }} % </td>
                                 <td>{{ $targetSKKI }}</td>
                                 <td>{{ $rp2SKKI }}</td>
-                                <td>{{ $percentageSKKI2 }}</td>
+                                <td>{{ $percentageSKKI2 }} % </td>
                             </tr>
 
                             <tr>
@@ -86,7 +86,7 @@
                                 <td>{{ $percentagePAPK }} % </td>
                                 <td>{{ $targetPAPK }}</td>
                                 <td>{{ $rp2PAPK }}</td>
-                                <td>{{ $percentagePAPK2 }}</td>
+                                <td>{{ $percentagePAPK2 }} % </td>
                             </tr>
                         </tbody>
 
