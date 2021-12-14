@@ -56,27 +56,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 
+    const dataBarAnggaranRealisasi = [{{ $rpUMUM }}, {{ $rpPPAI }}, {{ $rpPPAII }}, {{ $rpSKKI }}, {{ $rpPAPK }}]
+    const dataBarAnggaranPagu = [{{ $paguUMUM }}, {{ $paguPPAI }}, {{ $paguPPAII }}, {{ $paguSKKI }}, {{ $paguPAPK }}]
+    const dataBarAnggaranSisa = [{{ $sisaUMUM }}, {{ $sisaPPAI }}, {{ $sisaPPAII }}, {{ $sisaSKKI }}, {{ $sisaPAPK }}]
+
+    console.log(dataBarAnggaranRealisasi)
+
     // setup chart bar group
     const dataGroup = {
     labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
     datasets: [
                 {
                     label: 'REALISASI',
-                    data: [{{ $rpUMUM }}, {{ $rpPPAI }}, {{ $rpPPAII }}, {{ $rpSKKI }}, {{ $rpPAPK }}],
+                    data: dataBarAnggaranRealisasi,
                     backgroundColor: ['rgb(255, 99, 132)'],
                     stack: 'Stack 0',
                     yAxisID: 'percentage'
                 },
                 {   
                     label: 'PAGU',
-                    data: [{{ $paguUMUM }}, {{ $paguPPAI }}, {{ $paguPPAII }}, {{ $paguSKKI }}, {{ $paguPAPK }}],
+                    data: dataBarAnggaranPagu,
                     backgroundColor: ['rgb(54, 162, 235)'],
                     stack: 'Stack 1',
                     yAxisID: 'percentage'
                 },
                 {
                     label: 'SISA',
-                    data: [{{ $sisaUMUM }}, {{ $sisaPPAI }}, {{ $sisaPPAII }}, {{ $sisaSKKI }}, {{ $sisaPAPK }}],
+                    data: dataBarAnggaranSisa,
                     backgroundColor: ['rgb(255, 205, 86)'],
                     stack: 'Stack 2',
                     yAxisID: 'currency'
@@ -132,12 +138,14 @@
         configGroup
     )
 
+    const dataPieAnggaran = [{{ $percentageUMUM }}, {{ $percentagePPAI }}, {{ $percentagePPAII }}, {{ $percentageSKKI }}, {{ $percentagePAPK }}]
+
     const setupPieAnggaran = {
             labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
             datasets: [{
                 label: '%',
                 // data: [10, 20, 30, 40, 50],
-                data: [{{ $percentageUMUM }}, {{ $percentagePPAI }}, {{ $percentagePPAII }}, {{ $percentageSKKI }}, {{ $percentagePAPK }}],
+                data: dataPieAnggaran,
                 backgroundColor: [
                         '#f3a683',
                         '#f7d794',
@@ -174,19 +182,22 @@
         configPieAnggaran
     )
 
+    const dataBarOutputRealisasi = [{{ $rp2UMUM }}, {{ $rp2PPAI }}, {{ $rp2PPAII }}, {{ $rp2SKKI }}, {{ $rp2PAPK }}]
+    const dataBarOutputTarget = [{{ $targetUMUM }}, {{ $targetPPAI }}, {{ $targetPPAII }}, {{ $targetSKKI }}, {{ $targetPAPK }}]
+
     const dataBarOutput = {
     labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
     datasets: [
                 {
                     label: 'REALISASI',      
-                    data: [{{ $rp2UMUM }}, {{ $rp2PPAI }}, {{ $rp2PPAII }}, {{ $rp2SKKI }}, {{ $rp2PAPK }}],
+                    data: dataBarOutputRealisasi,
                     backgroundColor: ['rgb(255, 99, 132)'],
                     stack: 'Stack 0',
                     yAxisID: 'percentage'
                 },
                 {   
                     label: 'TARGET',
-                    data: [{{ $targetUMUM }}, {{ $targetPPAI }}, {{ $targetPPAII }}, {{ $targetSKKI }}, {{ $targetPAPK }}],
+                    data: dataBarOutputTarget,
                     backgroundColor: ['rgb(54, 162, 235)'],
                     stack: 'Stack 1',
                     yAxisID: 'percentage'
@@ -241,11 +252,13 @@
         configBarOutput
     )
 
+    const dataPieOutput = [{{ $percentageUMUM2 }}, {{ $percentagePPAI2 }}, {{ $percentagePPAII2 }}, {{ $percentageSKKI2 }}, {{ $percentagePAPK2 }}]
+
     const setupPieOutput = {
             labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
             datasets: [{
                 label: '%',
-                data: [{{ $percentageUMUM2 }}, {{ $percentagePPAI2 }}, {{ $percentagePPAII2 }}, {{ $percentageSKKI2 }}, {{ $percentagePAPK2 }}],
+                data: dataPieOutput,
                 backgroundColor: [
                         '#f3a683',
                         '#f7d794',
