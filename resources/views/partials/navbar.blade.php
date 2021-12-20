@@ -1,9 +1,9 @@
 <!-- Page content wrapper-->
 
 <!-- Nav Start -->
-<nav class="mb-3 navbar navbar-expand-lg navbar-light bg-light border-bottom p-0">
+<nav class="p-0 mb-3 navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
-        <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <button class="my-2 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,7 +33,29 @@
                 @endif
             </ul>
         </div>
-        <div class="div ms-auto mb-1">
+        <div class="flex-shrink-0 px-1 py-3 dropdown d-flex justify-content-end">
+            <a href="#" class="d-block link-light text-decoration-none " id="dropdownUser2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class='fa fa-angle-down text-secondary me-1'></i>
+                <img src="{{ asset('images') }}/{{ Auth()->user()->user_profile }}" alt="{{  Auth()->user()->nama }}" width="30" height="30"
+                class="bg-white border rounded-circle" style="width: 30px; height: 30px;" >
+            </a>
+            <ul class="shadow dropdown-menu" aria-labelledby="dropdownUser2" style="margin-left: -6.5rem">
+                <li><a class="dropdown-item" href="{{ route('user.profile', Auth()->user()->nama) }}"><i
+                    class="fas fa-user-cog"></i>
+                Detail Profile</a></li>
+        </li>
+        <hr class="dropdown-divider">
+        <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i
+                    class="fas fa-sign-out-alt"></i> Sign
+                out</a>
+        </li>
+
+
+            </ul>
+        </div>
+
+        {{-- <div class="mb-1 div ms-auto">
             <div class="flex-shrink-0 px-1 dropdown">
                 <a href="#" class="d-block link-light text-decoration-none " id="dropdownUser2"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,20 +63,19 @@
                     <img src="{{ asset('images/') }}/{{ Auth()->user()->user_profile }}" alt="{{  Auth()->user()->nama }}" width="30" height="30"
                         class="bg-white border rounded-circle">
                 </a>
-                <ul class="mt-4 shadow dropdown-menu" style="margin-left: -100px" aria-labelledby="dropdownUser2">
                     <li><a class="dropdown-item" href="{{ route('user.profile', Auth()->user()->nama) }}"><i
                                 class="fas fa-user-cog"></i>
                             Detail Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
                     </li>
+                    <hr class="dropdown-divider">
                     <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i
                                 class="fas fa-sign-out-alt"></i> Sign
                             out</a>
                     </li>
+
                 </ul>
             </div>
-        </div>
+        </div> --}}
 
 </nav>
 <!-- Nav end -->

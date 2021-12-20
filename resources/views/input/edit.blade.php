@@ -44,15 +44,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-2">
                                     <div class="mb-4 input-group">
-                                        <label for="" class="mb-1 fw-bold">
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
                                             Bagian/Bidang
                                         </label>
                                         <div class="input-group">
-                                            <select class="form-select" id="inputGroupSelect01" name="bidang">
-                                                <option value="{{ $item->bidang }}">
-                                                    {{ $item->bidang }}</option>
+                                            <select class="form-select" id="inputGroupSelect01" name="bidang" required>
                                                 @foreach ($bidangs as $bidang)
                                                     <option value="{{ $bidang }}">
                                                         {{ $bidang }}</option>
@@ -61,22 +59,25 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold">
-                                            Target Volume Realisasi Output
+                                <div class="col-lg-2">
+                                    <div class="mb-4 input-group">
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                            Satuan
                                         </label>
                                         <div class="input-group">
-                                            <input type="number" value="{{ $item->volume_target_realisasi }}"
-                                                placeholder="{{ $item->volume_target_realisasi }}" class="form-control"
-                                                name="volume_target_realisasi">
+                                            <select class="form-select" id="inputGroupSelect01" name="satuan" required>
+                                                @foreach ($satuans as $satuan)
+                                                    <option value="{{ $satuan }}">
+                                                        {{ $satuan }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             Pagu</label>
@@ -86,7 +87,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             RP</label>
@@ -132,7 +133,7 @@
                                 </div>
 
 
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             Target Volume</label>
@@ -144,7 +145,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold">
                                             Jumlah Volume</label>
@@ -152,17 +153,6 @@
                                             <input type="number" value="{{ $item->volume_jumlah }}"
                                                 placeholder="{{ $item->volume_jumlah }}" class="form-control"
                                                 name="volume_jumlah">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-2">
-                                    <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold">
-                                            Satuan</label>
-                                        <div class="input-group">
-                                            <input value="{{ $item->satuan }}" placeholder="{{ $item->satuan }}"
-                                                class="form-control" name="satuan">
                                         </div>
                                     </div>
                                 </div>

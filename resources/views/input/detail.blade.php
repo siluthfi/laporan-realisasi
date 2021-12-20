@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-2">
                                 <div class="mb-4 input-group">
                                     <label for="" class="mb-1 fw-bold">
                                         Bagian/Bidang
@@ -81,6 +81,20 @@
                                         <select class="form-select" id="inputGroupSelect01" name="bidang" disabled>
                                             <option value="{{ $data->bidang }}">
                                                 {{ $data->bidang }}</option>
+                                                
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="mb-4 input-group">
+                                    <label for="" class="mb-1 fw-bold">
+                                        Satuan
+                                    </label>
+                                    <div class="input-group">
+                                        <select class="form-select" id="inputGroupSelect01" name="satuan" disabled>
+                                            <option value="{{ $data->satuan }}">
+                                                {{ $data->satuan }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -88,19 +102,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-3">
-                                <div class="mb-4 form-input">
-                                    <label for="" class="mb-1 fw-bold">
-                                        Target Volume Realisasi Output
-                                    </label>
-                                    <div class="input-group">
-                                        <input type="number" value="{{ $data->volume_target_realisasi }}"
-                                            placeholder="{{ $data->volume_target_realisasi }}" class="form-control"
-                                            name="volume_target_realisasi" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
+
+                            <div class="col-lg-4">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Pagu</label>
@@ -111,7 +114,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         RP</label>
@@ -122,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Sisa</label>
@@ -137,7 +140,7 @@
 
 
                         <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         RVO</label>
@@ -147,7 +150,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         RVO Maksimal</label>
@@ -158,18 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
-                                <div class="mb-4 form-input">
-                                    <label for="" class="mb-1 fw-bold">
-                                        Capaian Realisasi</label>
-                                    <div class="input-group">
-                                        <input value="{{ $data->capaian_realisasi }}"
-                                            placeholder="{{ $data->capaian_realisasi }}" class="form-control"
-                                            name="capaian_ro" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Capaian</label>
@@ -217,7 +209,7 @@
                             </div>
 
 
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Target Volume</label>
@@ -229,7 +221,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-2">
+                            <div class="col-lg-3">
                                 <div class="mb-4 form-input">
                                     <label for="" class="mb-1 fw-bold">
                                         Jumlah Volume</label>
@@ -237,17 +229,6 @@
                                         <input type="number" value="{{ $data->volume_jumlah }}"
                                             placeholder="{{ $data->volume_jumlah }}" class="form-control"
                                             name="volume_jumlah" disabled>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-2">
-                                <div class="mb-4 form-input">
-                                    <label for="" class="mb-1 fw-bold">
-                                        Satuan</label>
-                                    <div class="input-group">
-                                        <input value="{{ $data->satuan }}" placeholder="{{ $data->satuan }}"
-                                            class="form-control" name="satuan" disabled>
                                     </div>
                                 </div>
                             </div>

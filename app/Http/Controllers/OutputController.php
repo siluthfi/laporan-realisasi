@@ -18,7 +18,7 @@ class OutputController extends Controller
         ##### UMUM Section
 
         // GET Bidang
-        $dataUMUM = $oneinput->where('bidang', 'Umum')->get();
+        $dataUMUM = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'Umum')->get();
 
         // Chart Anggaran
         $allPaguUmum = [];
@@ -33,7 +33,7 @@ class OutputController extends Controller
             array_push($allPaguUmum, $data['pagu']);
             array_push($allRPUmum, $data['rp']);
             array_push($allTargetUmum, $data['volume_target']);
-            array_push($allRP2Umum, $data['volume_target_realisasi']);
+            array_push($allRP2Umum, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -69,7 +69,7 @@ class OutputController extends Controller
 
         ##### PPAI Section
         // GET Bidang
-        $dataPPAI = $oneinput->where('bidang', 'PPA I')->get();
+        $dataPPAI = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'PPA I')->get();
 
         // Anggaran
         $allPaguPPAI = [];
@@ -84,7 +84,7 @@ class OutputController extends Controller
             array_push($allPaguPPAI, $data['pagu']);
             array_push($allRPPPAI, $data['rp']);
             array_push($allTargetPPAI, $data['volume_target']);
-            array_push($allRP2PPAI, $data['volume_target_realisasi']);
+            array_push($allRP2PPAI, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -121,7 +121,7 @@ class OutputController extends Controller
 
         ##### PPA II Section
         // GET Bidang
-        $dataPPAII = $oneinput->where('bidang', 'PPA II')->get();
+        $dataPPAII = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'PPA II')->get();
 
         // Anggaran
         $allPaguPPAII = [];
@@ -136,7 +136,7 @@ class OutputController extends Controller
             array_push($allPaguPPAII, $data['pagu']);
             array_push($allRPPPAII, $data['rp']);
             array_push($allTargetPPAII, $data['volume_target']);
-            array_push($allRP2PPAII, $data['volume_target_realisasi']);
+            array_push($allRP2PPAII, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -172,7 +172,7 @@ class OutputController extends Controller
 
         ##### PAPK Section
         // GET Bidang
-        $dataPAPK = $oneinput->where('bidang', 'PAPK')->get();
+        $dataPAPK = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'PAPK')->get();
 
         // Anggaran
         $allPaguPAPK = [];
@@ -187,7 +187,7 @@ class OutputController extends Controller
             array_push($allPaguPAPK, $data['pagu']);
             array_push($allRPPAPK, $data['rp']);
             array_push($allTargetPAPK, $data['volume_target']);
-            array_push($allRP2PAPK, $data['volume_target_realisasi']);
+            array_push($allRP2PAPK, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -223,7 +223,7 @@ class OutputController extends Controller
 
         ##### SKKI Section
         // GET Bidang
-        $dataSKKI = $oneinput->where('bidang', 'SKKI')->get();
+        $dataSKKI = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'SKKI')->get();
 
         // Anggaran
         $allPaguSKKI = [];
@@ -238,7 +238,7 @@ class OutputController extends Controller
             array_push($allPaguSKKI, $data['pagu']);
             array_push($allRPSKKI, $data['rp']);
             array_push($allTargetSKKI, $data['volume_target']);
-            array_push($allRP2SKKI, $data['volume_target_realisasi']);
+            array_push($allRP2SKKI, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -339,7 +339,7 @@ class OutputController extends Controller
     {
         ##### UMUM Section
         // GET Bidang
-        $dataUMUM = $oneinput->where('bidang', 'Umum')->get();
+        $dataUMUM = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'Umum')->get();
 
         // Chart Anggaran
         $allPaguUmum = [];
@@ -354,7 +354,7 @@ class OutputController extends Controller
             array_push($allPaguUmum, $data['pagu']);
             array_push($allRPUmum, $data['rp']);
             array_push($allTargetUmum, $data['volume_target']);
-            array_push($allRP2Umum, $data['volume_target_realisasi']);
+            array_push($allRP2Umum, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -390,7 +390,7 @@ class OutputController extends Controller
 
         ##### PPAI Section
         // GET Bidang
-        $dataPPAI = $oneinput->where('bidang', 'PPA I')->get();
+        $dataPPAI = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'PPA I')->get();
 
         // Anggaran
         $allPaguPPAI = [];
@@ -405,7 +405,7 @@ class OutputController extends Controller
             array_push($allPaguPPAI, $data['pagu']);
             array_push($allRPPPAI, $data['rp']);
             array_push($allTargetPPAI, $data['volume_target']);
-            array_push($allRP2PPAI, $data['volume_target_realisasi']);
+            array_push($allRP2PPAI, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -442,7 +442,7 @@ class OutputController extends Controller
 
         ##### PPA II Section
         // GET Bidang
-        $dataPPAII = $oneinput->where('bidang', 'PPA II')->get();
+        $dataPPAII = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'PPA II')->get();
 
         // Anggaran
         $allPaguPPAII = [];
@@ -457,7 +457,7 @@ class OutputController extends Controller
             array_push($allPaguPPAII, $data['pagu']);
             array_push($allRPPPAII, $data['rp']);
             array_push($allTargetPPAII, $data['volume_target']);
-            array_push($allRP2PPAII, $data['volume_target_realisasi']);
+            array_push($allRP2PPAII, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -493,7 +493,7 @@ class OutputController extends Controller
 
         ##### PAPK Section
         // GET Bidang
-        $dataPAPK = $oneinput->where('bidang', 'PAPK')->get();
+        $dataPAPK = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'PAPK')->get();
 
         // Anggaran
         $allPaguPAPK = [];
@@ -508,7 +508,7 @@ class OutputController extends Controller
             array_push($allPaguPAPK, $data['pagu']);
             array_push($allRPPAPK, $data['rp']);
             array_push($allTargetPAPK, $data['volume_target']);
-            array_push($allRP2PAPK, $data['volume_target_realisasi']);
+            array_push($allRP2PAPK, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran
@@ -544,7 +544,7 @@ class OutputController extends Controller
 
         ##### SKKI Section
         // GET Bidang
-        $dataSKKI = $oneinput->where('bidang', 'SKKI')->get();
+        $dataSKKI = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'SKKI')->get();
 
         // Anggaran
         $allPaguSKKI = [];
@@ -559,7 +559,7 @@ class OutputController extends Controller
             array_push($allPaguSKKI, $data['pagu']);
             array_push($allRPSKKI, $data['rp']);
             array_push($allTargetSKKI, $data['volume_target']);
-            array_push($allRP2SKKI, $data['volume_target_realisasi']);
+            array_push($allRP2SKKI, $data['volume_jumlah']);
         }
 
         // Result Chart Anggaran

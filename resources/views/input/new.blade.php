@@ -42,7 +42,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-2">
                                     <div class="mb-4 input-group">
                                         <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
                                             Bagian/Bidang
@@ -57,10 +57,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-2">
+                                    <div class="mb-4 input-group">
+                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                            Satuan
+                                        </label>
+                                        <div class="input-group">
+                                            <select class="form-select" id="inputGroupSelect01" name="satuan" required>
+                                                @foreach ($satuans as $satuan)
+                                                    <option value="{{ $satuan }}">
+                                                        {{ $satuan }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-4">
+                                {{-- <div class="col-lg-4">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
                                             Target Volume Realisasi Output
@@ -70,8 +85,8 @@
                                                 class="form-control" name="volume_target_realisasi" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4">
+                                </div> --}}
+                                <div class="col-lg-6">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
                                             Pagu</label>
@@ -81,7 +96,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-6">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
                                             RP</label>
@@ -126,7 +141,7 @@
                                 </div>
 
 
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
                                             Target Volume</label>
@@ -137,24 +152,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
                                             Jumlah Volume</label>
                                         <div class="input-group">
                                             <input type="number" value="" placeholder="Jumlah Volume" class="form-control"
                                                 name="volume_jumlah" required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-2">
-                                    <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
-                                            Satuan</label>
-                                        <div class="input-group">
-                                            <input value="" placeholder="Satuan" class="form-control" name="satuan"
-                                                required>
                                         </div>
                                     </div>
                                 </div>
