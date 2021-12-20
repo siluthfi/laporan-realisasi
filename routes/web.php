@@ -11,6 +11,8 @@ Route::get('/',[LoginController::class, 'index'])->middleware('auth');
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/register', [LoginController::class, 'register_store'])->name('register.store');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
@@ -31,11 +33,13 @@ Route::post('/dokumen/edit/{twoinput:id}', [InputController::class, 'edit_dokume
 
 Route::get('/laporan', [InputController::class, 'index'])->name('index');
 Route::get('/laporan/detail/{oneinput:id}', [InputController::class, 'detail'])->name('detail.laporan');
+Route::put('/laporan/detail/{oneinput:id}', [InputController::class, 'reset_jumlah_volume'])->name('reset_volume.laporan');
 Route::get('/laporan/create', [InputController::class, 'create_laporan'])->name('create.laporan');
 Route::post('/laporan/store', [InputController::class, 'store_laporan'])->name('store.laporan');
 Route::get('/laporan/edit/{oneinput:id}', [InputController::class, 'edit_laporan'])->name('edit.laporan');
 Route::put('/laporant/edit/{oneinput:id}', [InputController::class, 'update_laporan'])->name('update.laporan');
 Route::delete('/laporan/delete/{oneinput:id}', [InputController::class, 'destroy_laporan'])->name('destroy.laporan');
+
 
 
 // Output

@@ -18,7 +18,7 @@ class OutputController extends Controller
         ##### UMUM Section
 
         // GET Bidang
-        $dataUMUM = $oneinput->where('bidang', 'UMUM')->get();
+        $dataUMUM = $oneinput->where('bidang', 'Umum')->get();
 
         // Chart Anggaran
         $allPaguUmum = [];
@@ -339,7 +339,7 @@ class OutputController extends Controller
     {
         ##### UMUM Section
         // GET Bidang
-        $dataUMUM = $oneinput->where('bidang', 'UMUM')->get();
+        $dataUMUM = $oneinput->where('bidang', 'Umum')->get();
 
         // Chart Anggaran
         $allPaguUmum = [];

@@ -4,24 +4,24 @@
 
 {{-- @dd($paguUMUM) --}}
 
-{{-- <div class="row mb-3">
+{{-- <div class="mb-3 row">
     <div class="col-md">
         <h2 class="" style="text-align: center">ANGGARAN</h2>
     </div>
 </div> --}}
 
-<div class="row my-5">
-    <div class="col-md-8 mb-3">
-        <div class="card shadow-sm p-3 border-top-blue">
-            <div class="card-header bg-white">
+<div class="my-5 row">
+    <div class="mb-3 col-md-8">
+        <div class="p-3 shadow-sm card border-top-blue">
+            <div class="bg-white card-header">
                 <h2>Anggaran</h2>
             </div>
             <canvas id="chartBarAnggaran" height="465"></canvas>
         </div>
     </div>
-    <div class="col-md-4 mb-3">
-        <div class="card bg-white shadow-sm p-3 border-top-red">
-            <div class="card-header bg-white mb-3">
+    <div class="mb-3 col-md-4">
+        <div class="p-3 bg-white shadow-sm card border-top-red">
+            <div class="mb-3 bg-white card-header">
                 <h2>Anggaran</h2>
             </div>
             <canvas id="chartPieAnggaran"></canvas>
@@ -32,19 +32,19 @@
 <div class="row">
 </div>
 
-<div class="row mb-5">
+<div class="mb-5 row">
     {{-- <div class="col-md-3 offset-md-3"> --}}
-    <div class="col-md-8 mb-3">
-        <div class="card shadow-sm p-3 border-top-orange">
-            <div class="card-header bg-white">
+    <div class="mb-3 col-md-8">
+        <div class="p-3 shadow-sm card border-top-orange">
+            <div class="bg-white card-header">
                 <h2>Output</h2>
             </div>
             <canvas id="chartBarOutput" height="465"></canvas>
         </div>
     </div>
-    <div class="col-md-4 mb-3">
-        <div class="card bg-white shadow-sm p-3 border-top-yellow">
-            <div class="card-header bg-white mb-3">
+    <div class="mb-3 col-md-4">
+        <div class="p-3 bg-white shadow-sm card border-top-yellow">
+            <div class="mb-3 bg-white card-header">
                 <h2>Output</h2>
             </div>
             <canvas id="chartPieOutput"></canvas>
@@ -56,27 +56,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 
+    const dataBarAnggaranRealisasi = [{{ $rpUMUM }}, {{ $rpPPAI }}, {{ $rpPPAII }}, {{ $rpSKKI }}, {{ $rpPAPK }}]
+    const dataBarAnggaranPagu = [{{ $paguUMUM }}, {{ $paguPPAI }}, {{ $paguPPAII }}, {{ $paguSKKI }}, {{ $paguPAPK }}]
+    const dataBarAnggaranSisa = [{{ $sisaUMUM }}, {{ $sisaPPAI }}, {{ $sisaPPAII }}, {{ $sisaSKKI }}, {{ $sisaPAPK }}]
+
+    console.log(dataBarAnggaranRealisasi)
+
     // setup chart bar group
     const dataGroup = {
     labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
     datasets: [
                 {
                     label: 'REALISASI',
-                    data: [{{ $rpUMUM }}, {{ $rpPPAI }}, {{ $rpPPAII }}, {{ $rpSKKI }}, {{ $rpPAPK }}],
+                    data: dataBarAnggaranRealisasi,
                     backgroundColor: ['rgb(255, 99, 132)'],
                     stack: 'Stack 0',
                     yAxisID: 'percentage'
                 },
                 {   
                     label: 'PAGU',
-                    data: [{{ $paguUMUM }}, {{ $paguPPAI }}, {{ $paguPPAII }}, {{ $paguSKKI }}, {{ $paguPAPK }}],
+                    data: dataBarAnggaranPagu,
                     backgroundColor: ['rgb(54, 162, 235)'],
                     stack: 'Stack 1',
                     yAxisID: 'percentage'
                 },
                 {
                     label: 'SISA',
-                    data: [{{ $sisaUMUM }}, {{ $sisaPPAI }}, {{ $sisaPPAII }}, {{ $sisaSKKI }}, {{ $sisaPAPK }}],
+                    data: dataBarAnggaranSisa,
                     backgroundColor: ['rgb(255, 205, 86)'],
                     stack: 'Stack 2',
                     yAxisID: 'currency'
@@ -108,8 +114,8 @@
                 currency: {
                     type: 'linear',
                     position: 'left',
-                    min: 100000,
-                    max: 2000000000,
+                    min:{{ min(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
+                    max:{{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
                     grid: {
                         display: false
                     }
@@ -117,8 +123,8 @@
                 percentage: {
                     type: 'linear',
                     position: 'right',
-                    min: 100000,
-                    max: 2000000000,
+                    min:{{ min(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
+                    max: {{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
                     grid: {
                         display: false
                     }
@@ -132,12 +138,14 @@
         configGroup
     )
 
+    const dataPieAnggaran = [{{ $percentageUMUM }}, {{ $percentagePPAI }}, {{ $percentagePPAII }}, {{ $percentageSKKI }}, {{ $percentagePAPK }}]
+
     const setupPieAnggaran = {
             labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
             datasets: [{
                 label: '%',
                 // data: [10, 20, 30, 40, 50],
-                data: [{{ $percentageUMUM }}, {{ $percentagePPAI }}, {{ $percentagePPAII }}, {{ $percentageSKKI }}, {{ $percentagePAPK }}],
+                data: dataPieAnggaran,
                 backgroundColor: [
                         '#f3a683',
                         '#f7d794',
@@ -174,19 +182,22 @@
         configPieAnggaran
     )
 
+    const dataBarOutputRealisasi = [{{ $rp2UMUM }}, {{ $rp2PPAI }}, {{ $rp2PPAII }}, {{ $rp2SKKI }}, {{ $rp2PAPK }}]
+    const dataBarOutputTarget = [{{ $targetUMUM }}, {{ $targetPPAI }}, {{ $targetPPAII }}, {{ $targetSKKI }}, {{ $targetPAPK }}]
+
     const dataBarOutput = {
     labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
     datasets: [
                 {
                     label: 'REALISASI',      
-                    data: [{{ $rp2UMUM }}, {{ $rp2PPAI }}, {{ $rp2PPAII }}, {{ $rp2SKKI }}, {{ $rp2PAPK }}],
+                    data: dataBarOutputRealisasi,
                     backgroundColor: ['rgb(255, 99, 132)'],
                     stack: 'Stack 0',
                     yAxisID: 'percentage'
                 },
                 {   
                     label: 'TARGET',
-                    data: [{{ $targetUMUM }}, {{ $targetPPAI }}, {{ $targetPPAII }}, {{ $targetSKKI }}, {{ $targetPAPK }}],
+                    data: dataBarOutputTarget,
                     backgroundColor: ['rgb(54, 162, 235)'],
                     stack: 'Stack 1',
                     yAxisID: 'percentage'
@@ -218,7 +229,7 @@
                     type: 'linear',
                     position: 'left',
                     min: 0,
-                    max: 10000,
+                    max: {{ max(array( $targetUMUM ,  $targetPPAI ,  $targetPPAII ,  $targetSKKI ,  $targetPAPK )) }},
                     grid: {
                         display: false
                     }
@@ -227,7 +238,7 @@
                     type: 'linear',
                     position: 'right',
                     min: 0,
-                    max: 10000,
+                    max: {{ max(array( $targetUMUM ,  $targetPPAI ,  $targetPPAII ,  $targetSKKI ,  $targetPAPK )) }},
                     grid: {
                         display: false
                     }
@@ -241,11 +252,13 @@
         configBarOutput
     )
 
+    const dataPieOutput = [{{ $percentageUMUM2 }}, {{ $percentagePPAI2 }}, {{ $percentagePPAII2 }}, {{ $percentageSKKI2 }}, {{ $percentagePAPK2 }}]
+
     const setupPieOutput = {
             labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
             datasets: [{
                 label: '%',
-                data: [{{ $percentageUMUM2 }}, {{ $percentagePPAI2 }}, {{ $percentagePPAII2 }}, {{ $percentageSKKI2 }}, {{ $percentagePAPK2 }}],
+                data: dataPieOutput,
                 backgroundColor: [
                         '#f3a683',
                         '#f7d794',

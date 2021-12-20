@@ -66,6 +66,7 @@ class InputController extends Controller
     {
         $bidang = Auth::user()->bidang;
         $input = TwoInput::find($id);
+        
 
         if ($bidang == 'Admin') {
             $input->volume_capaian = $request->volcap;
@@ -91,6 +92,10 @@ class InputController extends Controller
 
     public function edit_laporan($id)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
         $satuan = ['Kegiatan', 'Dokumen' ,'Pegawai', 'Rekomendasi' ,'ISO', 'Satker' , 'Laporan' ,'KPPN' , 'Bulan Layanan' , '-'];
 
@@ -104,6 +109,10 @@ class InputController extends Controller
 
     public function destroy_laporan($id)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $item = OneInput::find($id);
         $item->delete();
         return redirect('/laporan');
@@ -111,6 +120,10 @@ class InputController extends Controller
 
     public function update_laporan(Request $request, $id)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $input = OneInput::find($id);
 
         $pagu = (int)str_replace([',', '.', 'Rp', ' '], '', $request->pagu);
@@ -154,6 +167,10 @@ class InputController extends Controller
 
     public function create_laporan()
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
         $satuan = ['Kegiatan', 'Dokumen' ,'Pegawai', 'Rekomendasi' ,'ISO', 'Satker' , 'Laporan' ,'KPPN' , 'Bulan Layanan' , '-'];
 
@@ -167,10 +184,12 @@ class InputController extends Controller
 
     public function store_laporan(Request $request)
     {
+        if (auth()->user()->bidang !== 'Admin') {
+            abort(403);
+        }
+
         $pagu = (int)str_replace([',', '.', 'Rp', ' '], '', $request->pagu);
         $rp = (int)str_replace([',', '.', 'Rp', ' '], '', $request->rp);
-
-
 
         $rvo = ($request->volume_jumlah / $request->volume_target);
 
@@ -210,5 +229,17 @@ class InputController extends Controller
         $input->save();
 
         return redirect()->back()->with('status', 'Laporan admin berhasil ditambahkan');
+    }
+
+    public function reset_jumlah_volume($id){
+        $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
+        $oneinput = OneInput::find($id);
+        $sum = array_sum($input);
+
+        $oneinput->volume_jumlah = $sum;
+        $oneinput->update();
+
+        return redirect()->back()->with('status', 'Volume jumlah laporan berhasil direset');
+        
     }
 }

@@ -34,7 +34,7 @@ html {
     --bs-danger: #dc3545;
     --bs-light: #f8f9fa;
     --bs-dark: #212529;
-    --bs-font-sans-serif: "inter" "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-sans-serif: 'Lato', "inter" "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))
 }
@@ -49,6 +49,10 @@ html {
      :root {
         scroll-behavior: smooth
     }
+}
+
+html {
+    font-family: 'Lato', sans-serif !important;
 }
 
 body {
@@ -4149,7 +4153,7 @@ fieldset:disabled .btn {
     color: #6b7280;
     text-decoration: none;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
-    border-bottom: 2px white solid;
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -4160,10 +4164,9 @@ fieldset:disabled .btn {
 
 .nav-link:focus,
 .nav-link:hover {
-    color: #333;
-    border-bottom: 2px rgb(236, 236, 236) solid;
-    box-sizing: border-box;
-
+    color: #5976ef;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    border-bottom: 2px solid #5977efea;
 }
 
 .nav-link.disabled {

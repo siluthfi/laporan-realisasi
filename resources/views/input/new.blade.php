@@ -25,7 +25,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-4 form-input">
                                         <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
-                                            Nama RO</label>
+                                            Nama Ro</label>
                                         <div class="input-group">
                                             <input value="" placeholder="Nama Ro" class="form-control" name="nama_ro"
                                                 required>

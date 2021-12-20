@@ -18,9 +18,9 @@
                 <div class="p-2 rounded bg-light">
                     <div class="col-sm">
                         @if ($bidang == 'Admin')
+
                             <a href="{{ route('edit.laporan', $data->id) }}" class="text-decoration-none">
-                                <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i
-                                        class="fas fa-edit"></i>
+                                <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i class="fas fa-edit"></i>
                                     <div class="d-none d-sm-inline"> Edit</div>
                                 </button>
                             </a>
@@ -37,6 +37,7 @@
                                 href="{{ route('index') }}">
                                 Back</a>
                         </button>
+
                     </div>
                 </div>
             </div>
@@ -107,7 +108,8 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Pagu</label>
                                     <div class="input-group">
-                                        <input type="number" value="{{ $data->pagu }}" placeholder="{{ $data->pagu }}"
+                                        <input type="number" value="Rp. {{ number_format($data->pagu, 0, '.', '.') }}"
+                                            placeholder="Rp. {{ number_format($data->pagu, 0, '.', '.') }}"
                                             class="form-control" name="pagu" id="rupiah" disabled>
                                     </div>
                                 </div>
@@ -117,8 +119,9 @@
                                     <label for="" class="mb-1 fw-bold">
                                         RP</label>
                                     <div class="input-group">
-                                        <input type="number" value="{{ $data->rp }}" placeholder="{{ $data->rp }}"
-                                            class="form-control" name="{{ $data->rp }}" id="rupiah" disabled>
+                                        <input type="number" value="Rp. {{ number_format($data->rp, 0, '.', '.') }}"
+                                            placeholder="Rp. {{ number_format($data->rp, 0, '.', '.') }}"
+                                            class="form-control" name="rp" id="rupiah" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -127,8 +130,9 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Sisa</label>
                                     <div class="input-group">
-                                        <input type="number" value="{{ $data->sisa }}" placeholder="{{ $data->sisa }}"
-                                            class="form-control" name="{{ $data->sisa }}" id="rupiah" disabled>
+                                        <input type="number" value="Rp. {{ number_format($data->sisa, 0, '.', '.') }}"
+                                            placeholder="Rp. {{ number_format($data->sisa, 0, '.', '.') }}"
+                                            class="form-control" name="sisa" id="rupiah" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +202,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         KD RO</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->nama_ro }}" placeholder="{{ $data->nama_ro }}"
+                                        <input value="{{ $data->kd_ro }}" placeholder="{{ $data->kd_ro }}"
                                             class="form-control" name="kd_ro" disabled>
                                     </div>
                                 </div>
@@ -239,6 +243,14 @@
     <!-- Form 2 Start -->
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <h2 class="mb-5 d-flex justify-content-between">Daftar Dokumen @if ($bidang == 'Admin')
+                <form action="{{ route('reset_volume.laporan', $data->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="px-4 py-2 btn btn-outline-primary fw-bold "><i
+                            class="fas fa-undo "></i>
+                        <div class="d-none d-sm-inline">Reset Jumlah Volume Laporan
+                    </button>
+                </form>
             @else
                 <button class="btn btn-block btn-outline-primary" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i
                         class='fas fa-plus me-2'></i>Tambah Dokumen</button>
@@ -256,7 +268,7 @@
                     @if ($bidang == 'Admin')
                         <th class="align-middle sorting_none" style="width: 4%">Opsi</th>
                     @else
-                        <th class="align-middle sorting_none" style="width: 11%">Opsi</th>
+                        <th class="align-middle sorting_none" style="width: 7%">Opsi</th>
                     @endif
                 </tr>
             </thead>
@@ -267,15 +279,13 @@
                     <td class="text-center">{{ $data2->nomor_dokumen }}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
                     <td class="text-center">{{ $data2->volume_capaian }}</td>
-                    <td>
-                        <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
-                            data-bs-target="#editDokumen_{{ $data2->id }}"><i
-                                class='fas fa-pencil-alt me-2'></i>Edit</button>
+                    <td class="justify-content-center">
+                        <button type="button" class="px-2 btn btn-sm btn-success" data-bs-toggle="modal"
+                            data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
                         @if ($bidang == 'Admin')
                         @else
                             <button type="button" class="btn btn-sm btn-danger ms-1" data-bs-toggle="modal"
-                                data-bs-target="#hapusDokumen_{{ $data2->id }}"><i
-                                    class='fas fa-trash-alt me-2'></i>Hapus</button>
+                                data-bs-target="#hapusDokumen_{{ $data2->id }}"></i>Hapus</button>
                         @endif
                     </td>
                 </tbody>
