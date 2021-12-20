@@ -21,9 +21,9 @@ class InputController extends Controller
     {
         $bidang = Auth::user()->bidang;
         if ($bidang == 'Admin') {
-            $datas = OneInput::whereYear('created_at', '2020')->get();
+            $datas = OneInput::whereYear('created_at', session('tahun'))->get();
         } else {
-            $datas = OneInput::whereYear('created_at', '2020')->where('bidang', $bidang)->get();
+            $datas = OneInput::whereYear('created_at', session('tahun'))->where('bidang', $bidang)->get();
         }
 
         return view('input.index', [

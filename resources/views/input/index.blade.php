@@ -4,7 +4,7 @@
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="mb-2">Laporan Realisasi</h2>
+                <h2 class="mb-2">Laporan Realisasi Tahun {{ session('tahun') }}</h2>
                 <div class="p-2 rounded bg-light">
                     <div class="col-sm">
                         @if ($bidang === 'Admin')

@@ -115,7 +115,7 @@
                     type: 'linear',
                     position: 'left',
                     min:{{ min(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
-                    max:{{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
+                    max:{{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }} * 2,
                     grid: {
                         display: false
                     }
@@ -124,7 +124,7 @@
                     type: 'linear',
                     position: 'right',
                     min:{{ min(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
-                    max: {{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }},
+                    max: {{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }} * 2,
                     grid: {
                         display: false
                     }
@@ -229,7 +229,7 @@
                     type: 'linear',
                     position: 'left',
                     min: 0,
-                    max: {{ max(array( $targetUMUM ,  $targetPPAI ,  $targetPPAII ,  $targetSKKI ,  $targetPAPK )) }},
+                    max: {{ max(array( $targetUMUM ,  $targetPPAI ,  $targetPPAII ,  $targetSKKI ,  $targetPAPK )) }} * 2,
                     grid: {
                         display: false
                     }
@@ -238,7 +238,7 @@
                     type: 'linear',
                     position: 'right',
                     min: 0,
-                    max: {{ max(array( $targetUMUM ,  $targetPPAI ,  $targetPPAII ,  $targetSKKI ,  $targetPAPK )) }},
+                    max: {{ max(array( $targetUMUM ,  $targetPPAI ,  $targetPPAII ,  $targetSKKI ,  $targetPAPK )) }} * 2,
                     grid: {
                         display: false
                     }

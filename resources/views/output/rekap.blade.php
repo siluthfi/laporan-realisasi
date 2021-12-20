@@ -7,7 +7,7 @@
         <div class="col-lg-12 ">
             <div class="p-4 border rounded shadow-sm bg-light">
                 <h2 class="mb-5">
-                    Monitoring Realisasi Dan Capaian Output
+                    Monitoring Realisasi Dan Capaian Output Tahun {{ session('tahun') }}
                 </h2>
                 <table id="datatable" class="table table-bordered " style="width:100%">
                     <thead>
