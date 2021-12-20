@@ -22,12 +22,12 @@ class CreateOneInputsTable extends Migration
             $table->string('nama_ro');
             $table->string('capaian_ro')->nullable()->default(null);
             $table->integer('volume_target');
-            $table->string('satuan');
+            $table->enum('satuan', ['Kegiatan', 'Dokumen' ,'Pegawai', 'Rekomendasi' ,'ISO', 'Satker' , 'Laporan' ,'KPPN' , '-' , 'Bulan Layanan']);
             $table->integer('volume_jumlah');
             $table->float('rvo');
             $table->float('rvo_maksimal');
-            $table->integer('volume_target_realisasi');
-            $table->float('capaian_realisasi');
+            // $table->integer('volume_target_realisasi');
+            // $table->float('capaian_realisasi');
             $table->bigInteger('pagu');
             $table->bigInteger('rp');
             $table->float('capaian');
