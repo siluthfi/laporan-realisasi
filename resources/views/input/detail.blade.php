@@ -335,8 +335,8 @@
                                         </div>
                                     @else
                                         <div class="row">
+                                            <label for="uraian" class="form-label">Uraian</label>
                                             <div class="mb-3 input-group">
-                                                <label for="uraian" class="form-label">Uraian</label>
                                                 <input type="text" class="form-control" id="uraian" name="uraian"
                                                     placeholder="Masukkan Uraian" value="{{ $data2->uraian }}">
                                             </div>

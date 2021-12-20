@@ -49,6 +49,21 @@ class InputController extends Controller
         ]);
     }
 
+    public function index_dokumen()
+    {
+        $bidang = Auth::user()->bidang;
+        $selection = OneInput::where('bidang', $bidang)->get();
+        $datas2 = TwoInput::all();
+
+        return view('input.dokumen', [
+            'bidang' => $bidang,
+            'datas' => $selection,
+            'datas2' => $datas2,
+            'selection' => $selection,
+            'title' => 'Dokumen',
+        ]);
+    }
+
     public function store_dokumen(Request $request)
     {
         $input = new TwoInput();
@@ -66,7 +81,7 @@ class InputController extends Controller
     {
         $bidang = Auth::user()->bidang;
         $input = TwoInput::find($id);
-        
+
 
         if ($bidang == 'Admin') {
             $input->volume_capaian = $request->volcap;
@@ -243,6 +258,6 @@ class InputController extends Controller
         $oneinput->update();
 
         return redirect()->back()->with('status', 'Volume jumlah laporan berhasil direset');
-        
+
     }
 }
