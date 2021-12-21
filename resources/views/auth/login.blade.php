@@ -135,6 +135,7 @@
                                     <div class="mb-3 form-floating ">
                                         <select class="form-select bg-input" id="floatingSelect"
                                             aria-label="Floating label select example" name="tahun">
+                                            <option value="{{ date('Y') }}">{{ date('Y') }}</option>
                                             <option value="2020">2020</option>
                                             <option value="2021">2021</option>
                                             <option value="2022">2022</option>
