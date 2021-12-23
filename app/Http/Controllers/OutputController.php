@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\OneInput;
+use App\Models\TwoInput;
+use App\Exports\InputExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OutputController extends Controller
 {
@@ -13,8 +16,40 @@ class OutputController extends Controller
         $this->middleware('auth');
     }
 
+    public function exportWithView()
+    {
+        // $oneinput = OneInput::all();
+        // $twoinput = TwoInput::with('OneInput')->get();
+
+        $input = TwoInput::with('OneInput')->get();
+        $twoinput = TwoInput::all();
+        $oneinput = OneInput::all();
+
+        // return view('output.excel.sheet1', [
+        //     'title' => 'Dashboard',
+        //     'input' => $input,
+        //     'oneinput' => $oneinput,
+        //     'twoinput' => $twoinput
+        // ]);
+
+        return Excel::download(new InputExport, 'outputtable.xlsx');
+    }
+
+    public function export()
+    {
+        // $excel = new InputExport();
+        // $excel->setMergeCells(['A1:I1']);
+        // return Excel::download($excel, 'output.xlsx');
+    }
+
     public function index(OneInput $oneinput)
     {
+        $oneinputasd = OneInput::all('digit', 'kd_kro', 'kd_ro', 'bidang', 'nama_ro', 'capaian_ro', 'volume_target', 'satuan', 'volume_jumlah', 'rvo', 'rvo_maksimal', 'volume_target_realisasi', 'capaian_realisasi', 'pagu', 'rp', 'sisa');
+    
+        $twoinput = TwoInput::with('OneInput')->get();
+        // dd($twoinput);
+        
+        //  all('volume_capaian', 'uraian', 'nomor_dokumen', 'tanggal')
         ##### UMUM Section
 
         // GET Bidang
@@ -275,6 +310,7 @@ class OutputController extends Controller
 
         return view('output.index', [
             'title' => 'Dashboard',
+            'twoinput' => $twoinput,
 
             ##### Anggaran Chart Bar and Pie
             // UMUM

@@ -42,10 +42,10 @@
     const dataBarAnggaranSisa = [{{ $sisaUMUM }}, {{ $sisaPPAI }}, {{ $sisaPPAII }}, {{ $sisaSKKI }}, {{ $sisaPAPK }}]
 
     const ResultMax = data => {
-        return data * 2
+        return data * 1.4
     }
 
-    console.log(dataBarAnggaranRealisasi)
+    console.log({{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }})
 
     // setup chart bar group
     const dataGroup = {
@@ -100,7 +100,7 @@
                     type: 'linear',
                     position: 'left',
                     min: 0,
-                    max: ResultMax({{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }}),
+                    max: ResultMax({{ $paguUMUM }}, {{ $paguPPAI }}, {{ $paguPPAII }}, {{ $paguSKKI }}, {{ $paguPAPK }}),
                     grid: {
                         display: false
                     }
@@ -109,7 +109,7 @@
                     type: 'linear',
                     position: 'right',
                     min: 0,
-                    max: ResultMax({{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }}),
+                    max: ResultMax({{ $paguUMUM }}, {{ $paguPPAI }}, {{ $paguPPAII }}, {{ $paguSKKI }}, {{ $paguPAPK }}),
                     grid: {
                         display: false
                     }
@@ -121,50 +121,6 @@
     const chartBarAnggaran = new Chart(
         document.getElementById('chartBarAnggaran'),
         configGroup
-    )
-
-    const dataPieAnggaran = [{{ $percentageUMUM }}, {{ $percentagePPAI }}, {{ $percentagePPAII }}, {{ $percentageSKKI }}, {{ $percentagePAPK }}]
-
-    const setupPieAnggaran = {
-            labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
-            datasets: [{
-                label: '%',
-                // data: [10, 20, 30, 40, 50],
-                data: dataPieAnggaran,
-                backgroundColor: [
-                        '#f3a683',
-                        '#f7d794',
-                        '#ea8685',
-                        '#f8a5c2',
-                        '#f78fb3'
-                    ],
-                hoverOffset: 4
-            }]
-        };
-
-    const configPieAnggaran = {
-        type: 'pie',
-        data: setupPieAnggaran,
-        options: {
-            plugins: {
-                responsive: false,
-                tooltip: {
-                    enabled: true
-                },
-                datalabels: {
-                    formatter: (value, context) => {
-                        return value + '%'
-                    },
-                    color: 'white'
-                }
-            }
-        },
-        plugins: [ChartDataLabels]
-    };
-
-    const chartPieAnggaran = new Chart(
-        document.querySelector('#chartPieAnggaran'),
-        configPieAnggaran
     )
 
     const dataBarOutputRealisasi = [{{ $rp2UMUM }}, {{ $rp2PPAI }}, {{ $rp2PPAII }}, {{ $rp2SKKI }}, {{ $rp2PAPK }}]

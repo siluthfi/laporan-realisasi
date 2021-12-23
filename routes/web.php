@@ -45,4 +45,5 @@ Route::delete('/laporan/delete/{oneinput:id}', [InputController::class, 'destroy
 // Output
 Route::get('/dashboard', [OutputController::class, 'index'])->name('dashboard');
 Route::get('/rekap', [OutputController::class, 'rekap'])->name('rekap');
-
+Route::get('/output/excel/table', [OutputController::class, 'exportWithView'])->name('output.excel.table');
+// Route::get('/output/excel/table', function() {return view('output.excel.sheet1');});

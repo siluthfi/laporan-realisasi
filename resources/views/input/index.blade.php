@@ -6,16 +6,21 @@
             <div class="col-lg-12">
                 <h2 class="mb-2">Laporan Realisasi</h2>
                 <div class="p-2 rounded bg-light">
-                    <div class="col-sm">
-                        @if ($bidang === 'Admin')
-                            <div class="col-sm ">
+                    <div class="row">
+                        <div class="col-sm">
+                            @if ($bidang === 'Admin')
                                 <a href="{{ route('create.laporan') }}" class="text-white text-decoration-none">
                                     <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold "><i class="fas fa-plus "></i>
                                         <div class="d-none d-sm-inline">New
                                     </button>
                                 </a>
-                            </div>
-                        @endif
+                            @endif
+                                <a href="{{ route('output.excel.table') }}" class="text-white text-decoration-none">
+                                    <button class="px-4 py-2 mt-3 btn btn-outline-success fw-bold "><i class="far fa-file-excel"></i>
+                                        <div class="d-none d-sm-inline">Excel
+                                    </button>
+                                </a>
+                        </div>
                     </div>
                 </div>
             </div>
