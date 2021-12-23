@@ -21,9 +21,9 @@ class InputController extends Controller
     {
         $bidang = Auth::user()->bidang;
         if ($bidang == 'Admin') {
-            $datas = OneInput::all();
+            $datas = OneInput::whereYear('created_at', session('tahun'))->get();
         } else {
-            $datas = OneInput::where('bidang', $bidang)->get();
+            $datas = OneInput::whereYear('created_at', session('tahun'))->where('bidang', $bidang)->get();
         }
 
         return view('input.index', [
@@ -49,9 +49,34 @@ class InputController extends Controller
         ]);
     }
 
+    public function index_dokumen()
+    {
+        $bidang = Auth::user()->bidang;
+        $selection = OneInput::where('bidang', $bidang)->get();
+        $datas2 = TwoInput::all();
+
+        return view('input.dokumen', [
+            'bidang' => $bidang,
+            'datas' => $selection,
+            'datas2' => $datas2,
+            'selection' => $selection,
+            'title' => 'Dokumen',
+        ]);
+    }
+
     public function store_dokumen(Request $request)
     {
         $input = new TwoInput();
+
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '.' . $file->extension();
+            $file->move(public_path('files'), $fileName);
+            $input->file = $fileName;
+        } else {
+            $input->file = '';
+        }
 
         $input->uraian = $request->uraian;
         $input->nomor_dokumen = $request->nodok;
@@ -66,7 +91,7 @@ class InputController extends Controller
     {
         $bidang = Auth::user()->bidang;
         $input = TwoInput::find($id);
-        
+
 
         if ($bidang == 'Admin') {
             $input->volume_capaian = $request->volcap;
@@ -75,6 +100,16 @@ class InputController extends Controller
             $input->nomor_dokumen = $request->nodok;
             $input->tanggal = $request->tanggal;
             $input->one_input_id = $request->naro;
+        }
+
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '.' . $file->extension();
+            $file->move(public_path('files'), $fileName);
+            $input->file = $fileName;
+        } else {
+            $input->file = $input->file;
         }
 
         $input->update();
@@ -96,12 +131,14 @@ class InputController extends Controller
             abort(403);
         }
 
-        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK'];
+        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
+        $satuan = ['Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO', 'Satker', 'Laporan', 'KPPN', 'Bulan Layanan', '-'];
 
         return view('input.edit', [
             'item' => OneInput::find($id),
             'bidangs' => $bidang,
             "title" => 'Laporan',
+            'satuans' => $satuan
         ]);
     }
 
@@ -129,13 +166,12 @@ class InputController extends Controller
 
         $rvo = ($request->volume_jumlah / $request->volume_target);
 
-        if ($rvo >= 1.2) {
-            $rvo_max = 1.2;
+        if ($rvo >= 3) {
+            $rvo_max = 3;
         } else {
             $rvo_max = $rvo;
         }
 
-        $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi);
         $capaian =  ($rp / $pagu);
         $sisa =  ($pagu - $rp);
 
@@ -150,14 +186,12 @@ class InputController extends Controller
         $input->capaian_ro = $request->capaian_ro;
         $input->volume_target = $request->volume_target;
         $input->volume_jumlah = $request->volume_jumlah;
-        $input->volume_target_realisasi = $request->volume_target_realisasi;
         $input->pagu = $pagu;
         $input->rp = $rp;
 
         // Otomatis
         $input->rvo = $rvo;
         $input->rvo_maksimal = $rvo_max;
-        $input->capaian_realisasi = $capaian_realisasi;
         $input->capaian = $capaian;
         $input->sisa = $sisa;
 
@@ -172,13 +206,14 @@ class InputController extends Controller
             abort(403);
         }
 
-        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK'];
+        $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
+        $satuan = ['Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO', 'Satker', 'Laporan', 'KPPN', 'Bulan Layanan', '-'];
 
         return view('input.new', [
             'one_inputs' => OneInput::all(),
             'bidangs' => $bidang,
             'title' => 'Laporan',
-
+            'satuans' => $satuan
         ]);
     }
 
@@ -193,13 +228,12 @@ class InputController extends Controller
 
         $rvo = ($request->volume_jumlah / $request->volume_target);
 
-        if ($rvo >= 1.2) {
-            $rvo_max = 1.2;
+        if ($rvo >= 3) {
+            $rvo_max = 3;
         } else {
             $rvo_max = $rvo;
         }
 
-        $capaian_realisasi = ($rvo_max / $request->volume_target_realisasi);
         $capaian =  ($rp / $pagu);
         $sisa =  ($pagu - $rp);
 
@@ -217,7 +251,6 @@ class InputController extends Controller
         $input->capaian_ro = $request->capaian_ro;
         $input->volume_target = $request->volume_target;
         $input->volume_jumlah = $request->volume_jumlah;
-        $input->volume_target_realisasi = $request->volume_target_realisasi;
         $input->pagu = $pagu;
         $input->rp = $rp;
 
@@ -225,7 +258,6 @@ class InputController extends Controller
 
         $input->rvo = $rvo;
         $input->rvo_maksimal = $rvo_max;
-        $input->capaian_realisasi = $capaian_realisasi;
         $input->capaian = $capaian;
         $input->sisa = $sisa;
 
@@ -234,7 +266,8 @@ class InputController extends Controller
         return redirect()->back()->with('status', 'Laporan admin berhasil ditambahkan');
     }
 
-    public function reset_jumlah_volume($id){
+    public function reset_jumlah_volume($id)
+    {
         $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
         $oneinput = OneInput::find($id);
         $sum = array_sum($input);
@@ -243,6 +276,5 @@ class InputController extends Controller
         $oneinput->update();
 
         return redirect()->back()->with('status', 'Volume jumlah laporan berhasil direset');
-        
     }
 }

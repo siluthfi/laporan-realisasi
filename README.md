@@ -17,3 +17,23 @@ Sbg contoh no 1 itu jumlah laporan tp yg nomor 7 dan 8 tuh target
 
 8. Semua proses itu akan menghasilkan sheet berikutnya yaitu rekap dimana rekap ini bisa tampil di dashboard berupa chart 
 Yaitu chart perbandingan realisasi dan target anggaran masing2 bidang dan perbandingan dan target  capaian output masing2 bidang
+
+// Revisi //
+
+1. Untuk output lingkaran dihapuskan
+
+2. Batasan untuk capaian tidak lagi mencapai 120% bisa sampai dengan 300%
+
+3. Untuk volume capaian 
+
+M1 : Penambahan volume secara otomatis setiap M1 ditambahkan
+M2 : Admin bisa menginput berapa jumlah volume capaian nya secara manual
+M3 : Otomatis tanpa isi volume nya untuk bulanan (Tapi kalo jenisnya bulan maka akan baca kl data diambil januari berarti 1, kl feb 2 dst)
+
+4. Penambahan upload file di table 2
+
+5. M1,M2,M3 dikelompokan oleh kolom i
+
+6. Export semua table ke excel seperti excel yang diberikan
+
+7. Pengecekan tahun laporan per tahun di awal masuk

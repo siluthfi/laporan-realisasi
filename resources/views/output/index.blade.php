@@ -42,7 +42,7 @@
     const dataBarAnggaranSisa = [{{ $sisaUMUM }}, {{ $sisaPPAI }}, {{ $sisaPPAII }}, {{ $sisaSKKI }}, {{ $sisaPAPK }}]
 
     const ResultMax = data => {
-        return data * 1.4
+        return data * 2
     }
 
     console.log({{ max(array($sisaUMUM,  $sisaPPAI ,  $sisaPPAII , $sisaSKKI , $sisaPAPK)) }})
