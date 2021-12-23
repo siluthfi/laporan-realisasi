@@ -104,11 +104,10 @@ class InputController extends Controller
     {
         $input2 = new TwoInput();
         $id = $request->naro;
-        $data1 = OneInput::where('id', $id)->get('satuan');
+        $data1 = OneInput::where('id', $id)->value('satuan');
         $month = (int)date('m');
         $m1 = array('Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO',
-        'Satker', 'Laporan', 'KPPN', 'Kegiatan', 'Laporan', 'KPPN', 'Kegiatan', 'Dokumen');
-
+        'Satker', 'Laporan', 'KPPN');
         if (in_array($data1, $m1))
         {
             $input2->volume_capaian = 1;

@@ -74,16 +74,8 @@
                                         Bagian/Bidang
                                     </label>
                                     <div class="input-group">
-<<<<<<< HEAD
                                         <input placeholder="{{ $data->bidang }}"
                                             class="form-control" name="capaian_ro" disabled>
-=======
-                                        <select class="form-select" id="inputGroupSelect01" name="bidang" disabled>
-                                            <option value="{{ $data->bidang }}">
-                                                {{ $data->bidang }}</option>
-
-                                        </select>
->>>>>>> e4eddbca339dd980b26f355a35215bbbac72441d
                                     </div>
                                 </div>
                             </div>
