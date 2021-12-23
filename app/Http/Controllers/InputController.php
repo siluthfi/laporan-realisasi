@@ -123,6 +123,21 @@ class InputController extends Controller
         $input2->one_input_id = $request->naro;
         $input2->save();
 
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '.' . $file->extension();
+            $file->move(public_path('files'), $fileName);
+            $input2->file = $fileName;
+        } else {
+            $input2->file = '';
+        }
+
+        $input2->uraian = $request->uraian;
+        $input2->nomor_dokumen = $request->nodok;
+        $input2->tanggal = $request->tanggal;
+        $input2->one_input_id = $request->naro;
+        $input2->save();
+
         return redirect()->back()->with('status', 'Data berhasil dimasukkan!');
     }
 
@@ -138,6 +153,16 @@ class InputController extends Controller
             $input->nomor_dokumen = $request->nodok;
             $input->tanggal = $request->tanggal;
             $input->one_input_id = $request->naro;
+        }
+
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = time() . '.' . $file->extension();
+            $file->move(public_path('files'), $fileName);
+            $input->file = $fileName;
+        } else {
+            $input->file = $input->file;
         }
 
         $input->update();
@@ -160,7 +185,7 @@ class InputController extends Controller
         }
 
         $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
-        $satuan = ['Kegiatan', 'Dokumen' ,'Pegawai', 'Rekomendasi' ,'ISO', 'Satker' , 'Laporan' ,'KPPN' , 'Bulan Layanan' , '-'];
+        $satuan = ['Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO', 'Satker', 'Laporan', 'KPPN', 'Bulan Layanan', '-'];
 
         return view('input.edit', [
             'item' => OneInput::find($id),
@@ -235,7 +260,7 @@ class InputController extends Controller
         }
 
         $bidang =  ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK', 'Admin'];
-        $satuan = ['Kegiatan', 'Dokumen' ,'Pegawai', 'Rekomendasi' ,'ISO', 'Satker' , 'Laporan' ,'KPPN' , 'Bulan Layanan' , '-'];
+        $satuan = ['Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO', 'Satker', 'Laporan', 'KPPN', 'Bulan Layanan', '-'];
 
         return view('input.new', [
             'one_inputs' => OneInput::all(),
@@ -294,7 +319,8 @@ class InputController extends Controller
         return redirect()->back()->with('status', 'Laporan admin berhasil ditambahkan');
     }
 
-    public function reset_jumlah_volume($id){
+    public function reset_jumlah_volume($id)
+    {
         $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
         $oneinput = OneInput::find($id);
         $sum = array_sum($input);
@@ -303,6 +329,5 @@ class InputController extends Controller
         $oneinput->update();
 
         return redirect()->back()->with('status', 'Volume jumlah laporan berhasil direset');
-
     }
 }

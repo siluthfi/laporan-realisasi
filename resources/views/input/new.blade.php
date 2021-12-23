@@ -154,11 +154,11 @@
 
                                 <div class="col-lg-3">
                                     <div class="mb-4 form-input">
-                                        <label for="" class="mb-1 fw-bold"><span class="text-danger">*</span>
+                                        <label for="" class="mb-1 fw-bold">
                                             Jumlah Volume</label>
                                         <div class="input-group">
                                             <input type="number" value="" placeholder="Jumlah Volume" class="form-control"
-                                                name="volume_jumlah" required>
+                                                name="volume_jumlah">
                                         </div>
                                     </div>
                                 </div>
