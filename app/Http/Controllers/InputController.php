@@ -112,10 +112,17 @@ class InputController extends Controller
         if (in_array($data1, $m1))
         {
             $input2->volume_capaian = 1;
+            $volume_jumlah = OneInput::find($id);
+            $volume_jumlah->volume_jumlah += $input2->volume_capaian;
+            $volume_jumlah->update();
+
         }
         else
         {
             $input2->volume_capaian = $month;
+            $volume_jumlah = OneInput::find($id);
+            $volume_jumlah->volume_jumlah += $month;
+            $volume_jumlah->update();
         }
 
         $input2->uraian = $request->uraian;
