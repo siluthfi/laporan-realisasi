@@ -16,7 +16,7 @@
                                 </a>
                             @endif
                                 <a href="{{ route('output.excel.table') }}" class="text-white text-decoration-none">
-                                    <button class="px-4 py-2 mt-3 btn btn-outline-success fw-bold "><i class="far fa-file-excel"></i>
+                                    <button class="px-4 py-2 btn btn-success fw-bold btn-sm"><i class="far fa-file-excel"></i>
                                         <div class="d-none d-sm-inline">Excel
                                     </button>
                                 </a>
