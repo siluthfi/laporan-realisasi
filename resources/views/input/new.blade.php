@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-lg-12 ">
                 <div class="p-2 mb-4 bg-light">
-                    <h2 class="mb-2">Tambahkan Laporan</h2>
+                    <h2 class="mb-2">Laporan Baru</h2>
                 </div>
                 <!-- Panel End -->
                 <!-- Form Start -->
@@ -166,20 +166,20 @@
 
 
 
-                            <button type="submit" class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i
+                            <button type="submit" class="px-4 py-2 mt-3 btn btn-primary btn-sm fw-bold"><i
                                     class="fas fa-plus"></i>
                                 <div class="d-none d-sm-inline"> Tambahkan</div>
                             </button>
-                            <button type="reset" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold" value="reset"><i
+                            <button type="reset" class="px-4 py-2 mt-3 btn btn-danger btn-sm fw-bold" value="reset"><i
                                     class="fas fa-undo"></i>
                                 <div class="d-none d-sm-inline"> Reset</div>
                             </button>
-                            <button type="button" class="px-4 py-2 mt-3 btn btn-outline-secondary fw-bold"><i
-                                    class="fas fa-caret-square-left"></i>
-                                <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
-                                    href="{{ route('index') }}">
-                                    Back</a>
-                            </button>
+                            <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none" href="{{ route('index') }}">
+                                <button type="button" class="px-4 py-2 mt-3 btn btn-secondary btn-sm fw-bold"><i
+                                        class="fas fa-caret-square-left"></i>
+                                        Back
+                                </button>
+                            </a>
                     </div>
                 </div>
                 </form>

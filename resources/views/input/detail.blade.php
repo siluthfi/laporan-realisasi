@@ -5,7 +5,7 @@
     <!-- Panel Start -->
     @if (session('status'))
         <div class="alert alert-success alert-dismissible">
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"></button>
             {{ session('status') }}
         </div>
     @endif
@@ -14,30 +14,26 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="mb-2">Detail Laporan</h2>
-
                 <div class="p-2 rounded bg-light">
                     <div class="col-sm">
                         @if ($bidang == 'Admin')
-
                             <a href="{{ route('edit.laporan', $data->id) }}" class="text-decoration-none">
-                                <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold"><i class="fas fa-edit"></i>
-                                    <div class="d-none d-sm-inline"> Edit</div>
+                                <button class="px-4 py-2 btn btn-primary fw-bold btn-sm"><i class="fas fa-edit"></i>
+                                    <div class="d-none d-sm-inline">Edit</div>
                                 </button>
                             </a>
-                            <button type="button" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold"
+                            <button type="button" class="px-4 py-2 btn btn-danger fw-bold btn-sm"
                                 data-bs-toggle="modal" data-bs-target="#deleteLaporan">
                                 <i class="fas fa-trash"></i>
-                                <div class="d-none d-sm-inline"> Delete</div>
+                                <div class="d-none d-sm-inline">Hapus</div>
                             </button>
                         @else
                         @endif
-                        <button type="button" class="px-4 py-2 mt-3 btn btn-outline-secondary fw-bold"><i
-                                class="fas fa-caret-square-left"></i>
-                            <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
-                                href="{{ route('index') }}">
-                                Back</a>
-                        </button>
-
+                            <a href="{{ route('index') }}" class="text-decoration-none">
+                                <button class="px-4 py-2 btn btn-secondary fw-bold btn-sm"><i class="fas fa-caret-square-left"></i>
+                                    <div class="d-none d-sm-inline">Kembali</div>
+                                </button>
+                            </a>
                     </div>
                 </div>
             </div>
@@ -57,7 +53,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Nama RO</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->nama_ro }}" placeholder="{{ $data->nama_ro }}"
+                                        <input placeholder="{{ $data->nama_ro }}"
                                             class="form-control" name="nama_ro" disabled>
                                     </div>
                                 </div>
@@ -67,7 +63,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Capaian Ro</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->capaian_ro }}" placeholder="{{ $data->capaian_ro }}"
+                                        <input placeholder="{{ $data->capaian_ro }}"
                                             class="form-control" name="capaian_ro" disabled>
                                     </div>
                                 </div>
@@ -78,11 +74,8 @@
                                         Bagian/Bidang
                                     </label>
                                     <div class="input-group">
-                                        <select class="form-select" id="inputGroupSelect01" name="bidang" disabled>
-                                            <option value="{{ $data->bidang }}">
-                                                {{ $data->bidang }}</option>
-                                                
-                                        </select>
+                                        <input placeholder="{{ $data->bidang }}"
+                                            class="form-control" name="capaian_ro" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -92,10 +85,8 @@
                                         Satuan
                                     </label>
                                     <div class="input-group">
-                                        <select class="form-select" id="inputGroupSelect01" name="satuan" disabled>
-                                            <option value="{{ $data->satuan }}">
-                                                {{ $data->satuan }}</option>
-                                        </select>
+                                        <input placeholder="{{ $data->satuan }}"
+                                        class="form-control" name="capaian_ro" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +136,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         RVO</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->rvo * 100 }} %" placeholder="{{ $data->rvo * 100 }} %"
+                                        <input placeholder="{{ $data->rvo * 100 }} %"
                                             class="form-control" name="" disabled>
                                     </div>
                                 </div>
@@ -155,7 +146,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         RVO Maksimal</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->rvo_maksimal }}"
+                                        <input
                                             placeholder="{{ $data->rvo_maksimal }}" class="form-control" name=""
                                             disabled>
                                     </div>
@@ -166,7 +157,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Capaian</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->capaian * 100 }} %"
+                                        <input
                                             placeholder="{{ $data->capaian * 100 }} %" class="form-control"
                                             name="capaian_ro" disabled>
                                     </div>
@@ -180,7 +171,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         ID</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->digit }}" placeholder="{{ $data->digit }}"
+                                        <input placeholder="{{ $data->digit }}"
                                             class="form-control" name="digit" disabled>
                                     </div>
                                 </div>
@@ -191,7 +182,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         KD KRO</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->kd_kro }}" placeholder="{{ $data->kd_kro }}"
+                                        <input placeholder="{{ $data->kd_kro }}"
                                             class="form-control" name="kd_kro" disabled>
                                     </div>
                                 </div>
@@ -202,7 +193,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         KD RO</label>
                                     <div class="input-group">
-                                        <input value="{{ $data->kd_ro }}" placeholder="{{ $data->kd_ro }}"
+                                        <input placeholder="{{ $data->kd_ro }}"
                                             class="form-control" name="kd_ro" disabled>
                                     </div>
                                 </div>
@@ -214,7 +205,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Target Volume</label>
                                     <div class="input-group">
-                                        <input type="number" value="{{ $data->volume_target }}"
+                                        <input type="number"
                                             placeholder="{{ $data->volume_target }}" class="form-control"
                                             name="volume_target" disabled>
                                     </div>
@@ -226,7 +217,7 @@
                                     <label for="" class="mb-1 fw-bold">
                                         Jumlah Volume</label>
                                     <div class="input-group">
-                                        <input type="number" value="{{ $data->volume_jumlah }}"
+                                        <input type="number"
                                             placeholder="{{ $data->volume_jumlah }}" class="form-control"
                                             name="volume_jumlah" disabled>
                                     </div>
@@ -242,33 +233,37 @@
     <!-- Form End -->
     <!-- Form 2 Start -->
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
-        <h2 class="mb-5 d-flex justify-content-between">Daftar Dokumen @if ($bidang == 'Admin')
-                <form action="{{ route('reset_volume.laporan', $data->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <button type="submit" class="px-4 py-2 btn btn-outline-primary fw-bold "><i
-                            class="fas fa-undo "></i>
-                        <div class="d-none d-sm-inline">Reset Jumlah Volume Laporan
+        <h2 class="d-flex justify-content-between">Daftar Dokumen</h2>
+        <div class="p-2 rounded bg-light mb-4">
+            <div class="col-sm">
+                @if ($bidang == 'Admin')
+                    <form action="{{ route('reset_volume.laporan', $data->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="px-4 py-2 btn btn-primary fw-bold btn-sm"><i class="fas fa-undo "></i>
+                            <div class="d-none d-sm-inline">Reset Jumlah Volume Laporan
+                        </button>
+                    </form>
+                @else
+                    <button class="px-4 py-2 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class='fas fa-plus me-2'></i>
+                        <div class="d-none d-sm-inline">Tambah Dokumen</div>
                     </button>
-                </form>
-            @else
-                <button class="btn btn-block btn-outline-primary" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i
-                        class='fas fa-plus me-2'></i>Tambah Dokumen</button>
-            @endif
-        </h2>
+                @endif
+            </div>
+        </div>
 
         <table id="datatable" class="table table-bordered" style="width:100%">
             <thead>
                 <tr class="text-center fw-bold">
                     <th class="align-middle" style="width: 1%">No</th>
-                    <th class="align-middle" style="width: 30%">Uraian</th>
+                    <th class="align-middle" style="width: 51%">Uraian</th>
                     <th class="align-middle" style="width: 16%">Nomor Dokumen</th>
                     <th class="align-middle" style="width: 10%">Tanggal</th>
                     <th class="align-middle" style="width: 1%">Volume Capaian</th>
                     @if ($bidang == 'Admin')
-                        <th class="align-middle sorting_none" style="width: 4%">Opsi</th>
+                        <th class="align-middle sorting_none" style="width: 1%">Opsi</th>
                     @else
-                        <th class="align-middle sorting_none" style="width: 7%">Opsi</th>
+                        <th class="align-middle sorting_none">Opsi</th>
                     @endif
                 </tr>
             </thead>
@@ -280,13 +275,15 @@
                     <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
                     <td class="text-center">{{ $data2->volume_capaian }}</td>
                     <td class="justify-content-center">
-                        <button type="button" class="px-2 btn btn-sm btn-success" data-bs-toggle="modal"
-                            data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
-                        @if ($bidang == 'Admin')
-                        @else
-                            <button type="button" class="btn btn-sm btn-danger ms-1" data-bs-toggle="modal"
-                                data-bs-target="#hapusDokumen_{{ $data2->id }}"></i>Hapus</button>
-                        @endif
+                        <div class="m-auto">
+                            <button type="button" class=" btn btn-sm btn-success ms-1" data-bs-toggle="modal"
+                                data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
+                            @if ($bidang == 'Admin')
+                            @else
+                                <button type="button" class="btn btn-sm btn-danger px-2 ms-1 mt-1 mt-md-0" data-bs-toggle="modal"
+                                    data-bs-target="#hapusDokumen_{{ $data2->id }}"></i>Hapus</button>
+                            @endif
+                        </div>
                     </td>
                 </tbody>
 
@@ -297,7 +294,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Edit Dokumen</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <form action="{{ route('edit.dokumen', $data2->id) }}" method="POST" id="editForm">
@@ -355,9 +352,9 @@
                                     @endif
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary"
+                                    <button type="button" class="btn btn-secondary btn-sm"
                                         data-bs-dismiss="modal">Kembali</button>
-                                    <button type="submit" class="btn btn-outline-primary">Simpan</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                                 </div>
                             </form>
                         </div>
@@ -374,7 +371,7 @@
                             <div class="modal-header">
                                 <h5 class="modal-title" id="deleteModalLabel"><i
                                         class="fas fa-exclamation-circle text-warning me-2"></i>Hapus Dokumen</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -384,9 +381,9 @@
                                 <form action="{{ route('destroy.dokumen', $data2->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="px-3 py-1 btn btn-outline-secondary"
+                                    <button type="button" class="px-3 py-1 btn btn-secondary btn-sm"
                                         data-bs-dismiss="modal">Tidak</button>
-                                    <button type="submit" class="px-3 py-1 btn btn-outline-danger">Ya</button>
+                                    <button type="submit" class="px-3 py-1 btn btn-danger btn-sm">Ya</button>
                                 </form>
                             </div>
                         </div>
@@ -408,7 +405,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Dokumen Baru</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('store.dokumen') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -446,8 +443,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn btn-outline-primary">Tambah</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
                     </div>
                 </form>
             </div>
@@ -461,7 +458,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="deleteModalLabel">Konfirmasi</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <i class="fas fa-exclamation-circle text-warning"></i> Apakah Anda Yakin Akan
@@ -471,9 +468,9 @@
                     <form action="{{ route('destroy.laporan', $data->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="button" class="px-3 py-1 btn btn-outline-outline-secondary"
+                        <button type="button" class="px-3 py-1 btn btn-secondary btn-sm"
                             data-bs-dismiss="modal">No</button>
-                        <button type="submit" class="px-3 py-1 btn btn-outline-danger">Yes</button>
+                        <button type="submit" class="px-3 py-1 btn btn-danger btn-sm">Yes</button>
                     </form>
                 </div>
             </div>

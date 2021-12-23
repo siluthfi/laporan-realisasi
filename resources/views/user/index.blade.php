@@ -10,8 +10,8 @@
                     <div class="mb-2 row">
                         <div class="col-sm">
                             <a href="{{ route('user.create') }}" class="text-white text-decoration-none">
-                                <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold "><i class="fas fa-plus"></i>
-                                    <div class="d-none d-sm-inline"> New
+                                <button class="px-4 py-2 mt-3 btn btn-primary btn-sm fw-bold "><i class="fas fa-plus"></i>
+                                    <div class="d-none d-sm-inline"> Tambah
                                 </button>
                             </a>
                         </div>
@@ -37,7 +37,7 @@
                             <th style="width: 5%">Gender</th>
                             <th style="width: 5%">Bidang</th>
                             <th class="align-middle sorting_none" style="width: 5%">Opsi</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -53,7 +53,7 @@
                                         class="btn-primary btn-sm text-decoration-none">Detail</a></td>
                                 </td>
                             </tr>
-    
+
                         @endforeach
                 </table>
                 <!-- Tables End -->
