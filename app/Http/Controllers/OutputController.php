@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\OneInput;
+use App\Models\TwoInput;
+use App\Exports\InputExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OutputController extends Controller
 {
@@ -15,6 +18,12 @@ class OutputController extends Controller
 
     public function index(OneInput $oneinput)
     {
+        $oneinputasd = OneInput::all('digit', 'kd_kro', 'kd_ro', 'bidang', 'nama_ro', 'capaian_ro', 'volume_target', 'satuan', 'volume_jumlah', 'rvo', 'rvo_maksimal', 'pagu', 'rp', 'sisa');
+    
+        $twoinput = TwoInput::with('OneInput')->get();
+        // dd($twoinput);
+        
+        //  all('volume_capaian', 'uraian', 'nomor_dokumen', 'tanggal')
         ##### UMUM Section
 
         // GET Bidang
@@ -275,6 +284,7 @@ class OutputController extends Controller
 
         return view('output.index', [
             'title' => 'Dashboard',
+            'twoinput' => $twoinput,
 
             ##### Anggaran Chart Bar and Pie
             // UMUM

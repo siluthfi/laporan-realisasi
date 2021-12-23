@@ -6,9 +6,18 @@
     <div class="mt-4 mb-4 row">
         <div class="col-lg-12 ">
             <div class="p-4 border rounded shadow-sm bg-light">
-                <h2 class="mb-5">
+                <h2 class="mb-3">
                     Monitoring Realisasi Dan Capaian Output Tahun {{ session('tahun') }}
                 </h2>
+                <div class="row">
+                    <div class="col-lg mb-5">
+                        <a href="{{ route('rekap.excel.table') }}" class="text-white text-decoration-none">
+                            <button class="px-4 py-2 mt-3 btn btn-outline-success fw-bold "><i class="far fa-file-excel"></i>
+                                <div class="d-none d-sm-inline">Excel
+                            </button>
+                        </a>
+                    </div>
+                </div>
                 <table id="datatable" class="table table-bordered " style="width:100%">
                     <thead>
                         <tr>
@@ -20,11 +29,11 @@
                         <tr>
                             <th class="text-center">Pagu</th>
                             <th class="text-center">Realisasi</th>
-                            <th class="text-center"">Sisa</th>
-                                    <th  class=" text-center " style="1%">%</th>
+                            <th class="text-center">Sisa</th>
+                            <th class="text-center" style="1%">%</th>
                             <th class="text-center">Target</th>
                             <th class="text-center">Realisasi</th>
-                            <th class="text-center"">%</th>
+                            <th class="text-center">%</th>
                                 </tr>
 
                             </thead>
@@ -90,10 +99,10 @@
                                 </tr>
                             </tbody>
 
-                        </table>
-                    </div>
-                </div>
+                </table>
             </div>
+        </div>
+    </div>
 
 
 @endsection

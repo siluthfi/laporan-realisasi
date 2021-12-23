@@ -36,3 +36,16 @@
 .border-top-yellow {
     border-top: #FDDD5C 7px solid;
 }
+
+
+.table-output-excel {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+.table-output-excel td {
+    padding: 15px;
+    text-align: center;
+    height: 50px;
+    vertical-align: middle;
+  }
