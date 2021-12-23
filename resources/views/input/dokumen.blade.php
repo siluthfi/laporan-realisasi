@@ -49,7 +49,7 @@
                             <td>{{ $data2->uraian }}</td>
                             <td class="text-center">{{ $data2->nomor_dokumen }}</td>
                             <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
-                            <td class="text-center "><a class="text-decoration-none" href="{{ asset('files') }}/{{ $data2->file }}">{{ $data2->file }}</a></td>
+                            <td class="text-center "><a class="text-decoration-none" href="{{ asset('files') }}/{{ $data2->file_dokumen }}">{{ $data2->file_dokumen }}</a></td> 
                             <td class="justify-content-center">
                                 <button type="button" class="px-2 btn btn-sm btn-success ms-2" data-bs-toggle="modal"
                                     data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
