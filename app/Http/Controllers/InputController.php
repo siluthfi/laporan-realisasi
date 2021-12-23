@@ -52,8 +52,43 @@ class InputController extends Controller
     public function index_dokumen()
     {
         $bidang = Auth::user()->bidang;
-        $selection = OneInput::where('bidang', $bidang)->get();
-        $datas2 = TwoInput::all();
+        if ($bidang === 'Admin')
+        {
+            $selection = OneInput::whereYear('created_at', session('tahun'))->get();
+            $datas2 = TwoInput::join('one_inputs', 'two_inputs.one_input_id', 'one_inputs.id')
+            ->select
+            (
+                'two_inputs.id',
+                'two_inputs.volume_capaian',
+                'two_inputs.uraian',
+                'two_inputs.nomor_dokumen',
+                'two_inputs.tanggal',
+                'two_inputs.one_input_id',
+                'one_inputs.id',
+                'one_inputs.bidang',
+                'one_inputs.nama_ro',
+            )
+            ->get();
+        }
+        else
+        {
+            $selection = OneInput::whereYear('created_at', session('tahun'))->where('bidang', $bidang)->get();
+            $datas2 = TwoInput::join('one_inputs', 'two_inputs.one_input_id', 'one_inputs.id')
+            ->select
+            (
+                'two_inputs.id',
+                'two_inputs.volume_capaian',
+                'two_inputs.uraian',
+                'two_inputs.nomor_dokumen',
+                'two_inputs.tanggal',
+                'two_inputs.one_input_id',
+                'one_inputs.id',
+                'one_inputs.bidang',
+                'one_inputs.nama_ro',
+            )
+            ->where('one_inputs.bidang', $bidang)
+            ->get();
+        }
 
         return view('input.dokumen', [
             'bidang' => $bidang,
@@ -66,23 +101,42 @@ class InputController extends Controller
 
     public function store_dokumen(Request $request)
     {
-        $input = new TwoInput();
+        $input2 = new TwoInput();
+        $id = $request->naro;
+        $data1 = OneInput::where('id', $id)->get('satuan');
+        $month = (int)date('m');
+        $m1 = array('Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO',
+        'Satker', 'Laporan', 'KPPN', 'Kegiatan', 'Laporan', 'KPPN', 'Kegiatan', 'Dokumen');
 
+        if (in_array($data1, $m1))
+        {
+            $input2->volume_capaian = 1;
+        }
+        else
+        {
+            $input2->volume_capaian = $month;
+        }
+
+        $input2->uraian = $request->uraian;
+        $input2->nomor_dokumen = $request->nodok;
+        $input2->tanggal = $request->tanggal;
+        $input2->one_input_id = $request->naro;
+        $input2->save();
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = time() . '.' . $file->extension();
             $file->move(public_path('files'), $fileName);
-            $input->file = $fileName;
+            $input2->file = $fileName;
         } else {
-            $input->file = '';
+            $input2->file = '';
         }
 
-        $input->uraian = $request->uraian;
-        $input->nomor_dokumen = $request->nodok;
-        $input->tanggal = $request->tanggal;
-        $input->one_input_id = $request->naro;
-        $input->save();
+        $input2->uraian = $request->uraian;
+        $input2->nomor_dokumen = $request->nodok;
+        $input2->tanggal = $request->tanggal;
+        $input2->one_input_id = $request->naro;
+        $input2->save();
 
         return redirect()->back()->with('status', 'Data berhasil dimasukkan!');
     }
@@ -91,7 +145,6 @@ class InputController extends Controller
     {
         $bidang = Auth::user()->bidang;
         $input = TwoInput::find($id);
-
 
         if ($bidang == 'Admin') {
             $input->volume_capaian = $request->volcap;

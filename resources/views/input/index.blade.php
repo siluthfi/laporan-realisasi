@@ -10,8 +10,8 @@
                         <div class="col-sm">
                             @if ($bidang === 'Admin')
                                 <a href="{{ route('create.laporan') }}" class="text-white text-decoration-none">
-                                    <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold "><i class="fas fa-plus "></i>
-                                        <div class="d-none d-sm-inline">New
+                                    <button class="px-4 py-2 btn btn-primary fw-bold btn-sm"><i class="fas fa-plus "></i>
+                                        <div class="d-none d-sm-inline">Tambah
                                     </button>
                                 </a>
                             @endif

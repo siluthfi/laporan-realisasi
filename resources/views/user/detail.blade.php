@@ -12,22 +12,22 @@
                     <div class="mb-2 row">
                         <div class="col-sm">
                             <a href="{{ route('user.edit', $user->id) }}" class="text-white text-decoration-none">
-                                <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold "><i class="fas fa-edit "></i>
+                                <button class="px-4 py-2 mt-3 btn btn-primary fw-bold btn-sm"><i class="fas fa-edit "></i>
                                     <div class="d-none d-sm-inline"> Edit</div>
                                 </button>
                             </a>
                             <!-- Button trigger modal -->
-                            <button type="button" class="px-4 py-2 mt-3 btn btn-outline-danger fw-bold" data-bs-toggle="modal"
+                            <button type="button" class="px-4 py-2 mt-3 btn btn-danger fw-bold btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal_{{ $user->id }}">
                                 <i class="fas fa-trash"></i>
                                 <div class="d-none d-sm-inline"> Delete</div>
                             </button>
-                            <button type="button" class="px-4 py-2 mt-3 btn btn-outline-secondary fw-bold"><i
+                            <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none" href="{{ route('user') }}">
+                            <button type="button" class="px-4 py-2 mt-3 btn btn-secondary fw-bold btn-sm"><i
                                     class="fas fa-caret-square-left"></i>
-                                <a class="text-secondary text-secondary-hover d-none d-sm-inline text-decoration-none"
-                                    href="{{ route('user') }}">
-                                    Back</a>
-                            </button>
+                                    Back
+                                </button>
+                            </a>
                             {{-- Modal Start --}}
                             <div class="modal fade" id="deleteModal_{{ $user->id }}" tabindex="-1"
                                 aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -35,7 +35,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="deleteModalLabel">Konfirmasi</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -46,9 +46,9 @@
                                             <form action="{{ route('user.delete', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button" class="px-3 py-1 btn btn-outline-outline-secondary"
+                                                <button type="button" class="px-3 py-1 btn btn-secondary btn-sm"
                                                     data-bs-dismiss="modal">No</button>
-                                                <button type="submit" class="px-3 py-1 btn btn-outline-danger">Yes</button>
+                                                <button type="submit" class="px-3 py-1 btn btn-danger btn-sm">Yes</button>
                                             </form>
                                         </div>
                                     </div>

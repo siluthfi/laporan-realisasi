@@ -23,7 +23,7 @@ class CreateOneInputsTable extends Migration
             $table->string('capaian_ro')->nullable()->default(null);
             $table->integer('volume_target');
             $table->enum('satuan', ['Kegiatan', 'Dokumen' ,'Pegawai', 'Rekomendasi' ,'ISO', 'Satker' , 'Laporan' ,'KPPN' , '-' , 'Bulan Layanan']);
-            $table->integer('volume_jumlah');
+            $table->integer('volume_jumlah')->nullable()->default(0);
             $table->float('rvo');
             $table->float('rvo_maksimal');
             // $table->integer('volume_target_realisasi');

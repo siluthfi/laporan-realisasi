@@ -9,7 +9,7 @@
                 <div class="p-2 mt-2 rounded bg-light">
                     <div class="col-sm">
                         <div class="col-sm ">
-                            <button class="px-4 py-2 mt-3 btn btn-outline-primary fw-bold" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class="fas fa-plus "></i>
+                            <button class="px-4 py-2 mt-3 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class="fas fa-plus "></i>
                                 <div class="d-none d-sm-inline">Tambah
                             </button>
                         </div>
@@ -51,11 +51,12 @@
                             <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
                             <td class="text-center "><a class="text-decoration-none" href="{{ asset('files') }}/{{ $data2->file }}">{{ $data2->file }}</a></td>
                             <td class="justify-content-center">
-                                <button type="button" class="px-2 btn btn-sm btn-success" data-bs-toggle="modal"
+                                <button type="button" class="px-2 btn btn-sm btn-success ms-2" data-bs-toggle="modal"
                                     data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
                                 @if ($bidang == 'Admin')
                                 @else
-                                    <button type="button" class="btn btn-sm btn-danger ms-1" data-bs-toggle="modal"
+                                <br>
+                                    <button type="button" class="btn btn-sm btn-danger ms-1 mt-1" data-bs-toggle="modal"
                                         data-bs-target="#hapusDokumen_{{ $data2->id }}"></i>Hapus</button>
                                 @endif
                             </td>
@@ -68,7 +69,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Edit Dokumen</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <form action="{{ route('edit.dokumen', $data2->id) }}" method="POST" id="editForm" enctype="multipart/form-data">
@@ -87,8 +88,8 @@
                                                 </div>
                                             @else
                                                 <div class="row">
+                                                    <label for="uraian" class="form-label">Uraian</label>
                                                     <div class="mb-3 input-group">
-                                                        <label for="uraian" class="form-label">Uraian</label>
                                                         <input type="text" class="form-control" id="uraian" name="uraian"
                                                             placeholder="Masukkan Uraian" value="{{ $data2->uraian }}">
                                                     </div>
@@ -133,9 +134,9 @@
                                             @endif
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-secondary"
+                                            <button type="button" class="btn btn-secondary btn-sm"
                                                 data-bs-dismiss="modal">Kembali</button>
-                                            <button type="submit" class="btn btn-outline-primary">Simpan</button>
+                                            <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                                         </div>
                                     </form>
                                 </div>
@@ -152,7 +153,7 @@
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="deleteModalLabel"><i
                                                 class="fas fa-exclamation-circle text-warning me-2"></i>Hapus Dokumen</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -162,9 +163,9 @@
                                         <form action="{{ route('destroy.dokumen', $data2->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="button" class="px-3 py-1 btn btn-outline-secondary"
+                                            <button type="button" class="px-3 py-1 btn btn-secondary btn-sm"
                                                 data-bs-dismiss="modal">Tidak</button>
-                                            <button type="submit" class="px-3 py-1 btn btn-outline-danger">Ya</button>
+                                            <button type="submit" class="px-3 py-1 btn btn-danger btn-sm">Ya</button>
                                         </form>
                                     </div>
                                 </div>
@@ -184,7 +185,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Dokumen Baru</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('store.dokumen') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -250,8 +251,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Kembali</button>
-                        <button type="submit" class="btn btn-outline-primary">Tambah</button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
                     </div>
                 </form>
             </div>
