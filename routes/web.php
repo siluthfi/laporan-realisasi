@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\OutputController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UserController;
@@ -46,5 +47,6 @@ Route::delete('/laporan/delete/{oneinput:id}', [InputController::class, 'destroy
 // Output
 Route::get('/dashboard', [OutputController::class, 'index'])->name('dashboard');
 Route::get('/rekap', [OutputController::class, 'rekap'])->name('rekap');
-Route::get('/output/excel/table', [OutputController::class, 'exportWithView'])->name('output.excel.table');
+Route::get('/rekap/excel/table', [ExportController::class, 'rekapExport'])->name('rekap.excel.table');
+Route::get('/output/excel/table', [ExportController::class, 'exportWithView'])->name('output.excel.table');
 // Route::get('/output/excel/table', function() {return view('output.excel.sheet1');});

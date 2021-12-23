@@ -24,8 +24,8 @@ class InputExport implements FromView, ShouldAutoSize
     {
         return view('output.excel.sheet1', [
             'title' => 'Dashboard',
-            'oneinput' => OneInput::all(),
-            'twoinput' => TwoInput::all(),
+            'oneinput' => OneInput::whereYear('created_at', session('tahun'))->get(),
+            'twoinput' => TwoInput::whereYear('created_at', session('tahun'))->get(),
         ]);
     }
 
