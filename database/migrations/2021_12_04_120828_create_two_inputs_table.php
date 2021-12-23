@@ -19,7 +19,7 @@ class CreateTwoInputsTable extends Migration
             $table->string('uraian')->nullable()->default(null);
             $table->string('nomor_dokumen')->nullable()->default(null);
             $table->timestampTz('tanggal')->nullable()->default(null);
-            $table->string('file_dokumen')->nullable()->default(null);
+            $table->string('file')->nullable()->default(null);
             $table->softDeletesTz($column = 'deleted_at', $precision = 0);
             $table->foreignId('one_input_id')->onDelete('cascade')->nullable();
             $table->timestampsTz();

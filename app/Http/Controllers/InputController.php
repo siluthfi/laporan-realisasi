@@ -63,7 +63,7 @@ class InputController extends Controller
                 'two_inputs.nomor_dokumen',
                 'two_inputs.tanggal',
                 'two_inputs.one_input_id',
-                'two_inputs.file_dokumen',
+                'two_inputs.file',
                 'one_inputs.id',
                 'one_inputs.bidang',
                 'one_inputs.nama_ro',
@@ -82,6 +82,7 @@ class InputController extends Controller
                 'two_inputs.nomor_dokumen',
                 'two_inputs.tanggal',
                 'two_inputs.one_input_id',
+                'two_inputs.file',
                 'one_inputs.id',
                 'one_inputs.bidang',
                 'one_inputs.nama_ro',
@@ -105,9 +106,8 @@ class InputController extends Controller
         $id = $request->naro;
         $data1 = OneInput::where('id', $id)->value('satuan');
         $month = (int)date('m');
-        $m1 = ['Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO',
-        'Satker', 'Laporan', 'KPPN', 'Kegiatan', 'Laporan', 'KPPN', 'Kegiatan', 'Dokumen' ];
-
+        $m1 = array('Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO',
+        'Satker', 'Laporan', 'KPPN');
 
         if (in_array($data1, $m1))
         {
@@ -128,9 +128,9 @@ class InputController extends Controller
             $file = $request->file('file');
             $fileName = time() . '.' . $file->extension();
             $file->move(public_path('files'), $fileName);
-            $input2->file_dokumen = $fileName;
+            $input2->file = $fileName;
         } else {
-            $input2->file_dokumen = '';
+            $input2->file = '';
         }
 
         $input2->uraian = $request->uraian;
@@ -161,9 +161,9 @@ class InputController extends Controller
             $file = $request->file('file');
             $fileName = time() . '.' . $file->extension();
             $file->move(public_path('files'), $fileName);
-            $input->file_dokumen = $fileName;
+            $input->file = $fileName;
         } else {
-            $input->file_dokumen = $input->file_dokumen;
+            $input->file = $input->file;
         }
 
         $input->update();

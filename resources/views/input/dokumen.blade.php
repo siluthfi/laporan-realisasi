@@ -49,7 +49,7 @@
                             <td>{{ $data2->uraian }}</td>
                             <td class="text-center">{{ $data2->nomor_dokumen }}</td>
                             <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
-                            <td class="text-center "><a class="text-decoration-none" href="{{ asset('files') }}/{{ $data2->file_dokumen }}">{{ $data2->file_dokumen }}</a></td> 
+                            <td class="text-center "><a class="text-decoration-none" href="{{ asset('files') }}/{{ $data2->file }}">{{ $data2->file }}</a></td> 
                             <td class="justify-content-center">
                                 <button type="button" class="px-2 btn btn-sm btn-success ms-2" data-bs-toggle="modal"
                                     data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
@@ -221,23 +221,6 @@
                                         <option value="{{ $select->id }}">
                                         {{ $select->nama_ro }}</option>
                                     @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label for="volcap" class="form-label"><span class="text-danger">*</span> Volume Capaian</label>
-                            <div class="mb-3 input-group">
-                                <select type="select" class="form-control" id="volcap" name="volcap" required>
-                                        <option value="-">-</option>
-                                        <option value="Bulan Layanan">Bulan Layanan</option>
-                                        <option value="Dokumen">Dokumen</option>
-                                        <option value="ISO">ISO</option>
-                                        <option value="Kegiatan">Kegiatan</option>
-                                        <option value="KPPN">KPPN</option>
-                                        <option value="Laporan">Laporan</option>
-                                        <option value="Pegawai">Pegawai</option>
-                                        <option value="Rekomendasi">Rekomendasi</option>
-                                        <option value="Satker">Satker</option>
                                 </select>
                             </div>
                         </div>
