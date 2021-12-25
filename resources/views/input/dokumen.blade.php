@@ -1,15 +1,16 @@
+{{-- {{ dd($selection); }} --}}
 @extends('layouts.main')
 
 @section('content')
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Dokumen</h2>
+                <h2>Dokumen Tahun {{ session('tahun') }}</h2>
                 @if (!($bidang === 'Admin'))
                 <div class="p-2 mt-2 rounded bg-light">
                     <div class="col-sm">
                         <div class="col-sm ">
-                            <button class="px-4 py-2 mt-3 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class="fas fa-plus "></i>
+                            <button class="px-4 py-2 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class="fas fa-plus "></i>
                                 <div class="d-none d-sm-inline">Tambah
                             </button>
                         </div>
@@ -33,10 +34,11 @@
                             <th class="align-middle" style="width: 8%">Nomor Dokumen</th>
                             <th class="align-middle" style="width: 8%">Tanggal</th>
                             <th class="align-middle" style="width: 8%">File</th>
+                            <th class="align-middle" style="width: 1%">ID</th>
                             @if ($bidang == 'Admin')
-                                <th class="align-middle sorting_none" style="width: 10%">Opsi</th>
+                                <th class="align-middle sorting_none" style="width: 1%">Opsi</th>
                             @else
-                                <th class="align-middle sorting_none" style="width: 10%">Opsi</th>
+                                <th class="align-middle sorting_none" style="width: 1%">Opsi</th>
                             @endif
                         </tr>
                     </thead>
@@ -50,6 +52,7 @@
                             <td class="text-center">{{ $data2->nomor_dokumen }}</td>
                             <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
                             <td class="text-center "><a class="text-decoration-none" href="{{ asset('files') }}/{{ $data2->file }}">{{ $data2->file }}</a></td>
+                            <td class="text-center">{{ $data2->id }}</td>
                             <td class="justify-content-center">
                                 <button type="button" class="px-2 btn btn-sm btn-success ms-2" data-bs-toggle="modal"
                                     data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
@@ -118,8 +121,12 @@
                                                         <select type="select" class="form-control" id="naro" name="naro"
                                                             required>
                                                             @foreach ($selection as $select)
-                                                                <option value="{{ $select->id }}">
-                                                                    {{ $data2->nama_ro }}</option>
+                                                                <option
+                                                                @if ($select->id == $data2->one_input_id)
+                                                                {{ 'selected' }}
+                                                                @endif
+                                                                value="{{ $select->id }}">
+                                                                    {{ $select->nama_ro }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -145,7 +152,6 @@
                         <!-- Edit Modal - End-->
 
                         <!-- Delete Modal - Start-->
-                        {{-- Modal --}}
                         <div class="modal fade" id="hapusDokumen_{{ $data2->id }}" tabindex="-1"
                             aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -172,6 +178,7 @@
                             </div>
                         </div>
                         <!-- Delete Modal - End-->
+
                     @endforeach
                 </table>
                 <!-- Tables End -->
@@ -218,7 +225,11 @@
                             <div class="mb-3 input-group">
                                 <select type="select" class="form-control" id="naro" name="naro" required>
                                     @foreach ($selection as $select)
-                                        <option value="{{ $select->id }}">
+                                    <option
+                                        @if ($select->id == $data2->one_input_id)
+                                            {{ 'selected' }}
+                                        @endif
+                                        value="{{ $select->id }}">
                                         {{ $select->nama_ro }}</option>
                                     @endforeach
                                 </select>

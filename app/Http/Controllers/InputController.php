@@ -64,7 +64,6 @@ class InputController extends Controller
                 'two_inputs.nomor_dokumen',
                 'two_inputs.tanggal',
                 'two_inputs.one_input_id',
-                'one_inputs.id',
                 'one_inputs.bidang',
                 'one_inputs.nama_ro',
             )
@@ -83,7 +82,6 @@ class InputController extends Controller
                 'two_inputs.tanggal',
                 'two_inputs.one_input_id',
                 'two_inputs.file',
-                'one_inputs.id',
                 'one_inputs.bidang',
                 'one_inputs.nama_ro',
             )
