@@ -1,19 +1,18 @@
+{{-- {{ dd($selection); }} --}}
 @extends('layouts.main')
 
 @section('content')
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Dokumen</h2>
+                <h2>Dokumen Tahun {{ session('tahun') }}</h2>
                 @if (!($bidang === 'Admin'))
-                    <div class="p-2 mt-2 rounded bg-light">
-                        <div class="col-sm">
-                            <div class="col-sm ">
-                                <button class="px-4 py-2 mt-3 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#tambahDokumen"><i class="fas fa-plus "></i>
-                                    <div class="d-none d-sm-inline">Tambah
-                                </button>
-                            </div>
+                <div class="p-2 mt-2 rounded bg-light">
+                    <div class="col-sm">
+                        <div class="col-sm ">
+                            <button class="px-4 py-2 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class="fas fa-plus "></i>
+                                <div class="d-none d-sm-inline">Tambah
+                            </button>
                         </div>
                     </div>
                 @endif
@@ -34,10 +33,11 @@
                             <th class="align-middle" style="width: 8%">Nomor Dokumen</th>
                             <th class="align-middle" style="width: 8%">Tanggal</th>
                             <th class="align-middle" style="width: 8%">File</th>
+                            <th class="align-middle" style="width: 1%">ID</th>
                             @if ($bidang == 'Admin')
-                                <th class="align-middle sorting_none" style="width: 10%">Opsi</th>
+                                <th class="align-middle sorting_none" style="width: 1%">Opsi</th>
                             @else
-                                <th class="align-middle sorting_none" style="width: 10%">Opsi</th>
+                                <th class="align-middle sorting_none" style="width: 1%">Opsi</th>
                             @endif
                         </tr>
                     </thead>
@@ -102,6 +102,17 @@
                                                 <div class="col">
                                                     <label for="nodok" class="form-label">Nomor Dokumen</label>
                                                     <div class="mb-3 input-group">
+                                                        <select type="select" class="form-control" id="naro" name="naro"
+                                                            required>
+                                                            @foreach ($selection as $select)
+                                                                <option
+                                                                @if ($select->id == $data2->one_input_id)
+                                                                {{ 'selected' }}
+                                                                @endif
+                                                                value="{{ $select->id }}">
+                                                                    {{ $select->nama_ro }}</option>
+                                                            @endforeach
+                                                        </select>
                                                         <input type="text" class="form-control" id="nodok" name="nodok"
                                                             placeholder="Masukkan Nomor Dokumen"
                                                             value="{{ $data2->nomor_dokumen }}">
@@ -123,6 +134,19 @@
                                                         required>
                                                         @foreach ($selection as $select)
 
+                        <!-- Delete Modal - Start-->
+                        <div class="modal fade" id="hapusDokumen_{{ $data2->id }}" tabindex="-1"
+                            aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel"><i
+                                                class="fas fa-exclamation-circle text-warning me-2"></i>Hapus Dokumen</h5>
+                                        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah anda yakin ingin menghapus {{ $data2->uraian }}?
                                                             <option value="{{ $select->id }}">
                                                                 {{ $data2->nama_ro }}</option>
                                                         @endforeach
@@ -178,6 +202,7 @@
                         </div>
                     </div>
                     <!-- Delete Modal - End-->
+
                     @endforeach
                 </table>
                 <!-- Tables End -->
@@ -226,8 +251,13 @@
                             <div class="mb-3 input-group">
                                 <select type="select" class="form-control" id="naro" name="naro" required>
                                     @foreach ($selection as $select)
-                                        <option value="{{ $select->id }}">
-                                            {{ $select->nama_ro }}</option>
+
+                                    <option
+                                        @if ($select->id == $data2->one_input_id)
+                                            {{ 'selected' }}
+                                        @endif
+                                        value="{{ $select->id }}">
+                                        {{ $select->nama_ro }}</option>
                                     @endforeach
                                 </select>
                             </div>
