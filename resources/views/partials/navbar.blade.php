@@ -36,9 +36,11 @@
         <div class="flex-shrink-0 px-1 py-3 dropdown d-flex justify-content-end">
             <a href="#" class="d-block link-light text-decoration-none " id="dropdownUser2"
                 data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="text-secondary pe-2">{{ Auth()->user()->nama }} </span>
                 <i class='fa fa-angle-down text-secondary me-1'></i>
                 <img src="{{ asset('images') }}/{{ Auth()->user()->user_profile }}" alt="{{  Auth()->user()->nama }}" width="30" height="30"
                 class="bg-white border rounded-circle" style="width: 30px; height: 30px;" >
+                
             </a>
             <ul class="shadow dropdown-menu" aria-labelledby="dropdownUser2" style="margin-left: -6.5rem">
                 <li><a class="dropdown-item" href="{{ route('user.profile', Auth()->user()->nama) }}"><i
