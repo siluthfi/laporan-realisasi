@@ -18,6 +18,19 @@ class OutputController extends Controller
 
     public function index(OneInput $oneinput)
     {
+        // Sum Volume capaian
+        $oneinputs = OneInput::whereYear('created_at', session('tahun'))->get();
+        foreach($oneinputs as $oneinput){
+            $id = $oneinput->id;
+
+            $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
+            $oneinput = OneInput::find($id);
+            $sum = array_sum($input);
+    
+            $oneinput->volume_jumlah = $sum;
+            $oneinput->update();
+        }
+
         $oneinputasd = OneInput::all('digit', 'kd_kro', 'kd_ro', 'bidang', 'nama_ro', 'capaian_ro', 'volume_target', 'satuan', 'volume_jumlah', 'rvo', 'rvo_maksimal', 'pagu', 'rp', 'sisa');
     
         $twoinput = TwoInput::with('OneInput')->get();
@@ -347,13 +360,19 @@ class OutputController extends Controller
 
     public function rekap(OneInput $oneinput)
     {
+
         // Sum Volume capaian
-        $id = OneInput::whereYear('created_at', session('tahun'))->value('id');
-        $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
-        $oneinput = OneInput::find($id);
-        $sum = array_sum($input);
-        $oneinput->volume_jumlah = $sum;
-        $oneinput->update();
+        $oneinputs = OneInput::whereYear('created_at', session('tahun'))->get();
+        foreach($oneinputs as $oneinput){
+            $id = $oneinput->id;
+
+            $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
+            $oneinput = OneInput::find($id);
+            $sum = array_sum($input);
+    
+            $oneinput->volume_jumlah = $sum;
+            $oneinput->update();
+        }
 
         ##### UMUM Section
         // GET Bidang
