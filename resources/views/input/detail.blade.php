@@ -237,13 +237,13 @@
         <div class="p-2 rounded bg-light mb-4">
             <div class="col-sm">
                 @if ($bidang == 'Admin')
-                    <form action="{{ route('reset_volume.laporan', $data->id) }}" method="POST">
+                    {{-- <form action="{{ route('reset_volume.laporan', $data->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <button type="submit" class="px-4 py-2 btn btn-primary fw-bold btn-sm"><i class="fas fa-undo "></i>
                             <div class="d-none d-sm-inline">Reset Jumlah Volume Laporan
                         </button>
-                    </form>
+                    </form> --}}
                 @else
                     <button class="px-4 py-2 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class='fas fa-plus me-2'></i>
                         <div class="d-none d-sm-inline">Tambah Dokumen</div>

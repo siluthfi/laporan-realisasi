@@ -342,3 +342,5 @@ class InputController extends Controller
         return redirect()->back()->with('status', 'Volume jumlah laporan berhasil direset');
     }
 }
+;
+
