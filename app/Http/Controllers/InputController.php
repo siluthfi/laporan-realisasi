@@ -26,12 +26,23 @@ class InputController extends Controller
             $datas = OneInput::whereYear('created_at', session('tahun'))->where('bidang', $bidang)->get();
         }
 
+        // Sum Volume capaian
+
+        $id = OneInput::whereYear('created_at', session('tahun'))->value('id');
+        $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
+        $oneinput = OneInput::find($id);
+        $sum = array_sum($input);
+        $oneinput->volume_jumlah = $sum;
+        $oneinput->update();
+
+
         return view('input.index', [
             'bidang' => $bidang,
             'datas' => $datas,
             'title' => 'Laporan',
-
         ]);
+
+        
     }
 
     public function detail(OneInput $oneinput)
@@ -64,6 +75,7 @@ class InputController extends Controller
                 'two_inputs.nomor_dokumen',
                 'two_inputs.tanggal',
                 'two_inputs.one_input_id',
+                'two_inputs.file',
                 'one_inputs.bidang',
                 'one_inputs.nama_ro',
             )
@@ -106,13 +118,21 @@ class InputController extends Controller
         $month = (int)date('m');
         $m1 = array('Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO',
         'Satker', 'Laporan', 'KPPN');
+
         if (in_array($data1, $m1))
         {
             $input2->volume_capaian = 1;
+            $volume_jumlah = OneInput::find($id);
+            $volume_jumlah->volume_jumlah += $input2->volume_capaian;
+            $volume_jumlah->update();
+
         }
         else
         {
             $input2->volume_capaian = $month;
+            $volume_jumlah = OneInput::find($id);
+            $volume_jumlah->volume_jumlah += $month;
+            $volume_jumlah->update();
         }
 
         $input2->uraian = $request->uraian;

@@ -21,7 +21,8 @@ class TwoInput extends Model
         'uraian',
         'nomor_dokumen',
         'tanggal',
-        'one_input_id'
+        'one_input_id',
+        'file_dokumen'
     ];
 
     public function OneInput()

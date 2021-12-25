@@ -347,6 +347,14 @@ class OutputController extends Controller
 
     public function rekap(OneInput $oneinput)
     {
+        // Sum Volume capaian
+        $id = OneInput::whereYear('created_at', session('tahun'))->value('id');
+        $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
+        $oneinput = OneInput::find($id);
+        $sum = array_sum($input);
+        $oneinput->volume_jumlah = $sum;
+        $oneinput->update();
+
         ##### UMUM Section
         // GET Bidang
         $dataUMUM = $oneinput->whereYear('created_at', session('tahun'))->where('bidang', 'Umum')->get();

@@ -11,7 +11,7 @@
                 </h2>
                 <div class="row">
                     <div class="col-lg mb-5">
-                        <a href="{{ route('output.excel.table') }}" class="text-white text-decoration-none">
+                        <a href="{{ route('rekap.excel.table') }}" class="text-white text-decoration-none">
                             <button class="px-4 py-2 btn btn-success fw-bold btn-sm"><i class="far fa-file-excel"></i>
                                 <div class="d-none d-sm-inline">Excel
                             </button>
