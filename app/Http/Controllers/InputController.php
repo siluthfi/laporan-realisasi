@@ -64,6 +64,20 @@ class InputController extends Controller
 
     public function index_dokumen()
     {
+
+        // Sum Volume capaian
+        $oneinputs = OneInput::whereYear('created_at', session('tahun'))->get();
+        foreach($oneinputs as $oneinput){
+            $id = $oneinput->id;
+
+            $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
+            $oneinput = OneInput::find($id);
+            $sum = array_sum($input);
+
+            $oneinput->volume_jumlah = $sum;
+            $oneinput->update();
+        }
+
         $bidang = Auth::user()->bidang;
         if ($bidang === 'Admin')
         {
@@ -113,6 +127,7 @@ class InputController extends Controller
 
     public function store_dokumen(Request $request)
     {
+        
         $input2 = new TwoInput();
         $id = $request->naro;
         $data1 = OneInput::where('id', $id)->value('satuan');
