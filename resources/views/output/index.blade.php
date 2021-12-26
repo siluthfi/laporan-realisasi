@@ -10,21 +10,77 @@
     </div>
 </div> --}}
 
-<div class="my-5 row justify-content-center">
-    <div class="mb-3 col-md-8">
-        <div class="p-3 shadow card border-top-blue">
+<div class="my-2 row justify-content-center">
+    <div class="mb-3 col-md-4">
+        <div class="p-3 shadow shadow-sm card">
+            <div class="bg-white card-header">
+                <h5 class="card-title">Panduan Input Data</h5>
+            </div>
+            <div class="card-body">
+                <a href="#" class="btn btn-primary btn-sm">
+                    <i class="fas fa-download me-1"></i>
+                    Unduh PDF
+                </a>
+                @if ($bidang == 'Admin')
+                <a href="#" class="btn btn-success btn-sm ms-1">
+                    <i class="fas fa-upload me-1"></i>
+                    Unggah PDF
+                </a>
+                @endif
+            </div>
+        </div>
+    </div>
+    <div class="mb-3 col-md-4">
+        <div class="p-3 shadow shadow-sm card">
+            <div class="bg-white card-header">
+                <h5 class="card-title">Panduan Pelaksanaan Anggaran</h5>
+            </div>
+            <div class="card-body">
+                <a href="#" class="btn btn-primary btn-sm">
+                    <i class="fas fa-download me-1"></i>
+                    Unduh PDF
+                </a>
+                @if ($bidang == 'Admin')
+                <a href="#" class="btn btn-success btn-sm ms-1">
+                    <i class="fas fa-upload me-1"></i>
+                    Unggah PDF
+                </a>
+                @endif
+            </div>
+        </div>
+    </div>
+    <div class="mb-3 col-md-4">
+        <div class="p-3 shadow shadow-sm card">
+            <div class="bg-white card-header">
+                <h5 class="card-title">Panduan RKAKL</h5>
+            </div>
+            <div class="card-body">
+                <a href="#" class="btn btn-primary btn-sm">
+                    <i class="fas fa-download me-1"></i>
+                    Unduh PDF
+                </a>
+                @if ($bidang == 'Admin')
+                <a href="#" class="btn btn-success btn-sm ms-1">
+                    <i class="fas fa-upload me-1"></i>
+                    Unggah PDF
+                </a>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mb-4 row justify-content-center">
+    <div class="col-md-6">
+        <div class="p-3 shadow shadow-sm card">
             <div class="bg-white card-header">
                 <h2>Anggaran</h2>
             </div>
             <canvas id="chartBarAnggaran" height="465"></canvas>
         </div>
     </div>
-</div>
-
-<div class="mb-5 row justify-content-center">
-    {{-- <div class="col-md-3 offset-md-3"> --}}
-    <div class="mb-3 col-md-8">
-        <div class="p-3 shadow card border-top-orange">
+    <div class="col-md-6">
+        <div class="p-3 shadow shadow-sm card">
             <div class="bg-white card-header">
                 <h2>Output</h2>
             </div>
@@ -58,7 +114,7 @@
                     stack: 'Stack 0',
                     yAxisID: 'percentage'
                 },
-                {   
+                {
                     label: 'PAGU',
                     data: dataBarAnggaranPagu,
                     backgroundColor: ['rgb(54, 162, 235)'],
@@ -130,13 +186,13 @@
     labels: ['UMUM', 'PPA I', 'PPA II', 'SKKI', 'PAPK'],
     datasets: [
                 {
-                    label: 'REALISASI',      
+                    label: 'REALISASI',
                     data: dataBarOutputRealisasi,
                     backgroundColor: ['rgb(255, 99, 132)'],
                     stack: 'Stack 0',
                     yAxisID: 'percentage'
                 },
-                {   
+                {
                     label: 'TARGET',
                     data: dataBarOutputTarget,
                     backgroundColor: ['rgb(54, 162, 235)'],

@@ -18,8 +18,8 @@
                     <div class="col-sm">
                         @if ($bidang == 'Admin')
                             <a href="{{ route('edit.laporan', $data->id) }}" class="text-decoration-none">
-                                <button class="px-4 py-2 btn btn-primary fw-bold btn-sm"><i class="fas fa-edit"></i>
-                                    <div class="d-none d-sm-inline">Edit</div>
+                                <button class="px-4 py-2 btn btn-success fw-bold btn-sm"><i class="fas fa-edit"></i>
+                                    <div class="d-none d-sm-inline">Sunting</div>
                                 </button>
                             </a>
                             <button type="button" class="px-4 py-2 btn btn-danger fw-bold btn-sm"
@@ -245,8 +245,8 @@
                         </button>
                     </form> --}}
                 @else
-                    <button class="px-4 py-2 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class='fas fa-plus me-2'></i>
-                        <div class="d-none d-sm-inline">Tambah Dokumen</div>
+                    <button class="px-4 py-2 btn btn-primary fw-bold btn-sm" data-bs-toggle="modal" data-bs-target="#tambahDokumen"><i class='fas fa-plus'></i>
+                        <div class="d-none d-sm-inline ms-2">Tambah Dokumen</div>
                     </button>
                 @endif
             </div>
@@ -262,11 +262,7 @@
                     <th class="align-middle" style="width: 8%">Nomor Dokumen</th>
                     <th class="align-middle" style="width: 8%">Tanggal</th>
                     <th class="align-middle" style="width: 8%">File</th>
-                    @if ($bidang == 'Admin')
-                        <th class="align-middle sorting_none" style="width: 10%">Opsi</th>
-                    @else
-                        <th class="align-middle sorting_none" style="width: 10%">Opsi</th>
-                    @endif
+                    <th class="align-middle sorting_none" style="width: 1%">Opsi</th>
                 </tr>
             </thead>
             @foreach ($datas2 as $data2)
@@ -283,10 +279,10 @@
                     <td class="justify-content-center">
                         <div class="m-auto">
                             <button type="button" class=" btn btn-sm btn-success ms-1" data-bs-toggle="modal"
-                                data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
+                                data-bs-target="#editDokumen_{{ $data2->id }}"></i>Sunting</button>
                             @if ($bidang == 'Admin')
                             @else
-                                <button type="button" class="btn btn-sm btn-danger px-2 ms-1 mt-1 mt-md-0" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-danger px-2 ms-1 mt-1" data-bs-toggle="modal"
                                     data-bs-target="#hapusDokumen_{{ $data2->id }}"></i>Hapus</button>
                             @endif
                         </div>
@@ -299,7 +295,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Edit Dokumen</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Sunting Dokumen</h5>
                                 <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -320,8 +316,8 @@
                                         </div>
                                     @else
                                         <div class="row">
+                                            <label for="uraian" class="form-label">Uraian</label>
                                             <div class="mb-3 input-group">
-                                                <label for="uraian" class="form-label">Uraian</label>
                                                 <input type="text" class="form-control" id="uraian" name="uraian"
                                                     placeholder="Masukkan Uraian" value="{{ $data2->uraian }}">
                                             </div>
@@ -345,23 +341,17 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="naro" class="form-label">Nama RO</label>
-                                            <div class="mb-3 input-group">
-                                                <select type="select" class="form-control" id="naro" name="naro"
-                                                    required>
-                                                    @foreach ($selection as $select)
-                                                        <option value="{{ $select->id }}">
-                                                            {{ $data2->nama_ro }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
                                             <label for="" class="mb-1 fw-bold"> Upload File
                                             </label>
                                             <div class="input-group">
                                                 <input value="{{ $data2->file }}" type="file" class="form-control"
-                                                    name="file">
+                                                name="file">
+                                            </div>
+                                        </div>
+                                        <div class="row d-none">
+                                            <label for="naro" class="form-label">Nama RO</label>
+                                            <div class="mb-3 input-group">
+                                                <input value="{{ $data2->one_input_id }}" type="text" class="form-control" id="naro" name="naro"
                                             </div>
                                         </div>
                                     @endif

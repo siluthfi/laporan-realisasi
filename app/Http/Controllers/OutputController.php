@@ -7,6 +7,7 @@ use App\Models\TwoInput;
 use App\Exports\InputExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OutputController extends Controller
@@ -293,8 +294,10 @@ class OutputController extends Controller
         $sisaSKKI = $resultPaguSKKI - $resultRPSKKI;
         ##### end section
 
+        $bidang = Auth::user()->bidang;
 
         return view('output.index', [
+            'bidang' => $bidang,
             'title' => 'Dashboard',
             'twoinput' => $twoinput,
 
