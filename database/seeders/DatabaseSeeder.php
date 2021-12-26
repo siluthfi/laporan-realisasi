@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         Panduan::create(
             [
-                'nama' => 'Pelaksanaan Anggaran',
+                'nama' => 'RKAKL',
                 'file' => null
             ]);
     }
