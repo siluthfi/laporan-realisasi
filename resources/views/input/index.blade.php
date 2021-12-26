@@ -45,8 +45,8 @@
                             <th class="align-middle">Capaian RO</th>
                             <th style="width: 7%" class="align-middle">Target</th>
                             <th style="width: 7%" class="align-middle">Satuan</th>
-                            <th style="width: 7%" class="align-middle">Jumlah Volume</th>
-                            <th style="width: 2%" class="align-middle">%</th>
+                            <th style="width: 5%" class="align-middle">Jumlah Volume</th>
+                            <th style="width: 5%" class="align-middle">%</th>
                             <th class="align-middle sorting_none" style="width: 5%">Opsi</th>
                         </tr>
                     </thead>
