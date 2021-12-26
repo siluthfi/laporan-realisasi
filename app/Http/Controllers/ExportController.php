@@ -331,6 +331,7 @@ class ExportController extends Controller
         //     'percentageSKKI2' => $resultPercentageSKKI2,
         // ]);
 
+
         return Excel::download(new RekapExport, 'Laporan Rekap ' . session('tahun') . '.xlsx');
     }
     

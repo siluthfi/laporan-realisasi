@@ -24,7 +24,7 @@
             <th><strong>Realisasi </strong></th>
             <th><strong>% </strong></th>
         </tr>
-    
+        
         <tr>
             <td>1</td>
             <td>Umum</td>
@@ -84,7 +84,6 @@
             <td>{{ $rp2PAPK }}</td>
             <td>{{ $percentagePAPK2 }} % </td>
         </tr>
-    
     </table>
 </body>
 </html>
