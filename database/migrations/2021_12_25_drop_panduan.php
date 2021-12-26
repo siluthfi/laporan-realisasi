@@ -13,15 +13,15 @@ class CreatePanduansTable extends Migration
      */
     public function up()
     {
-        Schema::create('panduans', function (Blueprint $table) {
-            $table->id();
-            $table->enum('nama', ['Cara Input Data', 'Panduan Pelaksanaan Anggaran', 'RKAKL']);
-            $table->string('file')->nullable();
-            $table->timestamps();
-        });
+      Schema::dropIfExists('panduans');
+
     }
 
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('panduans');
