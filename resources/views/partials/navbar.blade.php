@@ -30,6 +30,7 @@
                         <a class="nav-link py-4 px-3 {{ $title === 'User' ? 'active text-primary' : '' }}"
                             aria-current="page" href="{{ route('user') }}">PENGGUNA</a>
                     </li>
+
                 @endif
             </ul>
         </div>
