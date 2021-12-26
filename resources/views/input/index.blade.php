@@ -46,6 +46,7 @@
                             <th style="width: 7%" class="align-middle">Target</th>
                             <th style="width: 7%" class="align-middle">Satuan</th>
                             <th style="width: 7%" class="align-middle">Jumlah Volume</th>
+                            <th style="width: 2%" class="align-middle">%</th>
                             <th class="align-middle sorting_none" style="width: 5%">Opsi</th>
                         </tr>
                     </thead>
@@ -64,6 +65,7 @@
                             <td class="text-center">{{ $data->volume_target }} </td>
                             <td class="text-center">{{ $data->satuan }} </td>
                             <td class="text-center">{{ $data->volume_jumlah }} </td>
+                            <td class="text-center">{{ ($data->volume_jumlah / $data->volume_target) * 100}} %</td>
                             <td class="text-center">
                                 <a href="{{ route('detail.laporan', $data->id) }}"
                                     class="btn-primary btn-sm text-decoration-none"><i class='bi bi-eye'></i>Detail</a>

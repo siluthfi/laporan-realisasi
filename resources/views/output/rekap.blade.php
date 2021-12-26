@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="mt-4 mb-4 row">
         <div class="col-lg-12 ">
             <div class="p-4 border rounded shadow-sm bg-light">
