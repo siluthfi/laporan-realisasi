@@ -28,7 +28,7 @@
                 @if (Auth()->user()->bidang === 'Admin')
                     <li class="nav-item">
                         <a class="nav-link py-4 px-3 {{ $title === 'User' ? 'active text-primary' : '' }}"
-                            aria-current="page" href="{{ route('user') }}">USERS</a>
+                            aria-current="page" href="{{ route('user') }}">PENGGUNA</a>
                     </li>
                 @endif
             </ul>
@@ -40,12 +40,12 @@
                 <i class='fa fa-angle-down text-secondary me-1'></i>
                 <img src="{{ asset('images') }}/{{ Auth()->user()->user_profile }}" alt="{{  Auth()->user()->nama }}" width="30" height="30"
                 class="bg-white border rounded-circle" style="width: 30px; height: 30px;" >
-                
+
             </a>
             <ul class="shadow dropdown-menu" aria-labelledby="dropdownUser2" style="margin-left: -6.5rem">
                 <li><a class="dropdown-item" href="{{ route('user.profile', Auth()->user()->nama) }}"><i
                     class="fas fa-user-cog"></i>
-                Detail Profile</a></li>
+                Rincian Profil</a></li>
         </li>
         <hr class="dropdown-divider">
         <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i

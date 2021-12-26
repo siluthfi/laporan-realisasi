@@ -2,6 +2,15 @@
 @extends('layouts.main')
 
 @section('content')
+
+    <!-- Panel Start -->
+    @if (session('status'))
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert"></button>
+        {{ session('status') }}
+    </div>
+    @endif
+
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <div class="row">
             <div class="col-lg-12">
@@ -130,7 +139,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <label for="" class="mb-1 fw-bold"> Upload File
+                                                    <label for="" class="mb-1"> Upload File
                                                     </label>
                                                     <div class="input-group">
                                                     <input value="{{ $data2->file }}" type="file" class="form-control" name="file">
