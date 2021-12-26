@@ -9,33 +9,27 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
-        Panduan::create(){
+        Panduan::create(
             [
                 'nama' => 'Input Data',
                 'file' => null
-            ]
-        };
+            ]);
 
-        Panduan::create(){
+        Panduan::create(
             [
                 'nama' => 'Pelaksanaan Anggaran',
                 'file' => null
-            ]
-        };
+            ]);
 
-        Panduan::create(){
+        Panduan::create(
             [
                 'nama' => 'Pelaksanaan Anggaran',
                 'file' => null
-            ]
-        }
+            ]);
+    }
+}
 
         // User::create(
         //     [
@@ -115,5 +109,3 @@ class DatabaseSeeder extends Seeder
         //         'password' => bcrypt('password'),
         //     ]
         // );
-    }
-}
