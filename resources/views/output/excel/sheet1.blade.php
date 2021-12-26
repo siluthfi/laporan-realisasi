@@ -63,7 +63,11 @@
                 <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->satuan }}</td>
     
                 @if (!empty($one->TwoInput[0]))
+<<<<<<< HEAD
                     <td>{{ !empty($one->TwoInput[0]->volume_capaian) ? $one->TwoInput[0]->volume_capaian : '' }}</td>
+=======
+                    <td>{{ !empty($one->TwoInput[0]->capaian_volume) ? $one->TwoInput[0]->capaian_volume : '' }}</td>
+>>>>>>> d2608fd2411901bacf2cbb9076f897b71346cd06
                     <td>{{ !empty($one->TwoInput[0]->uraian) ? $one->TwoInput[0]->uraian : '' }}</td>
                     <td>{{ !empty($one->TwoInput[0]->nomor_dokumen) ? $one->TwoInput[0]->nomor_dokumen : '' }}</td>
                     <td>{{ !empty($one->TwoInput[0]->tanggal) ? $one->TwoInput[0]->tanggal : '' }}</td>
