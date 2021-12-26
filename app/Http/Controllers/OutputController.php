@@ -24,7 +24,7 @@ class OutputController extends Controller
 
         // Sum Volume capaian
         $oneinputs = OneInput::whereYear('created_at', session('tahun'))->get();
-        foreach($oneinputs as $oneinput){
+        foreach ($oneinputs as $oneinput) {
             $id = $oneinput->id;
 
             $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
@@ -369,7 +369,7 @@ class OutputController extends Controller
 
         // Sum Volume capaian
         $oneinputs = OneInput::whereYear('created_at', session('tahun'))->get();
-        foreach($oneinputs as $oneinput){
+        foreach ($oneinputs as $oneinput) {
             $id = $oneinput->id;
 
             $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
@@ -634,11 +634,36 @@ class OutputController extends Controller
         }
 
         $sisaSKKI = $resultPaguSKKI - $resultRPSKKI;
+        $totalPagu = $resultPaguPAPK + $resultPaguSKKI + $resultPaguPPAII + $resultPaguPPAI + $resultPaguUMUM;
+        $totalRP = $resultRPPAPK + $resultRPSKKI + $resultRPPPAII + $resultRPPPAI + $resultRPUMUM;
+        $totalSisa = $sisaPAPK + $sisaSKKI + $sisaPPAII + $sisaPPAI + $sisaUMUM;
+        $totalTarget = $resultTargetPAPK + $resultTargetSKKI + $resultTargetPPAII + $resultTargetPPAI + $resultTargetUMUM;
+        $totalRP2 = $resultRP2PAPK + $resultRP2SKKI + $resultRP2PPAII + $resultRP2PPAI + $resultRP2UMUM;
+
+        $totalPercentage = $resultPercentagePAPK2 + $resultPercentageSKKI + $resultPercentagePPAII + $resultPercentagePPAI + $resultPercentageUMUM;
+
+        $totalRpPagu = ($totalRP / $totalPagu) * 100;
+        $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+
+
 
 
 
         return view('output.rekap', [
             'title' => 'Rekap',
+
+            // Total
+
+            'totalPagu' => $totalPagu,
+            'totalRP' => $totalRP,
+            'totalSisa' => $totalSisa,
+            'totalRpPagu' => $resultTotalRpPagu,
+            'totalTarget' => $totalTarget,
+            'totalRP2' => $totalRP2,
+            'totalPercentage' => $totalPercentage,
+
+
+
             // UMUM
             'paguUMUM' => $resultPaguUMUM,
             'rpUMUM' => $resultRPUMUM,
