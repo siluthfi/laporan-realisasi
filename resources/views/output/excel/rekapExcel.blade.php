@@ -10,19 +10,19 @@
 <body>
     <table class="table-output-excel" border="1">
         <tr>
-            <th rowspan="2"><strong>No </strong></th>
-            <th rowspan="2"><strong>Bidang </strong></th>
-            <th colspan="4"><strong>Anggaran </strong></th>
-            <th colspan="3"><strong>Output </strong></th>
+            <th rowspan="2">No</th>
+            <th rowspan="2">Bidang</th>
+            <th colspan="4">Anggaran</th>
+            <th colspan="3">Output</th>
         </tr>
         <tr>
-            <th><strong>Pagu </strong></th>
-            <th><strong>Realisasi </strong></th>
-            <th><strong>Sisa </strong></th>
-            <th><strong>% </strong></th>
-            <th><strong>Target </strong></th>
-            <th><strong>Realisasi </strong></th>
-            <th><strong>% </strong></th>
+            <th>Pagu</th>
+            <th>Realisasi</th>
+            <th>Sisa</th>
+            <th>%</th>
+            <th>Target</th>
+            <th>Realisasi</th>
+            <th>%</th>
         </tr>
     
         <tr>
