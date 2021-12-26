@@ -31,7 +31,7 @@ class LoginController extends Controller
             
             $request->session()->put('tahun', $request->tahun);
             
-            return redirect('/dashboard/');
+            return redirect('/beranda/');
       }
 
       public function register()

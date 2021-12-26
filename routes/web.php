@@ -1,16 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\InputController;
-use App\Http\Controllers\OutputController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\OutputController;
+use App\Http\Controllers\PanduanController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\UserController;
-
-Route::get('/',[LoginController::class, 'index'])->middleware('auth');
 
 // Login
+Route::get('/',[LoginController::class, 'index'])->middleware('auth');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/register', [LoginController::class, 'register_store'])->name('register.store');
@@ -42,11 +42,11 @@ Route::get('/laporan/edit/{oneinput:id}', [InputController::class, 'edit_laporan
 Route::put('/laporant/edit/{oneinput:id}', [InputController::class, 'update_laporan'])->name('update.laporan');
 Route::delete('/laporan/delete/{oneinput:id}', [InputController::class, 'destroy_laporan'])->name('destroy.laporan');
 
-
-
 // Output
-Route::get('/dashboard', [OutputController::class, 'index'])->name('dashboard');
+Route::get('/beranda', [OutputController::class, 'index'])->name('dashboard');
 Route::get('/rekap', [OutputController::class, 'rekap'])->name('rekap');
 Route::get('/rekap/excel/table', [ExportController::class, 'rekapExport'])->name('rekap.excel.table');
 Route::get('/output/excel/table', [ExportController::class, 'exportWithView'])->name('output.excel.table');
-// Route::get('/output/excel/table', function() {return view('output.excel.sheet1');});
+
+// Panduan
+Route::put('/beranda', [PanduanController::class, 'update_panduan'])->name('update.panduan');
