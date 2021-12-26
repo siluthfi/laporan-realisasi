@@ -13,13 +13,13 @@ class DatabaseSeeder extends Seeder
     {
         Panduan::create(
             [
-                'nama' => 'Input Data',
+                'nama' => 'Cara Input Data',
                 'file' => null
             ]);
 
         Panduan::create(
             [
-                'nama' => 'Pelaksanaan Anggaran',
+                'nama' => 'Panduan Pelaksanaan Anggaran',
                 'file' => null
             ]);
 

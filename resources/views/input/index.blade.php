@@ -70,7 +70,7 @@
                             <td class="text-center">{{ $data->volume_target }} </td>
                             <td class="text-center">{{ $data->satuan }} </td>
                             <td class="text-center">{{ $data->volume_jumlah }} </td>
-                            <td class="text-center">{{ ($data->volume_jumlah / $data->volume_target) * 100}} %</td>
+                            <td class="text-center">{{ round($data->volume_jumlah / $data->volume_target,2 ) * 100}} %</td>
                             <td class="text-center">
                                 <a href="{{ route('detail.laporan', $data->id) }}"
                                     class="btn-primary btn-sm text-decoration-none"><i class='bi bi-eye'></i>Detail</a>
