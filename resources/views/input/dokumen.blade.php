@@ -14,7 +14,12 @@
     <div class="p-4 mb-4 border rounded shadow-sm bg-light">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Dokumen Tahun {{ session('tahun') }}</h2>
+                <h2>Dokumen Realisasi {{ session('tahun') }}
+                    @if ($bidang == 'Admin')
+                    @else
+                    - Bidang {{ $bidang }}
+                    @endif
+                </h2>
                 @if (!($bidang === 'Admin'))
                 <div class="p-2 mt-2 rounded bg-light">
                     <div class="col-sm">
@@ -61,12 +66,12 @@
                             <td class="text-center">{{ \Carbon\Carbon::parse($data2->tanggal)->format('d-m-Y') }}</td>
                             <td class="text-center "><a class="text-decoration-none" href="{{ asset('files') }}/{{ $data2->file }}">{{ $data2->file }}</a></td>
                             <td class="justify-content-center">
-                                <button type="button" class="px-2 btn btn-sm btn-success ms-2" data-bs-toggle="modal"
-                                    data-bs-target="#editDokumen_{{ $data2->id }}"></i>Edit</button>
+                                <button type="button" class="px-2 btn btn-sm btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#editDokumen_{{ $data2->id }}"></i>Sunting</button>
                                 @if ($bidang == 'Admin')
                                 @else
                                 <br>
-                                    <button type="button" class="btn btn-sm btn-danger ms-1 mt-1" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-sm btn-danger mt-1" data-bs-toggle="modal"
                                         data-bs-target="#hapusDokumen_{{ $data2->id }}"></i>Hapus</button>
                                 @endif
                             </td>

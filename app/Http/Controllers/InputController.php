@@ -127,7 +127,7 @@ class InputController extends Controller
 
     public function store_dokumen(Request $request)
     {
-        
+
         $input2 = new TwoInput();
         $id = $request->naro;
         $data1 = OneInput::where('id', $id)->value('satuan');

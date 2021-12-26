@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="p-2 rounded bg-light">
-                    <h2 class="mb-3 ">Detail User</h2>
+                    <h2 class="mb-3 ">Detail Pengguna</h2>
                     <div class="mb-2 row">
                         <div class="col-sm">
                             <a href="{{ route('user.edit', $user->id) }}" class="text-white text-decoration-none">
-                                <button class="px-4 py-2 mt-3 btn btn-primary fw-bold btn-sm"><i class="fas fa-edit "></i>
+                                <button class="px-4 py-2 mt-3 btn btn-success fw-bold btn-sm"><i class="fas fa-edit "></i>
                                     <div class="d-none d-sm-inline"> Edit</div>
                                 </button>
                             </a>
@@ -80,74 +80,71 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-5">
+                    <div class="col-lg-10">
                         <div class="mb-3 form-input">
-                            <label for="" class="mb-1 fw-bold"> ID</label>
+                            <label for="" class="mb-1 fw-bold"> Nama</label>
                             <div class="input-group">
-                                <input value="{{ $user->id }}" placeholder="id" class="form-control" name="id"
+                                <input value="{{ $user->nama }}" placeholder="Nama" class="form-control" name="nama"
                                     disabled>
                             </div>
                         </div>
-                        <div class="mb-3 form-input">
-                              <label for="" class="mb-1 fw-bold"> Nama</label>
-                              <div class="input-group">
-                                  <input value="{{ $user->nama }}" placeholder="Nama" class="form-control" name="nama"
-                                      disabled>
-                              </div>
-                          </div>
-                        <div class="mb-3 form-input">
-                            <label for="" class="mb-1 fw-bold"> Username</label>
-                            <div class="input-group">
-                                <input value="{{ $user->username }}" placeholder="Username" class="form-control"
-                                    name="username" disabled>
-                            </div>
-                        </div>
-                        <div class="mb-3 form-input">
-                            <label for="" class="mb-1 fw-bold"> Email</label>
-                            <div class="input-group">
-                                <input value="{{ $user->email }}" placeholder="email" class="form-control" name="email"
-                                    disabled>
-                            </div>
-                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
 
+                                <div class="mb-3 form-input">
+                                    <label for="" class="mb-1 fw-bold"> Username</label>
+                                    <div class="input-group">
+                                        <input value="{{ $user->username }}" placeholder="Username" class="form-control"
+                                            name="username" disabled>
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-input">
+                                    <label for="" class="mb-1 fw-bold"> Email</label>
+                                    <div class="input-group">
+                                        <input value="{{ $user->email }}" placeholder="email" class="form-control" name="email"
+                                            disabled>
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-input">
+                                    <label for="" class="mb-1 fw-bold"> Nomor</label>
+                                    <div class="input-group">
+                                        <input value="{{ $user->nomor_telepon }}" placeholder="Nomor" class="form-control" name="nip"
+                                            disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3 form-input">
+                                    <label for="" class="mb-1 fw-bold"> NIP</label>
+                                    <div class="input-group">
+                                        <input value="{{ $user->nip }}" placeholder="NIP" class="form-control" name="nip"
+                                            disabled>
+                                    </div>
+                                </div>
+                                <div class="mb-3 input-group">
+                                    <label for="" class="mb-1 fw-bold"> Bidang
+                                    </label>
+                                    <div class="input-group">
+                                        <select class="form-select" id="inputGroupSelect01" name="bidang" disabled>
+                                            <option value="{{ $user->bidang }}">{{ $user->bidang }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3 input-group">
+                                    <label for="" class="mb-1 fw-bold"> Gender
+                                    </label>
+                                    <div class="input-group">
+                                        <select class="form-select" id="inputGroupSelect01" name="gender" disabled>
+                                            <option value="{{ $user->gender }}">{{ $user->gender }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
                     </div>
 
-                    <div class="col-lg-5">
-                        <div class="mb-3 form-input">
-                            <label for="" class="mb-1 fw-bold"> NIP</label>
-                            <div class="input-group">
-                                <input value="{{ $user->nip }}" placeholder="NIP" class="form-control" name="nip"
-                                    disabled>
-                            </div>
-                        </div>
-                        <div class="mb-3 form-input">
-                            <label for="" class="mb-1 fw-bold"> Nomor</label>
-                            <div class="input-group">
-                                <input value="{{ $user->nomor_telepon }}" placeholder="Nomor" class="form-control" name="nip"
-                                    disabled>
-                            </div>
-                        </div>
-                        <div class="mb-3 input-group">
-                            <label for="" class="mb-1 fw-bold"> Bidang
-                            </label>
-                            <div class="input-group">
-                                <select class="form-select" id="inputGroupSelect01" name="bidang" disabled>
-                                    <option value="{{ $user->bidang }}">{{ $user->bidang }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-3 input-group">
-                            <label for="" class="mb-1 fw-bold"> Gender
-                            </label>
-                            <div class="input-group">
-                                <select class="form-select" id="inputGroupSelect01" name="gender" disabled>
-                                    <option value="{{ $user->gender }}">{{ $user->gender }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </form>
         </div>

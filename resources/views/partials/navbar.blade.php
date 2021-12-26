@@ -11,7 +11,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link py-4 px-3  {{ $title === 'Dashboard' ? 'active text-primary' : '' }}"
-                        aria-current="page" href="{{ route('dashboard') }}">DASHBOARD</a>
+                        aria-current="page" href="{{ route('dashboard') }}">BERANDA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link py-4 px-3 {{ $title === 'Laporan' ? 'active text-primary' : '' }}"
@@ -50,8 +50,8 @@
         </li>
         <hr class="dropdown-divider">
         <li><a class="dropdown-item text-danger" href="{{ route('logout') }}"><i
-                    class="fas fa-sign-out-alt"></i> Sign
-                out</a>
+                    class="fas fa-sign-out-alt"></i> Keluar
+                </a>
         </li>
 
 

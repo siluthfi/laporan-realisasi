@@ -19,9 +19,13 @@ class PanduanController extends Controller
                 $fileName = time() . '.' . $file->extension();
                 $file->move(public_path('files'), $fileName);
                 $input->file = $fileName;
+                $input->update();
             } else {
                 $input->file = $input->file;
+                $input->update();
             }
         }
+
+        return redirect('/beranda/');
     }
 }

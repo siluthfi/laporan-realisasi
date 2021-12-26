@@ -28,9 +28,9 @@ class LoginController extends Controller
             if (!auth()->attempt($request->only('username', 'password'))) {
                   return back()->with('status', 'Invalid Login Details');
             };
-            
+
             $request->session()->put('tahun', $request->tahun);
-            
+
             return redirect('/beranda/');
       }
 
