@@ -268,16 +268,39 @@ class RekapExport implements FromView, ShouldAutoSize
         }
 
         $sisaSKKI = $resultPaguSKKI - $resultRPSKKI;
+        $sisaSKKI = $resultPaguSKKI - $resultRPSKKI;
+        $totalPagu = $resultPaguPAPK + $resultPaguSKKI + $resultPaguPPAII + $resultPaguPPAI + $resultPaguUMUM;
+        $totalRP = $resultRPPAPK + $resultRPSKKI + $resultRPPPAII + $resultRPPPAI + $resultRPUMUM;
+        $totalSisa = $sisaPAPK + $sisaSKKI + $sisaPPAII + $sisaPPAI + $sisaUMUM;
+        $totalTarget = $resultTargetPAPK + $resultTargetSKKI + $resultTargetPPAII + $resultTargetPPAI + $resultTargetUMUM;
+        $totalRP2 = $resultRP2PAPK + $resultRP2SKKI + $resultRP2PPAII + $resultRP2PPAI + $resultRP2UMUM;
 
-        
+        $totalPercentage =  ($totalRP2 / $totalTarget) * 100;
+        $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
+
+        $totalRpPagu = ($totalRP / $totalPagu) * 100;
+        $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+
+
 
         return view('output.excel.rekapExcel', [
+            // Total
+
+            'totalPagu' => $totalPagu,
+            'totalRP' => $totalRP,
+            'totalSisa' => $totalSisa,
+            'totalRpPagu' => $resultTotalRpPagu,
+            'totalTarget' => $totalTarget,
+            'totalRP2' => $totalRP2,
+            'totalPercentage' => $resultPercentage,
+
             'title' => 'Rekap',
             // UMUM
             'paguUMUM' => $resultPaguUMUM,
             'rpUMUM' => $resultRPUMUM,
             'sisaUMUM' => $sisaUMUM,
             'percentageUMUM' => $resultPercentageUMUM,
+
 
             // PPA I
             'paguPPAI' => $resultPaguPPAI,

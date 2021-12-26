@@ -84,6 +84,20 @@
             <td>{{ $rp2PAPK }}</td>
             <td>{{ $percentagePAPK2 }} % </td>
         </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Rp.
+                {{ number_format($totalPagu, 0, '.', '.') }}
+            </td>
+            <td>Rp. {{ number_format($totalRP, 0, '.', '.') }}</td>
+            <td>Rp. {{ number_format($totalSisa, 0, '.', '.') }}</td>
+            <td>{{ $totalRpPagu }} % </td>
+            <td>{{ $totalTarget }}</td>
+            <td>{{ $totalRP2 }}</td>
+            <td>{{ $totalPercentage }} % </td>
+        </tr>
     </table>
 </body>
 </html>
