@@ -640,7 +640,8 @@ class OutputController extends Controller
         $totalTarget = $resultTargetPAPK + $resultTargetSKKI + $resultTargetPPAII + $resultTargetPPAI + $resultTargetUMUM;
         $totalRP2 = $resultRP2PAPK + $resultRP2SKKI + $resultRP2PPAII + $resultRP2PPAI + $resultRP2UMUM;
 
-        $totalPercentage = $totalTarget / $totalRP2 ;
+        $totalPercentage =  ($totalRP2 / $totalTarget) * 100  ;
+        $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
 
         $totalRpPagu = ($totalRP / $totalPagu) * 100;
         $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
@@ -657,7 +658,7 @@ class OutputController extends Controller
             'totalRpPagu' => $resultTotalRpPagu,
             'totalTarget' => $totalTarget,
             'totalRP2' => $totalRP2,
-            'totalPercentage' => $totalPercentage,
+            'totalPercentage' => $resultPercentage,
 
 
 

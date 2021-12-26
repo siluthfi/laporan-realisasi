@@ -110,7 +110,7 @@
                         <td>{{ $totalRpPagu }} % </td>
                         <td>{{ $totalTarget }}</td>
                         <td>{{ $totalRP2 }}</td>
-                        <td>{{ $totalPercentage }}</td>
+                        <td>{{ $totalPercentage }} % </td>
                     </tr>
 
                 </table>
