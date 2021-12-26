@@ -8,8 +8,10 @@ use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\AfterSheet;
 
-class RekapExport implements FromView, ShouldAutoSize
+class RekapExport implements FromView, ShouldAutoSize, WithEvents
 {
     public function view(): View
     {
@@ -330,4 +332,23 @@ class RekapExport implements FromView, ShouldAutoSize
             'percentageSKKI2' => $resultPercentageSKKI2,
         ]);
     }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function(AfterSheet $event) {
+                $event->sheet->getStyle('A2:I2')->applyFromArray([
+                    'font' => [
+                        'bold' => true
+                    ],
+                ]);
+                $event->sheet->getStyle('A1:I1')->applyFromArray([
+                    'font' => [
+                        'bold' => true
+                    ]
+                ]);
+            }
+        ];
+    }
+
 }
