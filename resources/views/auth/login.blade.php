@@ -14,19 +14,21 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-
+    
     <!-- Datatables -->
     <link rel="stylesheet" href="{{ asset('css/datatable.min.css') }}">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable({
                 "scrollX": true,
-                "responsive": true
+                "responsive": true,
             });
         });
     </script>
+
 
     <style>
         .css-selector {

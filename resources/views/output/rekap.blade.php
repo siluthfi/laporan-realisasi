@@ -97,7 +97,6 @@
                             <td>{{ $percentagePAPK2 }} % </td>
                         </tr>
 
-
                     </tbody>
                     <tr>
                         <td></td>
@@ -112,7 +111,6 @@
                         <td>{{ $totalRP2 }}</td>
                         <td>{{ $totalPercentage }} % </td>
                     </tr>
-
                 </table>
             </div>
         </div>

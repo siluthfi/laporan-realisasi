@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="mb-2">Laporan Realisasi {{ session('tahun') }}
-                @if ($bidang == 'Admin')
-                @else
-                - Bidang {{ $bidang }}
-                @endif
+                    @if ($bidang == 'Admin')
+                    @else
+                        - Bidang {{ $bidang }}
+                    @endif
                 </h2>
                 <div class="p-2 rounded bg-light">
                     <div class="row">
@@ -20,11 +20,11 @@
                                     </button>
                                 </a>
                             @endif
-                                <a href="{{ route('output.excel.table') }}" class="text-white text-decoration-none">
-                                    <button class="px-4 py-2 btn btn-success fw-bold btn-sm"><i class="far fa-file-excel"></i>
-                                        <div class="d-none d-sm-inline">Excel
-                                    </button>
-                                </a>
+                            <a href="{{ route('output.excel.table') }}" class="text-white text-decoration-none">
+                                <button class="px-4 py-2 btn btn-success fw-bold btn-sm"><i class="far fa-file-excel"></i>
+                                    <div class="d-none d-sm-inline">Excel
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -55,28 +55,32 @@
                             <th class="align-middle sorting_none" style="width: 5%">Opsi</th>
                         </tr>
                     </thead>
-                    @foreach ($datas as $data)
-                        <tbody class="bg-light">
-                            <td class="text-center">{{ $loop->iteration }}</td>
-                            <td class="text-center">{{ $data->digit }} </td>
-                            <td class="text-center">{{ $data->kd_kro }} </td>
-                            <td class="text-center">{{ $data->kd_ro }} </td>
-                            @if ($bidang == 'Admin')
-                                <td class="text-center">{{ $data->bidang }} </td>
-                            @else
-                            @endif
-                            <td class="">{{ $data->nama_ro }} </td>
-                            <td class="">{{ $data->capaian_ro }} </td>
-                            <td class="text-center">{{ $data->volume_target }} </td>
-                            <td class="text-center">{{ $data->satuan }} </td>
-                            <td class="text-center">{{ $data->volume_jumlah }} </td>
-                            <td class="text-center">{{ round($data->volume_jumlah / $data->volume_target,2 ) * 100}} %</td>
-                            <td class="text-center">
-                                <a href="{{ route('detail.laporan', $data->id) }}"
-                                    class="btn-primary btn-sm text-decoration-none"><i class='bi bi-eye'></i>Detail</a>
-                            </td>
-                        </tbody>
-                    @endforeach
+                    <tbody class="bg-light">
+                        @foreach ($datas as $data)
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td class="text-center">{{ $data->digit }} </td>
+                                <td class="text-center">{{ $data->kd_kro }} </td>
+                                <td class="text-center">{{ $data->kd_ro }} </td>
+                                @if ($bidang == 'Admin')
+                                    <td class="text-center">{{ $data->bidang }} </td>
+                                @else
+                                @endif
+                                <td class="">{{ $data->nama_ro }} </td>
+                                <td class="">{{ $data->capaian_ro }} </td>
+                                <td class="text-center">{{ $data->volume_target }} </td>
+                                <td class="text-center">{{ $data->satuan }} </td>
+                                <td class="text-center">{{ $data->volume_jumlah }} </td>
+                                <td class="text-center">
+                                    {{ round($data->volume_jumlah / $data->volume_target, 2) * 100 }} %
+                                </td>
+                                <td class="text-center">
+                                    <a href="{{ route('detail.laporan', $data->id) }}"
+                                        class="btn-primary btn-sm text-decoration-none"><i class='bi bi-eye'></i>Detail</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
                 <!-- Tables End -->
             </div>
