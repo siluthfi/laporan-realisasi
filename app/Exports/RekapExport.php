@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment as StyleAlignment;
 
 class RekapExport implements FromView, ShouldAutoSize, WithEvents
 {
@@ -370,14 +371,20 @@ class RekapExport implements FromView, ShouldAutoSize, WithEvents
     {
         return [
             AfterSheet::class => function(AfterSheet $event) {
-                $event->sheet->getStyle('A2:I2')->applyFromArray([
+                $event->sheet->getStyle('A1:I2')->applyFromArray([
                     'font' => [
                         'bold' => true
                     ],
                 ]);
-                $event->sheet->getStyle('A1:I1')->applyFromArray([
-                    'font' => [
-                        'bold' => true
+                $event->sheet->getDelegate()->getStyle('A1:I8')->getAlignment()->setVertical(StyleAlignment::VERTICAL_CENTER);
+                $event->sheet->getDelegate()->getStyle('A1:I8')->getAlignment()->setHorizontal(StyleAlignment::HORIZONTAL_CENTER);
+                $event->sheet->getDelegate()->getStyle('A1:I2')->getFont()->setSize(16);
+                $event->sheet->getStyle("A1:I8")->applyFromArray([
+                    'borders' => [
+                        'allBorders' => [
+                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                            'color' => ['argb' => 'FF000000']
+                        ]
                     ]
                 ]);
             }
