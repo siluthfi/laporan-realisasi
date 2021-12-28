@@ -76,12 +76,11 @@
     
     
                 <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->volume_jumlah }}</td>
-                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->rvo }}</td>
-                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->pagu }}</td>
-                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->rp }}</td>
-                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->capaian }}</td>
-                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->sisa }}</td>
-    
+                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->rvo * 100 }}%</td>
+                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ number_format($one->pagu, 0, '.', '.') }}</td>
+                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ number_format($one->rp, 0, '.', '.') }}</td>
+                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ $one->capaian }}%</td>
+                <td {{ ($n != 0) ? "rowspan=$n" : "" }}>{{ number_format($one->sisa, 0, '.', '.') }}</td>
             </tr>
     
             {{-- two input loop --}}
