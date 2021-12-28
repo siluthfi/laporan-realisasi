@@ -82,7 +82,7 @@ class InputController extends Controller
         if ($bidang === 'Admin')
         {
             $selection = OneInput::whereYear('created_at', session('tahun'))->get();
-            $datas2 = TwoInput::join('one_inputs', 'two_inputs.one_input_id', 'one_inputs.id')
+            $datas2 = TwoInput::whereYear('tanggal', session('tahun'))->join('one_inputs', 'two_inputs.one_input_id', 'one_inputs.id')
             ->select
             (
                 'two_inputs.id',
@@ -91,6 +91,7 @@ class InputController extends Controller
                 'two_inputs.nomor_dokumen',
                 'two_inputs.tanggal',
                 'two_inputs.one_input_id',
+                'two_inputs.file',
                 'one_inputs.bidang',
                 'one_inputs.nama_ro',
             )
@@ -99,7 +100,7 @@ class InputController extends Controller
         else
         {
             $selection = OneInput::whereYear('created_at', session('tahun'))->where('bidang', $bidang)->get();
-            $datas2 = TwoInput::join('one_inputs', 'two_inputs.one_input_id', 'one_inputs.id')
+            $datas2 = TwoInput::whereYear('tanggal', session('tahun'))->join('one_inputs', 'two_inputs.one_input_id', 'one_inputs.id')
             ->select
             (
                 'two_inputs.id',
