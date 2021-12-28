@@ -158,7 +158,7 @@
                                         Capaian</label>
                                     <div class="input-group">
                                         <input
-                                            placeholder="{{ $data->capaian * 100 }} %" class="form-control"
+                                            placeholder="{{ number_format(floor($data->capaian * 100) , 2, '.', '')}} % " class="form-control"
                                             name="capaian_ro" disabled>
                                     </div>
                                 </div>
