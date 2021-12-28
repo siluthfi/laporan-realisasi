@@ -29,14 +29,15 @@ class InputExport implements FromView, ShouldAutoSize, WithEvents
             AfterSheet::class => function(AfterSheet $event) {
                 $oneinput = OneInput::whereYear('created_at', session('tahun'))->get();
                 $countBorder = count(TwoInput::whereYear('created_at', session('tahun'))->get());
-                
-                foreach ($oneinput as $one) {
-                    if(!empty($one->TwoInput[0])) {
-                        $countBorder = $countBorder + 3;
-                    } else {
-                        $countBorder = $countBorder + 1;
-                    }
-                }
+                $countBorder = $countBorder + 3;
+
+                // foreach ($oneinput as $one) {
+                //     if(!empty($one->TwoInput[0])) {
+                //         $countBorder = $countBorder + 3;
+                //     } else {
+                //         $countBorder = $countBorder + 1;
+                //     }
+                // }
 
                 $event->sheet->getDelegate()->getStyle('A1:P1')->getAlignment()->setVertical(StyleAlignment::VERTICAL_CENTER);
                 $event->sheet->getDelegate()->getStyle('A1:P3')->getAlignment()->setHorizontal(StyleAlignment::HORIZONTAL_CENTER);
