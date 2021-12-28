@@ -66,7 +66,7 @@
                     <td>{{ !empty($one->TwoInput[0]->volume_capaian) ? $one->TwoInput[0]->volume_capaian : '' }}</td>
                     <td>{{ !empty($one->TwoInput[0]->uraian) ? $one->TwoInput[0]->uraian : '' }}</td>
                     <td>{{ !empty($one->TwoInput[0]->nomor_dokumen) ? $one->TwoInput[0]->nomor_dokumen : '' }}</td>
-                    <td>{{ !empty($one->TwoInput[0]->tanggal) ? $one->TwoInput[0]->tanggal : '' }}</td>
+                    <td>{{ !empty($one->TwoInput[0]->tanggal) ? \Carbon\Carbon::parse($one->TwoInput[0]->tanggal)->format('d-m-Y') : '' }}</td>
                 @else
                     <td></td>
                     <td></td>
@@ -100,7 +100,7 @@
                                 <td>{{ $two->volume_capaian }}</td>
                                 <td>{{ $two->uraian }}</td>
                                 <td>{{ $two->nomor_dokumen }}</td>
-                                <td>{{ $two->tanggal }}</td>
+                                <td>{{ \Carbon\Carbon::parse($two->tanggal)->format('d-m-Y') }}</td>
                             </tr>
                         @endif
                     @endif
