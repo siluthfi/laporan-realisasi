@@ -276,12 +276,22 @@ class RekapExport implements FromView, ShouldAutoSize, WithEvents
         $totalSisa = $sisaPAPK + $sisaSKKI + $sisaPPAII + $sisaPPAI + $sisaUMUM;
         $totalTarget = $resultTargetPAPK + $resultTargetSKKI + $resultTargetPPAII + $resultTargetPPAI + $resultTargetUMUM;
         $totalRP2 = $resultRP2PAPK + $resultRP2SKKI + $resultRP2PPAII + $resultRP2PPAI + $resultRP2UMUM;
+        
+        if ($totalRP2 and $totalTarget) {
+            $totalPercentage =  ($totalRP2 / $totalTarget) * 100;
+            $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
+        } else {
+            $totalPercentage = 0;
+            $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
+        }
 
-        $totalPercentage =  ($totalRP2 / $totalTarget) * 100;
-        $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
-
-        $totalRpPagu = ($totalRP / $totalPagu) * 100;
-        $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+        if ($totalRP and $totalPagu) {
+            $totalRpPagu = ($totalRP / $totalPagu) * 100;
+            $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+        } else {
+            $totalRpPagu = 0;
+            $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+        }
 
 
 
