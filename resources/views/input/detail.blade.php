@@ -289,6 +289,35 @@
                     </td>
                 </tbody>
 
+                                <!-- Delete Modal - Start-->
+                {{-- Modal --}}
+                <div class="modal fade" id="hapusDokumen_{{ $data2->id }}" tabindex="-1"
+                    aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel"><i
+                                        class="fas fa-exclamation-circle text-warning me-2"></i>Hapus Dokumen</h5>
+                                <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Apakah anda yakin ingin menghapus {{ $data2->uraian }}?
+                            </div>
+                            <div class="modal-footer">
+                                <form action="{{ route('destroy.dokumen', $data2->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="px-3 py-1 btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Tidak</button>
+                                    <button type="submit" class="px-3 py-1 btn btn-danger btn-sm">Ya</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Delete Modal - End-->
+
                 <!-- Edit Modal - Start -->
                 <div class="modal fade" id="editDokumen_{{ $data2->id }}" tabindex="-1"
                     aria-labelledby="editModalLabel" aria-hidden="true">
@@ -367,34 +396,7 @@
                 </div>
                 <!-- Edit Modal - End-->
 
-                <!-- Delete Modal - Start-->
-                {{-- Modal --}}
-                <div class="modal fade" id="hapusDokumen_{{ $data2->id }}" tabindex="-1"
-                    aria-labelledby="deleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="deleteModalLabel"><i
-                                        class="fas fa-exclamation-circle text-warning me-2"></i>Hapus Dokumen</h5>
-                                <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Apakah anda yakin ingin menghapus {{ $data2->uraian }}?
-                            </div>
-                            <div class="modal-footer">
-                                <form action="{{ route('destroy.dokumen', $data2->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="px-3 py-1 btn btn-secondary btn-sm"
-                                        data-bs-dismiss="modal">Tidak</button>
-                                    <button type="submit" class="px-3 py-1 btn btn-danger btn-sm">Ya</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Delete Modal - End-->
+
             @endforeach
         </table>
         <!-- Tables End -->
