@@ -15,19 +15,28 @@ class DatabaseSeeder extends Seeder
             [
                 'nama' => 'Cara Input Data',
                 'file' => null
-            ]);
+            ]
+        );
 
         Panduan::create(
             [
                 'nama' => 'Panduan Pelaksanaan Anggaran',
                 'file' => null
-            ]);
+            ]
+        );
 
         Panduan::create(
             [
                 'nama' => 'RKAKL',
                 'file' => null
-            ]);
+            ]
+        );
+        Panduan::create(
+            [
+                'nama' => 'Usulan Rencana Kerja',
+                'file' => null
+            ]
+        );
     }
 }
 

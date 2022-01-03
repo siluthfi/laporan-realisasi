@@ -12,7 +12,7 @@
 
     <div class="my-2 row justify-content-center">
         @foreach ($panduans as $panduan)
-            <div class="mb-3 col-md-4">
+            <div class="mb-3 col-md-3">
                 <div class="p-3 shadow shadow-sm card">
                     <div class="bg-white card-header">
                         <h5 class="card-title">{{ $panduan->nama }}</h5>

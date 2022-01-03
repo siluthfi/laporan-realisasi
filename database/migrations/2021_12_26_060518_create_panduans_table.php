@@ -15,7 +15,7 @@ class CreatePanduansTable extends Migration
     {
         Schema::create('panduans', function (Blueprint $table) {
             $table->id();
-            $table->enum('nama', ['Cara Input Data', 'Panduan Pelaksanaan Anggaran', 'RKAKL']);
+            $table->enum('nama', ['Cara Input Data', 'Panduan Pelaksanaan Anggaran', 'RKAKL' , 'Usulan Rencana Kerja']);
             $table->string('file')->nullable();
             $table->timestamps();
         });
