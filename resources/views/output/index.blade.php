@@ -21,12 +21,13 @@
                         <a href="{{ asset('files') }}/{{ $panduan->file }}" class="btn btn-primary btn-sm"
                             target="_blank" download>
                             <i class="fas fa-download me-1"></i>
-                            Unduh PDF
+                            Unduh @if ($panduan->nama != 'Usulan Rencana Kerja') PDF @else Excel @endif
                         </a>
                         @if ($bidang == 'Admin')
                             <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
                                 data-bs-target="#editPanduan_{{ $panduan->id }}"> <i class="fas fa-upload me-1"></i>
-                                Unggah PDF</button>
+                                Unduh @if ($panduan->nama != 'Usulan Rencana Kerja') PDF @else Excel @endif
+                            </button>
                         @endif
                         @if ($panduan->nama == 'Usulan Rencana Kerja')
                             <!-- Button trigger modal -->
@@ -61,7 +62,8 @@
                                                         @if ($bidang == $urk->bidang)
                                                             <button type="button" class="btn btn-sm btn-success"
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#editURK_{{ $urk->id }}"> <i class="fas fa-upload me-1"></i>
+                                                                data-bs-target="#editURK_{{ $urk->id }}"> <i
+                                                                    class="fas fa-upload me-1"></i>
                                                                 Unggah Excel</button>
                                                         @endif
                                                         <div class="modal fade" id="editURK_{{ $urk->id }}"
@@ -103,7 +105,8 @@
                                                                                 <div class="input-group">
                                                                                     <input value="{{ $urk->file }}"
                                                                                         type="file" class="form-control"
-                                                                                        name="file" accept="application/vnd.ms-excel">
+                                                                                        name="file"
+                                                                                        accept="application/vnd.ms-excel">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
