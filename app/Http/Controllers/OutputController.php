@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Urk;
 use App\Models\Panduan;
 use App\Models\OneInput;
 use App\Models\TwoInput;
@@ -298,12 +299,14 @@ class OutputController extends Controller
         ##### end section
 
         $bidang = Auth::user()->bidang;
+        $urks = Urk::all();
 
         return view('output.index', [
             'bidang' => $bidang,
             'title' => 'Dashboard',
             'twoinput' => $twoinput,
             'panduans' => $panduans,
+            'urks' => $urks,
 
             ##### Anggaran Chart Bar and Pie
             // UMUM

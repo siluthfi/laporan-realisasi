@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Urk;
 use App\Models\User;
 use App\Models\Panduan;
 use App\Models\OneInput;
@@ -34,6 +35,37 @@ class DatabaseSeeder extends Seeder
         Panduan::create(
             [
                 'nama' => 'Usulan Rencana Kerja',
+                'file' => null
+            ]
+        );
+
+        Urk::create(
+            [
+                'bidang' => 'Umum',
+                'file' => null
+            ]
+        );
+        Urk::create(
+            [
+                'bidang' =>  'PPA I',
+                'file' => null
+            ]
+        );
+        Urk::create(
+            [
+                'bidang' =>  'PPA II',
+                'file' => null
+            ]
+        );
+        Urk::create(
+            [
+                'bidang' =>  'SKKI',
+                'file' => null
+            ]
+        );
+        Urk::create(
+            [
+                'bidang' => 'PAPK',
                 'file' => null
             ]
         );
