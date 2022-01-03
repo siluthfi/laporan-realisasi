@@ -26,7 +26,7 @@
                         @if ($bidang == 'Admin')
                             <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
                                 data-bs-target="#editPanduan_{{ $panduan->id }}"> <i class="fas fa-upload me-1"></i>
-                                Unduh @if ($panduan->nama != 'Usulan Rencana Kerja') PDF @else Excel @endif
+                                Unggah @if ($panduan->nama != 'Usulan Rencana Kerja') PDF @else Excel @endif
                             </button>
                         @endif
                         @if ($panduan->nama == 'Usulan Rencana Kerja')
@@ -99,7 +99,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row">
-                                                                                <label for="" class="mb-1"> Upload
+                                                                                <label for="" class="mb-1"> Unggah
                                                                                     File
                                                                                 </label>
                                                                                 <div class="input-group">
@@ -159,7 +159,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label for="" class="mb-1"> Upload File
+                                    <label for="" class="mb-1"> Unggah File
                                     </label>
                                     <div class="input-group">
                                         <input value="{{ $panduan->file }}" type="file" class="form-control"
