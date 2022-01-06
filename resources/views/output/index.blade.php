@@ -32,7 +32,7 @@
                         @if ($panduan->nama == 'Usulan Rencana Kerja')
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#URK"><i class="fas fa-list me-1"></i>
+                                data-bs-target="#URK"><i class="fas fa-list "></i>
                                 Bidang
                             </button>
 

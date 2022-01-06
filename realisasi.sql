@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 06, 2022 at 04:38 PM
+-- Generation Time: Jan 06, 2022 at 05:32 PM
 -- Server version: 8.0.27-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -86,9 +86,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2021_12_04_120828_create_two_inputs_table', 1),
 (7, '2021_12_04_120833_create_outputs_table', 1),
 (8, '2021_12_12_102623_create_audits_table', 1),
-(9, '2021_12_26_060517_create_panduans_table', 2),
-(10, '2021_12_26_060518_create_panduans_table', 3),
-(11, '2022_01_03_100138_create_urks_table', 4);
+(9, '2021_12_26_060518_create_panduans_table', 1),
+(10, '2022_01_03_100138_create_urks_table', 1);
 
 -- --------------------------------------------------------
 
@@ -156,10 +155,10 @@ CREATE TABLE `panduans` (
 --
 
 INSERT INTO `panduans` (`id`, `nama`, `file`, `created_at`, `updated_at`) VALUES
-(1, 'Cara Input Data', NULL, '2022-01-06 00:37:21', '2022-01-06 00:37:21'),
-(2, 'Panduan Pelaksanaan Anggaran', NULL, '2022-01-06 00:37:21', '2022-01-06 00:37:21'),
-(3, 'RKAKL', NULL, '2022-01-06 00:37:21', '2022-01-06 00:37:21'),
-(4, 'Usulan Rencana Kerja', NULL, '2022-01-06 00:37:21', '2022-01-06 00:37:21');
+(1, 'Cara Input Data', NULL, '2022-01-06 01:31:49', '2022-01-06 01:31:49'),
+(2, 'Panduan Pelaksanaan Anggaran', NULL, '2022-01-06 01:31:49', '2022-01-06 01:31:49'),
+(3, 'RKAKL', NULL, '2022-01-06 01:31:49', '2022-01-06 01:31:49'),
+(4, 'Usulan Rencana Kerja', NULL, '2022-01-06 01:31:49', '2022-01-06 01:31:49');
 
 -- --------------------------------------------------------
 
@@ -229,11 +228,11 @@ CREATE TABLE `urks` (
 --
 
 INSERT INTO `urks` (`id`, `bidang`, `file`, `created_at`, `updated_at`) VALUES
-(1, 'Umum', NULL, '2022-01-06 00:37:21', '2022-01-06 00:37:21'),
-(2, 'PPA I', NULL, '2022-01-06 00:37:21', '2022-01-06 00:37:21'),
-(3, 'PPA II', NULL, '2022-01-06 00:37:21', '2022-01-06 00:37:21'),
-(4, 'SKKI', NULL, '2022-01-06 00:37:21', '2022-01-06 00:37:21'),
-(5, 'PAPK', NULL, '2022-01-06 00:37:22', '2022-01-06 00:37:22');
+(1, 'Umum', NULL, '2022-01-06 01:31:49', '2022-01-06 01:31:49'),
+(2, 'PPA I', NULL, '2022-01-06 01:31:49', '2022-01-06 01:31:49'),
+(3, 'PPA II', NULL, '2022-01-06 01:31:50', '2022-01-06 01:31:50'),
+(4, 'SKKI', NULL, '2022-01-06 01:31:50', '2022-01-06 01:31:50'),
+(5, 'PAPK', NULL, '2022-01-06 01:31:50', '2022-01-06 01:31:50');
 
 -- --------------------------------------------------------
 
@@ -257,6 +256,18 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `nama`, `username`, `email`, `user_profile`, `nip`, `nomor_telepon`, `gender`, `bidang`, `password`, `deleted_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Pengguna Admin', 'admin', 'admin@laporan.real', 'user.png', '30192837561234', '07129038576190', 'Pria', 'Admin', '$2y$10$pWZNxvZ.m3Vd02goW8tEB.iZH81YqGIfqHKsju9qmk2A4Q2arVODW', NULL, NULL, '2022-01-06 01:31:50', '2022-01-06 01:31:50'),
+(2, 'Pengguna Umum', 'umum', 'umum@laporan.real', 'user.png', '19023509126116', '081923468102', 'Perempuan', 'Umum', '$2y$10$N3pXCg9hrPLr5WM7vbkQUO1sXp6L.ATl.u/jdZ5g4iWms6b7MCEe6', NULL, NULL, '2022-01-06 01:31:50', '2022-01-06 01:31:50'),
+(3, 'Pengguna PPA I', 'ppai', 'ppai@laporan.real', 'user.png', '851239010235', '012374667', 'Pria', 'PPA I', '$2y$10$.I3t.2VNQn2QByJ4eW3FguC2ZAHtvfX8NhOsuJVjtu8nEFHm1e17O', NULL, NULL, '2022-01-06 01:31:50', '2022-01-06 01:31:50'),
+(4, 'Pengguna PPA II', 'ppaii', 'ppaii@laporan.real', 'user.png', '851239010235', '012374667', 'Pria', 'PPA II', '$2y$10$Ya7VMoi9sXRT.cjqbNmfaeofMGCL5.tXtELIZLatLflHNv1Qv6K72', NULL, NULL, '2022-01-06 01:31:50', '2022-01-06 01:31:50'),
+(5, 'Pengguna PAPK', 'papk', 'papk@laporan.real', 'user.png', '420123486923', '0826459113', 'Pria', 'PAPK', '$2y$10$.yXUUqiQevM6r5AO5WhQT.33cStxP8heg/0EIDo7E6orldZ.vFxey', NULL, NULL, '2022-01-06 01:31:51', '2022-01-06 01:31:51'),
+(6, 'Pengguna SKKI', 'skki', 'skki@laporan.real', 'user.png', '57812312375', '08123466863', 'Perempuan', 'SKKI', '$2y$10$MYPIgasXnO01FszRPStDXetAMif2M009kTb/I7stxR0xlqqe8aPNC', NULL, NULL, '2022-01-06 01:31:51', '2022-01-06 01:31:51');
 
 --
 -- Indexes for dumped tables
@@ -355,7 +366,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `one_inputs`
@@ -397,7 +408,7 @@ ALTER TABLE `urks`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
