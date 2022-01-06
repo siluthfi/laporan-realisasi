@@ -99,7 +99,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row">
-                                                                                <label for="" class="mb-1"> Upload
+                                                                                <label for="" class="mb-1"> Ungggah
                                                                                     File
                                                                                 </label>
                                                                                 <div class="input-group">
@@ -159,7 +159,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label for="" class="mb-1"> Upload File
+                                    <label for="" class="mb-1"> Unggah File
                                     </label>
                                     <div class="input-group">
                                         <input value="{{ $panduan->file }}" type="file" class="form-control"
