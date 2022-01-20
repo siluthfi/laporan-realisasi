@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+
 
 class InputController extends Controller
 {
@@ -28,7 +30,7 @@ class InputController extends Controller
 
         // Sum Volume capaian
         $oneinputs = OneInput::whereYear('created_at', session('tahun'))->get();
-        foreach($oneinputs as $oneinput){
+        foreach ($oneinputs as $oneinput) {
             $id = $oneinput->id;
 
             $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
@@ -67,7 +69,7 @@ class InputController extends Controller
 
         // Sum Volume capaian
         $oneinputs = OneInput::whereYear('created_at', session('tahun'))->get();
-        foreach($oneinputs as $oneinput){
+        foreach ($oneinputs as $oneinput) {
             $id = $oneinput->id;
 
             $input = TwoInput::where('one_input_id', $id)->pluck('volume_capaian')->toArray();
@@ -79,42 +81,37 @@ class InputController extends Controller
         }
 
         $bidang = Auth::user()->bidang;
-        if ($bidang === 'Admin')
-        {
+        if ($bidang === 'Admin') {
             $selection = OneInput::whereYear('created_at', session('tahun'))->get();
             $datas2 = TwoInput::whereYear('tanggal', session('tahun'))->join('one_inputs', 'two_inputs.one_input_id', 'one_inputs.id')
-            ->select
-            (
-                'two_inputs.id',
-                'two_inputs.volume_capaian',
-                'two_inputs.uraian',
-                'two_inputs.nomor_dokumen',
-                'two_inputs.tanggal',
-                'two_inputs.one_input_id',
-                'two_inputs.file',
-                'one_inputs.bidang',
-                'one_inputs.nama_ro',
-            )
-            ->get();
-        }
-        else
-        {
+                ->select(
+                    'two_inputs.id',
+                    'two_inputs.volume_capaian',
+                    'two_inputs.uraian',
+                    'two_inputs.nomor_dokumen',
+                    'two_inputs.tanggal',
+                    'two_inputs.one_input_id',
+                    'two_inputs.file',
+                    'one_inputs.bidang',
+                    'one_inputs.nama_ro',
+                )
+                ->get();
+        } else {
             $selection = OneInput::whereYear('created_at', session('tahun'))->where('bidang', $bidang)->get();
             $datas2 = TwoInput::whereYear('tanggal', session('tahun'))->join('one_inputs', 'two_inputs.one_input_id', 'one_inputs.id')
-            ->select
-            (
-                'two_inputs.id',
-                'two_inputs.volume_capaian',
-                'two_inputs.uraian',
-                'two_inputs.nomor_dokumen',
-                'two_inputs.tanggal',
-                'two_inputs.one_input_id',
-                'two_inputs.file',
-                'one_inputs.bidang',
-                'one_inputs.nama_ro',
-            )
-            ->where('one_inputs.bidang', $bidang)
-            ->get();
+                ->select(
+                    'two_inputs.id',
+                    'two_inputs.volume_capaian',
+                    'two_inputs.uraian',
+                    'two_inputs.nomor_dokumen',
+                    'two_inputs.tanggal',
+                    'two_inputs.one_input_id',
+                    'two_inputs.file',
+                    'one_inputs.bidang',
+                    'one_inputs.nama_ro',
+                )
+                ->where('one_inputs.bidang', $bidang)
+                ->get();
         }
 
         return view('input.dokumen', [
@@ -133,26 +130,20 @@ class InputController extends Controller
         $id = $request->naro;
         $data1 = OneInput::where('id', $id)->value('satuan');
         $month = (int)date('m');
-        $m1 = array('Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO',
-        'Satker', 'Laporan', 'KPPN');
-        if (in_array($data1, $m1))
-        {
+        $m1 = array(
+            'Kegiatan', 'Dokumen', 'Pegawai', 'Rekomendasi', 'ISO',
+            'Satker', 'Laporan', 'KPPN'
+        );
+
+        if (in_array($data1, $m1)) {
             $input2->volume_capaian = 1;
-        }
-        else
-        {
+        } else {
             $input2->volume_capaian = $month;
         }
 
-        $input2->uraian = $request->uraian;
-        $input2->nomor_dokumen = $request->nodok;
-        $input2->tanggal = $request->tanggal;
-        $input2->one_input_id = $request->naro;
-        $input2->save();
-
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $fileName = time() . '.' . $file->extension();
+            $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path('files'), $fileName);
             $input2->file = $fileName;
         } else {
@@ -182,17 +173,20 @@ class InputController extends Controller
             $input->one_input_id = $request->naro;
         }
 
-
         if ($request->hasFile('file')) {
+            if ($input->file) {
+                File::delete(public_path('/files/' . $input->file));
+            }
             $file = $request->file('file');
-            $fileName = time() . '.' . $file->extension();
+            $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path('files'), $fileName);
             $input->file = $fileName;
+            $input->update();
         } else {
             $input->file = $input->file;
+            $input->update();
         }
 
-        $input->update();
 
         return back()->withInput()->with('status', 'Dokumen berhasil diperbarui!');
     }
@@ -357,6 +351,4 @@ class InputController extends Controller
 
         return redirect()->back()->with('status', 'Volume jumlah laporan berhasil direset');
     }
-}
-;
-
+};

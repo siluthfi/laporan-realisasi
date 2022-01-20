@@ -301,6 +301,8 @@ class OutputController extends Controller
         $bidang = Auth::user()->bidang;
         $urks = Urk::all();
 
+        
+
         return view('output.index', [
             'bidang' => $bidang,
             'title' => 'Dashboard',
