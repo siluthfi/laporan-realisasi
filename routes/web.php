@@ -51,3 +51,4 @@ Route::get('/output/excel/table', [ExportController::class, 'exportWithView'])->
 
 // Beranda
 Route::put('/beranda/panduan/{panduan:id}', [PanduanController::class, 'update_panduan'])->name('update.panduan');
+Route::put('/beranda/urk/{urk:id}', [PanduanController::class, 'update_urk'])->name('update.urk');

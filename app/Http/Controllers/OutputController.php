@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Urk;
 use App\Models\Panduan;
 use App\Models\OneInput;
 use App\Models\TwoInput;
@@ -298,12 +299,16 @@ class OutputController extends Controller
         ##### end section
 
         $bidang = Auth::user()->bidang;
+        $urks = Urk::all();
+
+        
 
         return view('output.index', [
             'bidang' => $bidang,
             'title' => 'Dashboard',
             'twoinput' => $twoinput,
             'panduans' => $panduans,
+            'urks' => $urks,
 
             ##### Anggaran Chart Bar and Pie
             // UMUM
@@ -633,6 +638,8 @@ class OutputController extends Controller
             $resultPercentageSKKI2 = 0;
         }
 
+
+
         $sisaSKKI = $resultPaguSKKI - $resultRPSKKI;
         $totalPagu = $resultPaguPAPK + $resultPaguSKKI + $resultPaguPPAII + $resultPaguPPAI + $resultPaguUMUM;
         $totalRP = $resultRPPAPK + $resultRPSKKI + $resultRPPPAII + $resultRPPPAI + $resultRPUMUM;
@@ -640,12 +647,21 @@ class OutputController extends Controller
         $totalTarget = $resultTargetPAPK + $resultTargetSKKI + $resultTargetPPAII + $resultTargetPPAI + $resultTargetUMUM;
         $totalRP2 = $resultRP2PAPK + $resultRP2SKKI + $resultRP2PPAII + $resultRP2PPAI + $resultRP2UMUM;
 
-        $totalPercentage =  ($totalRP2 / $totalTarget) * 100  ;
-        $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
+        if ($totalRP2 and $totalTarget) {
+            $totalPercentage =  ($totalRP2 / $totalTarget) * 100;
+            $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
+        } else {
+            $totalPercentage = 0;
+            $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
+        }
 
-        $totalRpPagu = ($totalRP / $totalPagu) * 100;
-        $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
-
+        if ($totalRP and $totalPagu) {
+            $totalRpPagu = ($totalRP / $totalPagu) * 100;
+            $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+        } else {
+            $totalRpPagu = 0;
+            $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+        }
 
         return view('output.rekap', [
             'title' => 'Rekap',

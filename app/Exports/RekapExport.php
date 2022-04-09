@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment as StyleAlignment;
 
 class RekapExport implements FromView, ShouldAutoSize, WithEvents
 {
@@ -276,12 +277,22 @@ class RekapExport implements FromView, ShouldAutoSize, WithEvents
         $totalSisa = $sisaPAPK + $sisaSKKI + $sisaPPAII + $sisaPPAI + $sisaUMUM;
         $totalTarget = $resultTargetPAPK + $resultTargetSKKI + $resultTargetPPAII + $resultTargetPPAI + $resultTargetUMUM;
         $totalRP2 = $resultRP2PAPK + $resultRP2SKKI + $resultRP2PPAII + $resultRP2PPAI + $resultRP2UMUM;
+        
+        if ($totalRP2 and $totalTarget) {
+            $totalPercentage =  ($totalRP2 / $totalTarget) * 100;
+            $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
+        } else {
+            $totalPercentage = 0;
+            $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
+        }
 
-        $totalPercentage =  ($totalRP2 / $totalTarget) * 100;
-        $resultPercentage = number_format(floor($totalPercentage * 100) / 100, 2, '.', '');
-
-        $totalRpPagu = ($totalRP / $totalPagu) * 100;
-        $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+        if ($totalRP and $totalPagu) {
+            $totalRpPagu = ($totalRP / $totalPagu) * 100;
+            $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+        } else {
+            $totalRpPagu = 0;
+            $resultTotalRpPagu =  number_format(floor($totalRpPagu * 100) / 100, 2, '.', '');
+        }
 
 
 
@@ -360,14 +371,20 @@ class RekapExport implements FromView, ShouldAutoSize, WithEvents
     {
         return [
             AfterSheet::class => function(AfterSheet $event) {
-                $event->sheet->getStyle('A2:I2')->applyFromArray([
+                $event->sheet->getStyle('A1:I2')->applyFromArray([
                     'font' => [
                         'bold' => true
                     ],
                 ]);
-                $event->sheet->getStyle('A1:I1')->applyFromArray([
-                    'font' => [
-                        'bold' => true
+                $event->sheet->getDelegate()->getStyle('A1:I8')->getAlignment()->setVertical(StyleAlignment::VERTICAL_CENTER);
+                $event->sheet->getDelegate()->getStyle('A1:I8')->getAlignment()->setHorizontal(StyleAlignment::HORIZONTAL_CENTER);
+                $event->sheet->getDelegate()->getStyle('A1:I2')->getFont()->setSize(16);
+                $event->sheet->getStyle("A1:I8")->applyFromArray([
+                    'borders' => [
+                        'allBorders' => [
+                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                            'color' => ['argb' => 'FF000000']
+                        ]
                     ]
                 ]);
             }

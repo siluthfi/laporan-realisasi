@@ -12,27 +12,130 @@
 
     <div class="my-2 row justify-content-center">
         @foreach ($panduans as $panduan)
-            <div class="mb-3 col-md-4">
+            <div class="mb-3 col-md-3">
                 <div class="p-3 shadow shadow-sm card">
                     <div class="bg-white card-header">
                         <h5 class="card-title">{{ $panduan->nama }}</h5>
                     </div>
                     <div class="card-body">
-                        <a href="{{ asset('files') }}/{{ $panduan->file }}" class="btn btn-primary btn-sm" target="_blank" download>
+                        <a href="{{ asset('files') }}/{{ $panduan->file }}" class="btn btn-primary btn-sm"
+                            target="_blank" download>
                             <i class="fas fa-download me-1"></i>
-                            Unduh PDF
+                            Unduh @if ($panduan->nama != 'Usulan Rencana Kerja') PDF @else Excel @endif
                         </a>
                         @if ($bidang == 'Admin')
                             <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal"
                                 data-bs-target="#editPanduan_{{ $panduan->id }}"> <i class="fas fa-upload me-1"></i>
-                                Unggah PDF</button>
+                                Unggah @if ($panduan->nama != 'Usulan Rencana Kerja') PDF @else Excel @endif
+                            </button>
+                        @endif
+                        @if ($panduan->nama == 'Usulan Rencana Kerja')
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#URK"><i class="fas fa-list "></i>
+                                Bidang
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="URK" tabindex="-1" aria-labelledby="URKLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="URKLabel">Usulan Rencana Kerja</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @foreach ($urks as $urk)
+                                                <div class="card mb-3">
+                                                    <div class="card-header p-0 pt-2 px-2">
+                                                        <h5 class="card-title">Usulan Rencana Kerja {{ $urk->bidang }}
+                                                        </h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <a href="{{ asset('files') }}/{{ $urk->file }}"
+                                                            class="btn btn-primary btn-sm" target="_blank" download>
+                                                            <i class="fas fa-download me-1"></i>
+                                                            Unduh Excel
+                                                        </a>
+                                                        @if ($bidang == $urk->bidang)
+                                                            <button type="button" class="btn btn-sm btn-success"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#editURK_{{ $urk->id }}"> <i
+                                                                    class="fas fa-upload me-1"></i>
+                                                                Unggah Excel</button>
+                                                        @endif
+                                                        <div class="modal fade" id="editURK_{{ $urk->id }}"
+                                                            tabindex="-1" aria-labelledby="editModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            Usulan Rencana Kerja {{ $urk->bidang }}</h5>
+                                                                        <button type="button" class="btn-close btn-sm"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form action="{{ route('update.urk', $urk->id) }}"
+                                                                        method="POST" id="editForm"
+                                                                        enctype="multipart/form-data">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col">
+                                                                                    <label for="bidang"
+                                                                                        class="form-label">{{ $urk->bidang }}</label>
+                                                                                    <div class="mb-3 input-group">
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="bidang" name="bidang"
+                                                                                            placeholder="{{ $urk->bidang }}"
+                                                                                            value="{{ $urk->bidang }} "
+                                                                                            disabled>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <label for="" class="mb-1"> Unggah
+                                                                                    File
+                                                                                </label>
+                                                                                <div class="input-group">
+                                                                                    <input value="{{ $urk->file }}"
+                                                                                        type="file" class="form-control"
+                                                                                        name="file"
+                                                                                        accept="application/vnd.ms-excel">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                class="btn btn-secondary btn-sm"
+                                                                                data-bs-dismiss="modal">Kembali</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary btn-sm">Perbarui</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         @endif
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="editPanduan_{{ $panduan->id }}" tabindex="-1" aria-labelledby="editModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="editPanduan_{{ $panduan->id }}" tabindex="-1"
+                aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -50,16 +153,17 @@
                                         <label for="nama" class="form-label">Nama Panduan</label>
                                         <div class="mb-3 input-group">
                                             <input type="text" class="form-control" id="nama" name="nama"
-                                                placeholder="{{ $panduan->nama }}" value="{{ $panduan->nama }} " disabled>
+                                                placeholder="{{ $panduan->nama }}" value="{{ $panduan->nama }} "
+                                                disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label for="" class="mb-1"> Upload File
+                                    <label for="" class="mb-1"> Unggah File
                                     </label>
                                     <div class="input-group">
                                         <input value="{{ $panduan->file }}" type="file" class="form-control"
-                                            name="file">
+                                            name="file" accept="application/pdf">
                                     </div>
                                 </div>
                             </div>

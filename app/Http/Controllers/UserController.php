@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+
 
 class UserController extends Controller
 {
@@ -21,7 +23,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function user_profile(){
+    public function user_profile()
+    {
 
         return view('user.profile', [
             'title' => 'User'
@@ -37,7 +40,7 @@ class UserController extends Controller
         return view('user.detail', [
             'user' => $user,
             'title' => 'User'
-            
+
         ]);
     }
 
@@ -118,13 +121,17 @@ class UserController extends Controller
         $password = bcrypt($request->password);
 
         if ($request->hasFile('file')) {
+            if ($user->user_profile) {
+                File::delete(public_path('/images/' . $user->user_profile));
+            }
             $image = $request->file('file');
             $imageName = time() . '.' . $image->extension();
             $image->move(public_path('images'), $imageName);
-
             $user->user_profile = $imageName;
+            $user->update();
         } else {
             $user->user_profile = $user->user_profile;
+            $user->update();
         }
 
 

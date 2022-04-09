@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePanduansTable extends Migration
+class CreateUrksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,21 @@ class CreatePanduansTable extends Migration
      */
     public function up()
     {
-        Schema::create('panduans', function (Blueprint $table) {
+        Schema::create('urks', function (Blueprint $table) {
             $table->id();
-            $table->enum('nama', ['Cara Input Data', 'Panduan Pelaksanaan Anggaran', 'RKAKL']);
+            $table->enum('bidang' , ['Umum', 'PPA I', 'PPA II', 'SKKI', 'PAPK']);
             $table->string('file')->nullable();
             $table->timestamps();
         });
     }
 
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::dropIfExists('panduans');
+        Schema::dropIfExists('urks');
     }
 }
