@@ -341,6 +341,16 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col">
+                                                <label for="volcap" class="form-label">Volume Capaian</label>
+                                                <div class="mb-3 input-group">
+                                                    <input type="number" class="form-control" id="volcap" name="volcap"
+                                                        placeholder="Masukkan Volume Capaian"
+                                                        value="{{ $data2->volume_capaian }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <label for="" class="mb-1 fw-bold"> Upload File
                                             </label>
                                             <div class="input-group">
@@ -444,23 +454,17 @@
                                 </select>
                             </div>
                         </div>
+                        @if ($data->satuan !== "Bulan Layanan")
                         <div class="row">
-                            <label for="volcap" class="form-label"><span class="text-danger">*</span> Volume Capaian</label>
-                            <div class="mb-3 input-group">
-                                <select type="select" class="form-control" id="volcap" name="volcap" required>
-                                    <option value="-">-</option>
-                                    <option value="Bulan Layanan">Bulan Layanan</option>
-                                    <option value="Dokumen">Dokumen</option>
-                                    <option value="ISO">ISO</option>
-                                    <option value="Kegiatan">Kegiatan</option>
-                                    <option value="KPPN">KPPN</option>
-                                    <option value="Laporan">Laporan</option>
-                                    <option value="Pegawai">Pegawai</option>
-                                    <option value="Rekomendasi">Rekomendasi</option>
-                                    <option value="Satker">Satker</option>
-                                </select>
+                            <div class="col">
+                                <label for="volcap" class="form-label"><span class="text-danger">*</span> Volume Capaian</label>
+                                <div class="mb-3 input-group">
+                                    <input type="number" class="form-control" id="volcap" name="volcap"
+                                    placeholder="Masukkan Volume Capaian">
+                                </div>
                             </div>
                         </div>
+                        @endif
                         <div class="row">
                             <label for="" class="mb-1 fw-bold"> Upload File
                             </label>

@@ -17,10 +17,10 @@
                     <a class="nav-link py-4 px-3 {{ $title === 'Laporan' ? 'active text-primary' : '' }}"
                         aria-current="page" href="{{ route('index') }}">LAPORAN</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link py-4 px-3 {{ $title === 'Dokumen' ? 'active text-primary' : '' }}"
                         aria-current="page" href="{{ route('dokumen') }}">DOKUMEN</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link py-4 px-3 {{ $title === 'Rekap' ? 'active text-primary' : '' }}"
                         aria-current="page" href="{{ route('rekap') }}">REKAP</a>

@@ -137,7 +137,7 @@ class InputController extends Controller
         'Satker', 'Laporan', 'KPPN');
         if (in_array($data1, $m1))
         {
-            $input2->volume_capaian = 1;
+            $input2->volume_capaian = $request->volcap;
         }
         else
         {
@@ -180,6 +180,7 @@ class InputController extends Controller
             $input->nomor_dokumen = $request->nodok;
             $input->tanggal = $request->tanggal;
             $input->one_input_id = $request->naro;
+            $input->volume_capaian = $request->volcap;
         }
 
 
